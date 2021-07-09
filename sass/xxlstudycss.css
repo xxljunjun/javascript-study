@@ -1,0 +1,30 @@
+.xxl .title {
+  display: block;
+  width: 200px;
+}
+
+.xxl li {
+  list-style: none;
+}
+
+.xxl .ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.xxl .ellipsis-two {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+
+.xxl .box {
+  height: 100px;
+  width: 100px;
+  background: red;
+}
