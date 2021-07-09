@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#home {
+			color: #000;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="home">
+
+	</div>
+	<script>
+		/*
+			什么是闭包？
+			函数执行，形成私有的执行上下文，使内部私有变量不受外界干扰，起到保护和保存的作用
+			闭包有什么作用？
+			js的作用域有两种：局部作用域和全局作用域
+			外部作用域无法获取内部作用域里面的变量
+			我们想在一个函数内部访问另一个函数内部的变量
+
+			+闭包的3个特性
+				==>函数嵌套函数
+				==>函数内部可以引用函数外部的参数和变量
+				==>参数和变量不会被垃圾回收机制回收
+			+全局作用域和局部作用域
+			+变量的作用域无非就是两种：全局变量和局部变量。
+			+作用域链、变量解析、词法环境
+				--但是如果在当前作用域中没有查到值，就会向上级作用域去查，直到查到全局作用域，这么一个查找过程形成的链条就叫做作用域链。
+			+块级作用域
+			+ 需要注意的是，函数内部声明变量的时候，一定要使用var命令。如果不用的话，你实际上声明了一个全局变量！
+		*/
+
+		//实现了全局变量中去访问局部变量
+		// function a() {
+		// 	var ele = "变量"
+		// 	return function b() {
+		// 		ele++
+		// 		return ele
+		// 	}
+		// 	return b
+		// }
+		// var c = a()
+		// c()
+
+		//经典闭包num的值经过累加后没有被销毁
+		// function fn() {
+		// 	let num = 3
+		// 	return function () {
+		// 		let n = 0
+		// 		console.log(++n)
+		// 		console.log(++num)
+		// 	}
+		// }
+		// var fn1 = fn()
+		// fn1() //1 4
+		// fn1() //1 5
+
+		//把var改成let也能实现
+		// for (var i = 0; i < 5; ++i) {
+		// 	setTimeout(function () {
+		// 		console.log(i + "")
+		// 	}, 100)
+		// }
+		// for (var i = 0; i < 5; ++i) {
+		// 	(function (i) {
+		// 		setTimeout(function () {
+		// 			console.log(i + "")
+		// 		}, i * 100)
+		// 	}(i))
+
+		// }
+
+		//闭包作为参数传递
+		// var num = 15
+		// var fn1 = function (x) {
+		// 	if (x > num) {
+		// 		console.log(x)
+		// 	}
+		// }
+		// void function (fn2) {
+		// 	var num = 100
+		// 	fn2(30)
+		// }(fn1)
+
+
+	</script>
+</body>
+
+</html>

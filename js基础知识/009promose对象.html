@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+	/*
+		+++promise对象代表异步操作
+			---pending（进行中）
+			---fulfilled（已成功）
+			---rejected（已失败）
+			只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态
+			ES6 规定，Promise对象是一个构造函数
+			resolved 的 Promise 是在本轮事件循环的末尾执行，总是晚于本轮循环的同步任务。
+
+	 */
+	//promise构造函数接受一个函数作为参数
+	// const promise = new Promise(function (resolve, reject) {
+	// 	resolve("成功");
+	// });
+
+	// //可以利用.then方法
+	// promise.then(function (value) {
+	// 	// success
+	// 	//pending==>fulfilled
+	// 	console.log(value)
+	// }, function (error) {
+	// 	// failure
+	// 	//pending==>rejected
+	// 	console.log(error)
+	// });
+
+
+	// const myPromise = new Promise((resolve, rejected) => {
+	// 	setTimeout(() => {
+	// 		resolve("hellow")
+	// 	}, 2000)
+	// }).then((val) => {
+	// 	console.log(val)
+	// 	return new Promise((resolve, rejected) => {
+	// 		setTimeout(() => {
+	// 			resolve("world")
+	// 		}, 2000)
+	// 	})
+	// }).then(val => {
+	// 	console.log(val)
+	// })
+
+	// const myPromise2 = new Promise((resolve, rejected) => {
+	// 	setTimeout(() => {
+	// 		resolve("成功1")
+	// 		console.log("11111111111")
+	// 	}, 2000)
+	// }).then(res => {
+	// 	return new Promise((resolve, rejected) => {
+	// 		setTimeout(() => {
+	// 			resolve("成功2")
+	// 			console.log("222222222222")
+	// 		}, 2000)
+	// 	}).then(res => {
+	// 		console.log("33333333333")
+	// 		return res
+	// 	})
+	// }).then(res => {
+	// 	console.log(res)
+	// })
+
+	// const myPromise3 = new Promise((resolve, rejected) => {
+	// 	setTimeout(() => {
+	// 		resolve("成功")
+	// 		console.log("111111111111111")
+	// 	}, 2000)
+	// }).then(res => {
+	// 	return new Promise((resolve, rejected) => {
+	// 		console.log("222222222", res)
+	// 		resolve(res)
+	// 	})
+	// }).then(res => {
+	// 	console.log("33333333333", res)
+	// 	return res
+	// }).then(res => {
+	// 	console.log("4444444444", res)
+	// 	return res
+	// })
+
+	// const myPromise4 = new Promise((resolve, rejected) => {
+	// 	setTimeout(() => {
+	// 		// resolve("成功")
+	// 		rejected("失败")
+	// 	}, 2000)
+	// }).then(res => {
+	// 	console.log(res)
+	// }, err => {
+	// 	console.log(err)
+	// })
+	// .catch(err => {
+	// 	console.log(err)
+	// })
+
+	// const myPromise5 = new Promise((resolve, rejected) => {
+	// 	setTimeout(() => {
+	// 		resolve("成功")
+	// 	}, 2000)
+	// }).then(res => {
+	// 	console.log("11111111111", res)
+	// 	throw new Error('错误信息')
+	// }).catch(err => {
+	// 	console.log("2222222222", err)
+	// }).then(res => {
+	// 	console.log("33333333333", res)
+	// }).then(res => {
+	// 	console.log("44444444444", res)
+	// }).catch(err => {
+	// 	console.log("55555555", err)
+	// })
+	// 结论：catch也会返回一个promise实例，并且是resolved状态
+
+	// Promise.all() 批量执行
+	//切菜
+	function cutUp() {
+		console.log('开始切菜。');
+		var p = new Promise(function (resolve, reject) {        //做一些异步操作
+			setTimeout(function () {
+				console.log('切菜完毕！');
+				resolve('切好的菜');
+			}, 1000);
+		});
+		return p;
+	}
+
+	//烧水
+	function boil() {
+		console.log('开始烧水。');
+		var p = new Promise(function (resolve, reject) {        //做一些异步操作
+			setTimeout(function () {
+				console.log('烧水完毕！');
+				reject('烧好的水');
+			}, 1000);
+		});
+		return p;
+	}
+
+	Promise.all([cutUp(), boil()])
+		.then((result) => {
+			console.log('准备工作完毕');
+			console.log(result);
+		}, err => {
+			console.log("11111111111", err)
+		})
+
+
+
+
+
+
+
+
+
+
+
+	/*
+		异步操作的常见操作
+			1、事件监听
+			2、ajax操作
+	*/
+
+	//1、事件监听
+	document.getElementById('#start').addEventListener('click', start, false);
+	function start() {
+		// 响应事件，进行相应的操作
+	}
+	// jquery on 监听
+	$('#start').on('click', start)
+
+	//2、 比较常见的有ajax
+	$.ajax('http://www.wyunfei.com/', {
+		success(res) {
+			// 这里可以监听res返回的数据做回调逻辑的处理
+		}
+	})
+	// 或者在页面加载完毕后回调
+	$(function () {
+		// 页面结构加载完成，做回调逻辑处理
+	})
+</script>
+
+</html>

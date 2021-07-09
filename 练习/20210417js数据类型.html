@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		body,html{
+			height: 100%;
+			margin: 0;
+		}
+		.home{
+			background: #eeeeee;
+			height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="home">
+
+	</div>
+	<script>
+		/* 
+			+基本数据类型
+				==>Number
+				==>String
+				==>Boolean
+				==>Null
+				==>Undefined
+				==>Symbol（ES6新增数据类型）
+					ES6 引入了一种新的原始数据类型 Symbol ，表示独一无二的值，最大的用法是用来定义对象的唯一属性名。
+					用法一---------由于每一个 Symbol 的值都是不相等的，所以 Symbol 作为对象的属性名，可以保证属性不重名。
+						Object.defineProperty() 方法会直接在一个对象上定义一个新属性，或者修改一个对象的现有属性，并返回此对象。
+				==>bigInt(可以表示任意大的整数。)
+			+引用数据类型
+				==>Object(对象)
+				==>Array（数组）
+				==>Date（日期）
+				==>Function（函数）
+				==>RegExp(正则表达式)
+		*/
+		// let myName1 = Symbol("我是小溪流");
+		// console.log(myName1)
+		// let myName2 = Symbol("我是小溪流");
+		// console.log(myName2)
+		// console.log(myName1 === myName2)
+
+		// let symnolObj = {}
+		// symnolObj[myName1] = "kk"
+		// symnolObj[myName2] = "hh"
+		// symnolObj[myName3] = "aa"
+		// console.log(symnolObj)
+
+		// let myName1 = Symbol("我是小溪流");
+		// let symnolObj = {
+		// 	[myName1]:"aaaaaaaa"
+		// }
+		// console.log(symnolObj)
+
+		// 'use strict';
+		// let name1 = Symbol("我是小溪流");
+		// let symbolObj = {}
+		// Object.defineProperty(symbolObj,name1,{
+		// 	value:"kk",
+		// 	writable: false, //当 writable 属性设置为 false 时，该属性被称为“不可写的”。它不能被重新赋值。
+
+		// })
+		// console.log(symbolObj) //{Symbol(我是小溪流): "kk"}
+		// console.log(symbolObj.name1) //undefinde
+		// console.log(symbolObj[name1]) //"kk"
+
+		// let syObject = {};
+		// syObject[sy] = "kk";
+		// console.log(syObject);
+		
+		// for (let i in syObject) {
+		// console.log(i);
+		// }    // 无输出
+		// Object.keys(syObject);                     // []
+		// Object.getOwnPropertySymbols(syObject);    // [Symbol(key1)]
+		// Reflect.ownKeys(syObject);                 // [Symbol(key1)]
+
+		// try{
+		// 	console.log(aa)
+		// }catch(e){
+		// 	console.log(e)
+		// }
+		// let a = 1
+		// console.log(a)
+
+	</script>
+</body>
+</html>

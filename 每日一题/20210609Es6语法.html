@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+	/* 
+		let,var,const定义变量
+		var定义的变量存在变量提升，const和let是块级作用域
+		let不允许重复定义变量
+		const声明一个只读的常量。一旦声明，常量的值就不能改变。
+	*/
+	// var a = 0;
+	// let b = 1;
+	// const c = 2;
+	// // if (true) let x = 1;
+	// if (true) {  
+	// 	let x = 1;
+	// }
+
+	// const foo = Object.freeze({}); //冻结对象
+	// 常规模式时，下面一行不起作用；
+	// 严格模式时，该行会报错
+	// foo.prop = 123;
+
+	// var constantize = (obj) => {
+	// 	Object.freeze(obj);
+	// 	Object.keys(obj).forEach((key, i) => {
+	// 		if (typeof obj[key] === 'object') {
+	// 			constantize(obj[key]);
+	// 		}
+	// 	});
+	// };
+
+	//ES6声明变量的6种方法
+	/*
+		+ var
+	   + function
+	   + let
+	   + const
+	   + important
+	   + class
+	*/
+
+	/*
+		结构赋值 
+		右边的是数组（严格来说是可遍历的结构）
+		对象，数组，字符串，数字，布尔都可以被解构
+		解构赋值时，如果等号右边是数值和布尔值，则会先转为对象
+		undefined和null无法转为对象
+	 */
+	// let [a, b, c] = [1, 2, 3]
+	// console.log(a)
+	// console.log(b)
+	// console.log(c)
+	// let [d, e, f] = new Set([1, 2, 3])
+	// console.log(d)
+	// console.log(e)
+	// console.log(f)
+
+	let { foo: baz } = { foo: 'aaa', bar: 'bbb' }; //foo是匹配项，变量baz才是真正被赋值的
+	// console.log(foo)
+	console.log(baz)
+</script>
+
+</html>

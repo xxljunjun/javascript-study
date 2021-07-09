@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div class="home">
+		<span>
+			请输入数字：
+		</span>
+		<input type="text" placeholder="请输入100以内的自然数" class="inp">
+		<button onclick="gotoGame()" class="play">开始游戏</button>
+	</div>
+	<script>
+		let randnumber = Math.floor(Math.random()*100)+1
+		function gotoGame(){
+			console.log("1111111")
+		}
+	</script>
+</body>
+<style>
+	.home{
+		background: #ccc;
+		margin: 50px auto;
+		padding-left:600px ;
+		padding-top: 50px;
+		height: 300px;
+	}
+	.play{
+		cursor: pointer;
+	}
+	.inp{
+		height: 26px;
+		margin-right: 20px;
+	}
+</style>
+</html>

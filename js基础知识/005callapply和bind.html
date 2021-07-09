@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>call和apply和bind</title>
+</head>
+<style>
+	#app {
+		color: #000;
+	}
+</style>
+
+<body>
+	<div id="app">
+
+	</div>
+	<script>
+		/* 
+			call、apply和bind
+				1，call()、apply()、bind() 都是用来重定义 this 这个对象的！
+				2,bind 返回的是一个新的函数，你必须调用它才会被执行。 
+				3,apply 的所有参数都必须放在一个数组里面传进去 obj.myFun.apply(db,['成都', ..., 'string' ])。第一个参数是想改变的this指向
+		*/
+		//手写call函数
+		Function.prototype.myCall = function (context) {
+			// 先判断调用myCall是不是一个函数
+			// 这里的this就是调用myCall的
+			if (typeof this !== 'function') {
+				throw new TypeError("Not a Function")
+			}
+
+			// 不传参数默认为window
+			context = context || window
+			// 保存this
+			context.fn = this
+
+			// 保存参数
+			//arguments 是一个对应于传递给函数的参数的类数组对象。
+			let args = Array.from(arguments).slice(1)   //Array.from 把伪数组对象转为数组
+
+			// 调用函数
+			let result = context.fn(...args)
+
+			delete context.fn
+
+			return result
+		}
+		//手写apply函数
+		Function.prototype.myApply = function (context) {
+			// 判断this是不是函数
+			if (typeof this !== "function") {
+				throw new TypeError("Not a Function")
+			}
+
+			let result
+
+			// 默认是window
+			context = context || window
+
+			// 保存this
+			context.fn = this
+
+			// 是否传参
+			if (arguments[1]) {
+				result = context.fn(...arguments[1])
+			} else {
+				result = context.fn()
+			}
+			delete context.fn
+
+			return result
+		}
+		//手写bind函数
+		Function.prototype.myBind = function (context) {
+			// 判断是否是一个函数
+			if (typeof this !== "function") {
+				throw new TypeError("Not a Function")
+			}
+			// 保存调用bind的函数
+			const _this = this
+			// 保存参数
+			const args = Array.prototype.slice.call(arguments, 1)
+			// 返回一个函数
+			return function F() {
+				// 判断是不是new出来的
+				if (this instanceof F) {
+					// 如果是new出来的
+					// 返回一个空对象，且使创建出来的实例的__proto__指向_this的prototype，且完成函数柯里化
+					return new _this(...args, ...arguments)
+				} else {
+					// 如果不是new出来的改变this指向，且完成函数柯里化
+					return _this.apply(context, args.concat(...arguments))
+				}
+			}
+		}
+	</script>
+</body>
+
+</html>

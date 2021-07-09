@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.home{
+			color: #000;
+		}
+	</style>
+</head>
+<body>
+	<div id="home">
+
+	</div>
+	<script>
+		/* 
+			+字面量创建对象
+				let obj = {
+					name:"小溪流",
+					age:12
+				}
+				==>字面量创建对象更简单，方便阅读
+				==>不需要作用域解析，速度更快
+			+通过new运算符创建对象
+				==>let obj = new Object({name:"小溪流",age:12})
+			+通过立即执行函数创建对象
+				==>let obj = (function(){return {name:"小溪流",age:12}})()
+		*/
+		// let obj1 = {
+		// 	name:"小溪流",
+		// 	age:12
+		// }
+		// let obj2= new Object({name:"小溪流",age:12})
+		// let obj3 = (function(){return {name:"小溪流",age:12}})()
+		// console.log(obj1)
+		
+		// console.log(obj2)
+		// console.log(obj2.__proto__)
+		// console.log(obj2.prototype)
+		// console.log(obj3)
+
+		//手写一个new
+		function myNew(fn, ...args){
+			// 创建一个空对象
+			let obj = {}
+			// 使空对象的隐式原型指向原函数的显式原型
+			obj.__proto__ = fn.prototype
+			// this指向obj
+			let result = fn.apply(obj, args)
+			// 返回
+			return result instanceof Object ? result : obj
+		}
+
+		// Object.create({name:"小溪流",age:12})
+		// console.log(Object.create({name:"小溪流",age:12}))
+		// console.log(window)
+	</script>
+</body>
+</html>

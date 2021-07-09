@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.home {
+			width: 200px;
+			height: 200px;
+			background: red;
+			position: relative;
+			animation: yidong 5s linear;
+			cursor: pointer;
+		}
+
+		@keyframes yidong {
+			0% {
+				left: 0
+			}
+
+			25% {
+				left: 50px
+			}
+
+			50% {
+				top: 100px;
+			}
+
+			75% {
+				top: 50px;
+			}
+
+			100% {
+				left: 100px
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<div class="home" @click="togetSomething()" id="app">
+		{{message | capitalize}}-------{{reversedMessage | stringFilter}}
+		<input type="text" v-focus>
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+	<script>
+		// Vue.mixin({
+		// 	methods: {
+		// 		mixinOne: function() {
+		// 			console.log('mixinOne')
+		// 		}    
+		// 	}
+		// })
+		var app = new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello Vue!'
+			},
+			// mixins: [mixin], //局部混入与全局混入
+			props: ["item", "result", "step1Data"],
+			props: {
+				item: {
+					type: Array,
+					default: () => {
+						return [1, 2, 3]
+					},
+					requiiired: true
+				},
+				// 检测类型 + 其他验证
+				age: {
+					type: Number,
+					default: 0,
+					required: true,
+					validator: function (value) {
+						return value >= 0
+					}
+				}
+			},
+			methods: {
+				togetSomething() {
+					this.message = "我是真的呀皮皮虾"
+					let div_box = document.getElementsByClassName("home")
+					let obj = {
+						name: "小溪流",
+						like: "outing",
+						id: "7758258"
+					}
+					console.log("obj", obj)
+				}
+			},
+			computed: {
+				//具有缓存性
+				// 计算属性的 getter
+				reversedMessage: function () {
+					//reversedMessage是基于message的改变而做出相应的变化，若message不变则用之前的数据
+					// `this` 指向 vm 实例
+					//split方法把字符串变成一个字符数组
+					return this.message.split('').reverse().join('')
+				}
+			},
+			watch: {
+				//warch监听的变量必须要在data中进行声明
+				message: function (newval, oldval) {
+					console.log(newval)
+					console.log(oldval)
+				},
+				immediate: true,
+				deep: true,
+			},
+			filters: {
+				capitalize: function (value) {
+					if (!value) return ''
+					value = value.toString()
+					//字符串首字母大写
+					return value.charAt(0).toUpperCase() + value.slice(1)
+				},
+				stringFilter(str) {
+					//三元运算符，如果str包含这3种则返回true，用在插值语法当中
+					return [undefined, null, ''].includes(str) ? '--' : str
+				},
+			},
+			components: {
+				// detail,
+			},
+			directives: {//自定义指令
+				focus: {
+					inserted: function (el) {
+						el.focus()
+					}
+				}
+			},
+			beforeRouteEnter(to, from,) {
+				console.log("to", to)
+				console.log("from", from)
+				console.log("next", next)
+				next(vm => {
+					// 通过 `vm` 访问组件实例
+				})
+				// 在渲染该组件的对应路由被 confirm 前调用
+				// 不！能！获取组件实例 `this`
+				// 因为当守卫执行前，组件实例还没被创建
+			},
+			beforeRouteUpdate(to, from, next) {
+				// 在当前路由改变，但是该组件被复用时调用
+				// 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，
+				// 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。
+				// 可以访问组件实例 `this`
+			},
+			beforeRouteLeave(to, from, next) {
+				// 导航离开该组件的对应路由时调用
+				// 可以访问组件实例 `this`
+			},
+			beforeCreate() {
+				// this.$nextTick(()=>{
+				// 	//深复制
+				// 	JSON.parse(JSON.stringify())
+				// })
+			},
+			created() {
+
+			},
+			beforeMount() {
+
+			},
+			mounted() {
+
+			},
+			beforeUpdate() {
+
+			},
+			updated() {
+
+			},
+			beforeDestroy() {
+
+			},
+			destroyed() {
+
+			},
+			activated() {
+				//进入页面后触发
+			},
+			deactivated() {
+				//离开页面后触发
+			},
+			errorCaptured() {
+				//错误调用
+			},
+		})
+
+	</script>
+</body>
+
+</html>

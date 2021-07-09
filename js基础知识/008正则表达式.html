@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>RegExp正则表达式</title>
+</head>
+
+<body>
+
+</body>
+<script>
+	/*
+		RegExp正则表达式的基本用法
+			==>string.search() | RegExp.search():使用表达式来搜索匹配，然后返回匹配的位置
+			==>string.replace() | RegExp.replace():返回模式被替换处修改后的字符串。
+			==>RegExp.test():它通过模式来搜索字符串，然后根据结果返回 true 或 false。
+			==>i:执行对大小写不敏感的匹配。
+				g:执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。
+				m:执行多行匹配。
+			===>:[]表示方括号用于查找某个范围内的字符
+	*/
+	var str1 = "Visit W3School!";
+	var n1 = str1.search("W3School");
+	console.log(n1)
+
+	var str2 = "Visit W3School";
+	var n2 = str2.search(/w3school/i);
+	console.log(n2)
+
+	var str3 = "Visit Microsoft!";
+	var res3 = str3.replace("Microsoft", "W3School");
+	console.log(res3)
+
+	var str4 = "Visit Microsoft!";
+	var res4 = str4.replace(/microsoft/i, "W3School");
+	console.log(res4)
+
+	//test()检测是否符合正则，返回boolean值
+	let reg = new RegExp("abc")
+	let bol = reg.test("abcdefg")
+	console.log("abc中是否存在a", bol)
+</script>
+
+</html>

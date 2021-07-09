@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div>
+		<canvas 
+			id="myCanvas" 
+			width="200" 
+			height="100" 
+			style="border:1px solid #000000;"
+		>
+			您的浏览器不支持 HTML5 canvas 标签。
+		</canvas>
+		<div
+			id="box" 
+			style="border:1px solid #000000;width:200px;height:100px;"
+		>
+			您的浏览器不支持 HTML5 canvas 标签。		
+		</div>
+	</div>
+	<script>
+		/* call、apply和bind的区别：都是用于改变this指向的 */
+		//call接受一个参数列表、apply接受一个数组，两者都会立即调用函数
+		// JSON.parse(JSON.stringify([1,2,3,4,5,6]))
+		var c=document.getElementById("myCanvas");
+		var ctx=c.getContext("2d");
+		ctx.fillStyle="#FF0000";
+		ctx.fillRect(0,0,150,75);
+	</script>
+</body>
+</html>

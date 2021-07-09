@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>数据类型判断</title>
+</head>
+
+<body>
+	<script>
+		/* 
+			+js的数据类型可以分为复杂数据类型和基本数据类型
+				==>基本数据类型
+					Undefined---未定义
+					null---对空
+					Boolean--布尔
+					String---字符串
+					Number---数字
+					Symbol---Symbol 是 ES6 引入了一种新的原始数据类型，表示独一无二的值,主要是用来定义对象的唯一属性名
+				==>引用数据类型
+					对象(Object)
+					数组(Array)
+					函数(Function)
+			+判断数据类型的4种方法
+				==>type of 检测数据---缺点：不能判断null和object
+				==>检测数据 instanceof 数据类型---缺点：不能判断基本数据类型(只能判断对象是否存在于目标对象的原型链上)
+				==>检测数据.constructor.name
+				==>Object.prototype.toString.call(检测数据)
+		*/
+		/* 
+			typeof 可以正确识别：Undefined、Boolean、Number、String、Symbol、Function 等类型的数据，但是对于其他的都会认为是 object，比如 Null、Date 等，所以通过 typeof 来判断数据类型会不准确。但是可以使用 Object.prototype.toString 实现。
+			*/
+		// function typeOf(obj){
+		// 	let res = Object.prototype.toString.call(obj).split(" ")[1]
+		// 	res = res.substring(0,res.length-1).toLowerCase()
+		// 	return res
+		// 	// 评论区里提到的更好的写法
+		// 	// return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase()
+		// }
+		// console.log(typeOf([]))
+		// console.log(typeOf({}) )
+		// console.log(typeOf(new Date))
+
+		// let num1 =0.1
+		// let num2 = 0.2
+		// let num3 = 0.3
+		// console.log(num1+num2 == num3)
+		//浮点数是使用64位固定长度来表示的,其中的1位表示符号位，11位用来表示指数位，剩下的52位尾数位，由于只有52位表示尾数位。
+		//在console.log的时候会二进制转换为十进制，十进制再会转为字符串的形式
+
+		/* 
+			typeof
+				缺点：typeof null的值为Object，无法分辨是null还是Object
+			instanceof
+				缺点：只能判断对象是否存在于目标对象的原型链上
+		*/
+
+
+		// -----------------------------------------typeof
+		typeof undefined // 'undefined'   缺点：typeof null的值为Object，无法分辨是null还是Object
+		typeof '10' // 'String' 
+		typeof 10 // 'Number' 
+		typeof false // 'Boolean' 
+		typeof Symbol() // 'Symbol' 
+		typeof Function // ‘function' 
+		typeof null // ‘Object’ 
+		typeof [] // 'Object' 
+		typeof {} // 'Object'
+		console.log(typeof undefined)
+		console.log(typeof '10')
+		console.log(typeof 10)
+		console.log(typeof false)
+		console.log(typeof Symbol())
+		console.log(typeof Function)
+		console.log(typeof null)
+		console.log(typeof [])
+		console.log(typeof {})
+		//因为在JavaScript中，不同的对象都是使用二进制存储的，如果二进制前三位都是0的话，系统会判断为是Object类型，而null的二进制全是0，自然也就判断为Object
+		//这个bug是初版本的JavaScript中留下的，扩展一下其他五种标识位：
+		//000 对象
+		//1 整型
+		//010 双精度类型
+		//100字符串
+		//110布尔类型
+
+
+		// -----------------------------------------instanceof
+		//instanceof原理实际上就是查找目标对象的原型链
+		function Foo() { }
+		var f1 = new Foo();  //缺点：只能判断对象是否存在于目标对象的原型链上
+		var d = new Number(1)
+		console.log(f1 instanceof Foo);// true
+		console.log(d instanceof Number); //true
+		console.log(123 instanceof Number); //false   -->不能判断字面量的基本数据类型
+
+		function myInstance(L, R) {//L代表instanceof左边，R代表右边
+			var RP = R.prototype
+			var LP = L.__proto__
+			while (true) {
+				if (LP == null) {
+					return false
+				}
+				if (LP == RP) {
+					return true
+				}
+				LP = LP.__proto__
+			}
+		}
+		console.log(myInstance({}, Object));
+
+
+		// -----------------------------------------constructor
+		var d = new Number(1)
+		var e = 1
+		function fn() {
+			console.log("ming");
+		}
+		var date = new Date();
+		var arr = [1, 2, 3];
+		var reg = /[hbc]at/gi;
+		console.log(e.constructor);//ƒ Number() { [native code] }
+		console.log(e.constructor.name);//Number
+		console.log(fn.constructor.name) // Function 
+		console.log(date.constructor.name)// Date 
+		console.log(arr.constructor.name) // Array 
+		console.log(reg.constructor.name) // RegExp
+
+
+		//-----------------------------------------Object.prototype.toString.call()
+		console.log(Object.prototype.toString.call(undefined)); // "[object Undefined]" 
+		console.log(Object.prototype.toString.call(null)); // "[object Null]" 
+		console.log(Object.prototype.toString.call(123)); // "[object Number]" 
+		console.log(Object.prototype.toString.call("abc")); // "[object String]" 
+		console.log(Object.prototype.toString.call(true)); // "[object Boolean]" 
+		function fn() {
+			console.log("ming");
+		}
+		var date = new Date();
+		var arr = [1, 2, 3];
+		var reg = /[hbc]at/gi;
+		console.log(Object.prototype.toString.call(fn));// "[object Function]" 
+		console.log(Object.prototype.toString.call(date));// "[object Date]" 
+		console.log(Object.prototype.toString.call(arr)); // "[object Array]"
+		console.log(Object.prototype.toString.call(reg));// "[object RegExp]"
+	</script>
+</body>
+
+</html>

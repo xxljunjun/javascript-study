@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		#home {
+			color: #000;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="home">
+
+	</div>
+	<script>
+		/* 
+			什么是闭包？
+			函数执行，形成私有的执行上下文，使内部私有变量不受外界干扰，起到保护和保存的作用
+			闭包有什么作用？
+			js的作用域有两种：局部作用域和全局作用域
+			外部作用域无法获取内部作用域里面的变量
+			我们想在一个函数内部访问另一个函数内部的变量
+
+			+闭包的3个特性
+				==>函数嵌套函数
+				==>函数内部可以引用函数外部的参数和变量
+				==>参数和变量不会被垃圾回收机制回收
+			+全局作用域和局部作用域
+				
+		*/
+		// function a(){
+		// 	let name = "dov"
+		// 	return function(){
+		// 		return name
+		// 	}
+		// }
+		// var b = a()
+		// console.log(b)
+		// console.log(b())
+
+		// function fn(){
+		// 	let num =3
+		// 	return function(){
+		// 		let n = 0
+		// 		console.log(++n)
+		// 		console.log(++num)
+		// 	}
+		// }
+		// var fn1 = fn()
+		// fn1() //1 4
+		// fn1() //1 5
+
+
+		function a() {
+			var ele = "变量"
+			return function b() {
+				ele++
+				return ele
+			}
+			return b
+		}
+		var c = a()
+		c()
+		//实现了全局变量中去访问局部变量
+	</script>
+</body>
+
+</html>
