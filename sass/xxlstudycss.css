@@ -4,10 +4,6 @@
   width: 200px;
 }
 
-.xxl li {
-  list-style: none;
-}
-
 .xxl .ellipsis {
   white-space: nowrap;
   overflow: hidden;
@@ -17,17 +13,26 @@
 .xxl .ellipsis-two {
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  /* autoprefixer: ignore next */
-  -webkit-box-orient: vertical;
   word-break: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .xxl .box {
-  height: 100px;
-  width: 100px;
-  background: red;
+  height: 200px;
+  width: 400px;
+  filter: blur(3px);
+  background-image: url(./banner.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 400px 200px;
+  background-blend-mode: lighten;
+}
+
+.xxl .banner {
+  height: 200px;
+  width: 400px;
 }
 
 html, body, img, input, ul, ol, dl, dt, dd, em, i, strong, h1, h2, h3, h4, h5, h6, div, span,

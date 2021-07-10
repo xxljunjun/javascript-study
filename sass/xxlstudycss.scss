@@ -4,37 +4,49 @@
 		width: 200px;
 
 	}
-	li {
-		list-style: none;
-	  }
 	.ellipsis {
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
+		white-space: nowrap;  //字体不换行
+		overflow: hidden;  //规定当内容溢出元素框时发生的事情。
+		text-overflow: ellipsis; //规定当文本溢出包含元素时发生的事情。
 	}
 	  
 	.ellipsis-two {
 		overflow: hidden;
 		text-overflow: ellipsis;
+		word-break: break-word; //规定自动换行的处理方法。
+		
 		display: -webkit-box;
-		-webkit-line-clamp: 2;
-		/* autoprefixer: ignore next */
 		-webkit-box-orient: vertical;
-		word-break: break-word;
+		//它只有在 display 属性设置成 -webkit-box 或者 -webkit-inline-box 并且 -webkit-box-orient (en-US) 属性设置成 vertical时才有效果
+		-webkit-line-clamp: 2; // 可以把 块容器 中的内容限制为指定的行数.
 	}
 	.box{
-		height: 100px;
-		width: 100px;
-		background: red;
+		height: 200px;
+		width: 400px;
+		filter:blur(3px); //滤镜属性
+		// background-image: url(~@/static/padimg/yellow-back.png);
+		background-image: url(./banner.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: 400px 200px;
+		// background-attachment: fixed; //规定背景图像是否固定或者随着页面的其余部分滚动。
+		// background-origin:content-box;  //规定背景图片的定位区域。
+		// background-clip:content-box;  //规定背景的绘制区域。
+		background-blend-mode:lighten;  //规定背景的混合模式
+	}
+	.banner{
+		height: 200px;
+		width: 400px;
 	}
 }
+
 
 html,body,img,input,ul,ol,dl,dt,dd,em,i,strong,h1,h2,h3,h4,h5,h6,div,span,
 p,table,li,tr,td,th{
 	padding: 0;margin: 0;
 }
 ul li,ol li{
-	list-style: none;
+	list-style: none; //去除li前面的小圆点
 }
 .clearfix:after{/* 清除浮动 */
 	content:"";
@@ -43,13 +55,13 @@ ul li,ol li{
 	font-size: 1px;
 }
 a{
-	text-decoration: none;
+	text-decoration: none; //去除a标签的下划线
 }
 select{
 	border: 0;
 }
 input{
-	outline: none;
+	outline: none; //去除input聚焦的黑框
 	border: 0;
 }
 img{
@@ -58,9 +70,9 @@ img{
 	/* dispaly:block */
 }
 i{
-	font-style: normal;
+	font-style: normal; //清除斜体效果
 }
 em,strong,h1,h2,h3,h4,h5,h6{
-	font-weight: normal;
+	font-weight: normal; //清除字体加粗效果
 	font-style: normal;
 }

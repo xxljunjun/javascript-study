@@ -48,6 +48,7 @@ animation-fill-mode:forwards;//属性规定动画在播放之前或之后，其�
   background: green;
   position: relative;
   animation: mymove-1 2s linear 0s 2 alternate;
+  /* 动画名称 动画时间 速度曲线 延迟 播放次数 是否反向 */
 }
 
 .donghua .box-2 {
