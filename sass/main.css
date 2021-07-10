@@ -1,0 +1,11 @@
+@charset "UTF-8";
+.main .box-3 {
+  width: 100px;
+  height: 100px;
+  background: red;
+  border-bottom-left-radius: 10% 10%;
+  border-bottom-right-radius: 10% 10%;
+  border-collapse: separate;
+  box-shadow: 0 10px 5px #888888;
+  /* 水平 垂直 模糊 阴影尺寸 颜色 内外 */
+}

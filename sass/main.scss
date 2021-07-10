@@ -1,0 +1,19 @@
+.main{
+	// box-sizing: border-box; 怪异盒模型
+	// box-sizing: content-box;
+	.box-3{
+		width: 100px;
+		height: 100px;
+		background: red;
+		border-bottom-left-radius: 10% 10%; //第一个值是水平半径，第二个值是垂直半径
+		border-bottom-right-radius: 10% 10%; 
+		// border: 10px solid #000;
+		// border-width:10px;
+		// border-style:solid;
+		// border-color:#000;
+		border-collapse:separate; //属性设置表格的边框是否被合并为一个单一的边框，还是象在标准的 HTML 中那样分开显示。
+		// border-image:url(./banner.png) 30 30 round;
+		box-shadow: 0 10px 5px #888888 ;
+		/* 水平 垂直 模糊 阴影尺寸 颜色 内外 */  //inset  //outset
+	}
+}
