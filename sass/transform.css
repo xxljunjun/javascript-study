@@ -1,0 +1,32 @@
+@charset "UTF-8";
+/* 
+	==>transform
+		rotate(angle)旋转
+		translate(x,y)移动
+		scale(x,y)缩放
+		skew()倾斜旋转
+
+		设置基地点
+		transform-origin:;
+*/
+@keyframes Rota {
+  from {
+    transform: skewY(0);
+  }
+  to {
+    transform: skewY(60deg);
+  }
+}
+
+.transForm {
+  margin-top: 100px;
+  margin-left: 100px;
+}
+
+.transForm .box-4 {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(red, green);
+  animation: Rota 3s linear infinite;
+}
