@@ -1,0 +1,33 @@
+/* 
+	flex 设置的是弹性项目的弹性长度。
+*/
+@font-face {
+	font-family: myFirstFont;
+	src: url(sansation_light.woff);
+  }
+.myflex{
+	margin-top: 100px;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;  //row-reverse  column  column-reverse
+	flex-wrap: wrap;
+	@media (max-width: 800px) {
+		.box-5, .box-6 {
+		  flex: 100%;
+		}
+	  }
+	.box-5{
+		width: 100px;
+		height: 100px;
+		background: red;
+		border-radius: 10px;
+		flex: 1;
+	}
+	.box-6{
+		width: 100px;
+		height: 100px;
+		background: green;
+		border-radius: 10px;
+		flex: 1;
+	}
+}
