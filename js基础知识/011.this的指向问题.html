@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>this的指向问题</title>
+	<style>
+		.home {}
+
+		.box {
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="home">
+		<div class="box"></div>
+	</div>
+	<script>
+		/*
+			1、JS中的this关键字由函数的调用者决定，谁调用就this就指向哪个。如果找不到调用者，this将指向windows对象。
+		*/
+
+
+		// console.log(this)
+		// function add(){
+		// 	console.log(this)
+		// }
+		// add()
+
+		// var test = {
+		// 	prop: 42,
+		// 	func: function () {
+		// 		return this.prop;
+		// 	},
+		// };
+		// console.log(test.func()); // 42
+
+		// var fullname = 'David Jones'
+		// var obj = {
+		// 	fullname: 'Colin Brown',
+		// 	prop: {
+		// 		fullname: 'Aurelio Deftch',
+		// 		getFullname: function () {
+		// 			console.log("对象函数里面的this",this)
+		// 			return this.fullname;
+		// 		}
+		// 	}
+		// }
+		// var test = obj.prop.getFullname
+		// console.log(test()) // David Jones
+		// console.log(obj.prop.getFullname())// ‘Aurelio Deftch’
+
+
+		/*
+			2、JavaScript中call,apply,bind方法的总结。
+		*/
+
+		var a = {
+			user:"小溪流",
+			fn:function(){
+				console.log(this.user); //小溪流
+			}
+		}
+		var b = a.fn;
+		b.call(a);
+
+		
+		 
+	</script>
+</body>
+
+</html>
