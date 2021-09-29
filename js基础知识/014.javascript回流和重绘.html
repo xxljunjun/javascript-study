@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>回流和重绘</title>
+	<style>
+		.home{
+			color: #000;
+		}
+		.box{	
+			width: 100px;
+			height: 100px;
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+	<div class="home">
+		<div class="box">
+
+		</div>
+	</div>
+	<script>
+		/*
+			1、html被html解析器解析成DOM树
+			2、css被css解析器解析成CSS规则树
+			3、将HTML和CSS合成render树
+			4、生成布局(flow),即将所有渲染树的所有节点进行平面合成
+			5、将布局绘制(repaint)到屏幕上
+			
+			+ 回流和重绘
+				==>重绘(repaint)：当元素样式的改变不影响页面布局时，比如元素的颜色，浏览器将对元素进行的更新，称之为重绘
+				==>回流(reflow)：也叫做重排。当元素的尺寸或者位置发生了变化，就需要重新计算渲染树，这就是回流，比如元素的宽高、位置，浏览器会重新渲染页面，称为回流，又叫重排（layout）。
+				==>关系：回流必定会触发重绘，重绘不一定会触发回流。重绘的开销较小，回流的代价较高。
+			+1、如和减少回流和重绘？
+				==>使用class类名来控制样式的改变
+				==>对于复杂的动画效果可以使其脱离文档流
+				==>避免循环操作DOM/避免循环读取offsetLeft等属性
+				
+		*/
+		
+			
+
+	</script>
+</body>
+</html>

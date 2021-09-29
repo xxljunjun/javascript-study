@@ -5,27 +5,156 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>防抖和节流</title>
+	<title>localstorage</title>
+	<style>
+		.home {
+			color: #000;
+			position: relative;
+		}
+
+		.box {
+			width: 100px;
+			height: 100px;
+			background: pink;
+			cursor: pointer;
+		}
+	</style>
 </head>
 
 <body>
+	<div class="home">
+		<div class="box">
+
+		</div>
+	</div>
 	<script>
-		/*
-			防抖和节流的用法和概念
+		function huaru() {
+			console.log("滑入box后触发，只触发最后一次滑入事件")
+		}
+
+		/* 
+			+javascript中的防抖和节流
+				==>防抖：触发高频事件 N 秒后只会执行一次，如果 N 秒内事件再次触发，则会重新计时。（执行最后一次的事件）
+				==>节流：触发高频事件，使用时间戳来实现，立即执行一次，然后每 N 秒执行一次
 		*/
-		//防抖：触发高频事件 N 秒后只会执行一次，如果 N 秒内事件再次触发，则会重新计时。
-		//简单版：函数内部支持使用 this 和 event 对象；
+
+		//简单版防抖
 		function debounce(func, wait) {
+			//1、定义一个定时器
 			var timeout;
 			return function () {
+				//2、记录防抖函数的this
 				var context = this;
-				var args = arguments;
+				//2、记录防抖函数的参数
+				var args = arguments;  //arguments 是一个对应于传递给函数的参数的类数组对象。
+				//3、清除上一个定时器
 				clearTimeout(timeout)
+				//4、重新记时，执行wait秒内的最后一次
 				timeout = setTimeout(function () {
 					func.apply(context, args)
 				}, wait);
 			}
 		}
+		var box = document.querySelector('.box')
+		box.onmousemove = debounce(huaru, 1000)
+
+		//复杂版防抖
+		// function debounce(func, wait, immediate) {
+		// 	var timeout, result;
+
+		// 	var debounced = function () {
+		// 		var context = this;
+		// 		var args = arguments;
+
+		// 		if (timeout) clearTimeout(timeout);
+		// 		if (immediate) {
+		// 			// 如果已经执行过，不再执行
+		// 			var callNow = !timeout;
+		// 			timeout = setTimeout(function () {
+		// 				timeout = null;
+		// 			}, wait)
+		// 			if (callNow) result = func.apply(context, args)
+		// 		} else {
+		// 			timeout = setTimeout(function () {
+		// 				func.apply(context, args)
+		// 			}, wait);
+		// 		}
+		// 		return result;
+		// 	};
+
+		// 	debounced.cancel = function () {
+		// 		clearTimeout(timeout);
+		// 		timeout = null;
+		// 	};
+
+		// 	return debounced;
+		// }
+		// var setUseAction = debounce(huaru, 10000, true);
+		// // 使用防抖
+		// var box = document.querySelector('.box')
+		// box.onmousemove = setUseAction
+		// // 取消防抖
+		// setUseAction.cancel()
+
+		//简单版节流
+		// function throttle(func, wait) {
+		// 	var context, args;
+		// 	var previous = 0;
+
+		// 	return function () {
+		// 		var now = +new Date();
+		// 		console.log(now)
+		// 		context = this;
+		// 		args = arguments;
+		// 		if (now - previous > wait) {
+		// 			func.apply(context, args);
+		// 			previous = now;
+		// 		}
+		// 	}
+		// }
+		// var box = document.querySelector('.box')
+		// box.onmousemove = throttle(huaru, 1000)
+
+		//最终版节流
+		// function throttle(func, wait, options) {
+		// 	var timeout, context, args, result;
+		// 	var previous = 0;
+		// 	if (!options) options = {};
+
+		// 	var later = function () {
+		// 		previous = options.leading === false ? 0 : new Date().getTime();
+		// 		timeout = null;
+		// 		func.apply(context, args);
+		// 		if (!timeout) context = args = null;
+		// 	};
+
+		// 	var throttled = function () {
+		// 		var now = new Date().getTime();
+		// 		if (!previous && options.leading === false) previous = now;
+		// 		var remaining = wait - (now - previous);
+		// 		context = this;
+		// 		args = arguments;
+		// 		if (remaining <= 0 || remaining > wait) {
+		// 			if (timeout) {
+		// 				clearTimeout(timeout);
+		// 				timeout = null;
+		// 			}
+		// 			previous = now;
+		// 			func.apply(context, args);
+		// 			if (!timeout) context = args = null;
+		// 		} else if (!timeout && options.trailing !== false) {
+		// 			timeout = setTimeout(later, remaining);
+		// 		}
+		// 	};
+
+		// 	throttled.cancel = function () {
+		// 		clearTimeout(timeout);
+		// 		previous = 0;
+		// 		timeout = null;
+		// 	}
+		// 	return throttled;
+		// }
+		//最终版：支持取消节流；另外通过传入第三个参数，options.leading 来表示是否可以立即执行一次，opitons.trailing 表示结束调用的时候是否还要执行一次，默认都是 true。注意设置的时候不能同时将 leading 或 trailing 设置为 false。
 	</script>
 </body>
 
