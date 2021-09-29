@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>事件循环机制eventLoop</title>
+	<style>
+		.home{
+			color: #000;
+		}
+		.box{
+			background: green;
+			width: 100px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="home">
+		<div class="box"></div>
+	</div>
+	<script>
+		/*
+			概念：同步和异步任务分别进入不同的执行环境，同步的进入主线程，即主执行栈，异步的进入任务队列(Event Queue )。主线程内的任务执行完毕为空，会去任务队列读取对应的任务，推入主线程执行。 上述过程的不断重复就是我们说的 Event Loop (事件循环)。
+
+			+ JavaScript中事件循环机制eventLoop
+				==> JavaScript 是一门单线程语言
+				==> 主线程：也就是 js 引擎执行的线程，这个线程只有一个，页面渲染、函数处理都在这个主线程上执行。
+				==> 任务队列( Event Queue )：可分为同步任务和异步任务
+				==> 宏任务(Macro Task )：script( 整体代码)、setTimeout、setInterval、I/O、UI 交互事件、setImmediate(Node.js 环境)
+				==> 微任务(Micro Task)：Promise、MutaionObserver、process.nextTick(Node.js 环境)
+		*/
+
+		console.log('script start'); //1
+		setTimeout(function() {
+			console.log('setTimeout');  //5
+		}, 0);
+
+		Promise.resolve().then(function() {
+			console.log('promise1');  //3
+		}).then(function() {
+			console.log('promise2');  //4
+		});
+		console.log('script end');  //2
+		//宏任务:setTimeout
+		//微任务：promise1、promise2
+
+		//整体 script 作为第一个宏任务进入主线程，遇到 console.log，输出 script start
+		//遇到 setTimeout，其回调函数被分发到宏任务 Event Queue 中
+		//遇到 Promise，其 then函数被分到到微任务 Event Queue 中,记为 then1，之后又遇到了 then 函数，将其分到微任务 Event Queue 中，记为 then2
+		//遇到 console.log，输出 script end
+
+		//至此，Event Queue 中存在三个任务：宏任务：setTimeout 微任务：then1、then2
+
+		//执行微任务，首先执行then1，输出 promise1, 然后执行 then2，输出 promise2，这样就清空了所有微任务
+        //执行 setTimeout 任务，输出 setTimeout 至此，输出的顺序是：script start, script end, promise1, promise2, setTimeout
+
+
+		console.log('script start'); //1
+		setTimeout(function() {
+		console.log('timeout1'); //5
+		}, 10);
+		new Promise(resolve => {
+			console.log('promise1');//2
+			resolve();
+			setTimeout(() => console.log('timeout2'), 10); //6
+		}).then(function() {
+			console.log('then1')//4
+		})
+		console.log('script end'); //3
+		//宏任务:timeout1、timeout2
+		//微任务：then1
+
+		//首先，事件循环从宏任务 (macrotask) 队列开始，最初始，宏任务队列中，只有一个 scrip t(整体代码)任务；当遇到任务源 (task source) 时，则会先分发任务到对应的任务队列中去。所以，就和上面例子类似，首先遇到了console.log，输出 script start； 接着往下走，遇到 setTimeout 任务源，将其分发到任务队列中去，记为 timeout1； 接着遇到 promise，new promise 中的代码立即执行，输出 promise1, 然后执行 resolve ,遇到 setTimeout ,将其分发到任务队列中去，记为 timemout2, 将其 then 分发到微任务队列中去，记为 then1； 接着遇到 console.log 代码，直接输出 script end 
+
+		//接着检查微任务队列，发现有个 then1 微任务，执行，输出then1 再检查微任务队列，发现已经清空，则开始检查宏任务队列，执行 timeout1,输出 timeout1； 接着执行 timeout2，输出 timeout2 至此，所有的都队列都已清空，执行完毕。其输出的顺序依次是：script start, promise1, script end, then1, timeout1, timeout2
+
+		//总结
+		//有个小 tip：从规范来看，microtask（微任务） 优先于 task（宏任务） 执行，所以如果有需要优先执行的逻辑，放入microtask （微任务）队列会比 task（宏任务） 更早的被执行。
+		//最后的最后，记住，JavaScript 是一门单线程语言，异步操作都是放到事件循环队列里面，等待主执行栈来执行的，并没有专门的异步执行线程。
+
+	</script>
+</body>
+</html>

@@ -59,16 +59,37 @@
 
 		/*
 			2、JavaScript中call,apply,bind方法的总结。
+				+ call和apply、bind都是用来改变this指向的
+				+ bind返回一个函数,call和apply对函数的直接调用，
+				+ apply的入参是数组
+
 		*/
 
-		var a = {
-			user:"小溪流",
-			fn:function(){
-				console.log(this.user); //小溪流
+		// var a = {
+		// 	user:"小溪流",
+		// 	fn:function(){
+		// 		console.log(this.user); //小溪流
+		// 	}
+		// }
+		// var b = a.fn;
+		// b.call(a);
+
+		var xw = {
+			name : "小王",
+			gender : "男",
+			age : 24,
+			say : function(left,right) {
+					alert(this.name + " , " + this.gender + " ,今年" + this.age+',距离左边'+left+',距离右边'+right);                                
 			}
+        }
+		var xh = {
+			name : "小红",
+			gender : "女",
+			age : 18
 		}
-		var b = a.fn;
-		b.call(a);
+		// xw.say.call(xh,100,200);
+		// xw.say.apply(xh,[100,200]);  //其他入参必须是数组
+		// xw.say.bind(xh)(100,200);  //返回一个函数
 
 		
 		 
