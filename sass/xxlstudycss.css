@@ -2,6 +2,8 @@
 .xxl .title {
   display: block;
   width: 200px;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .xxl .ellipsis {
@@ -35,13 +37,38 @@
   width: 400px;
 }
 
-html, body, img, input, ul, ol, dl, dt, dd, em, i, strong, h1, h2, h3, h4, h5, h6, div, span,
-p, table, li, tr, td, th {
+html,
+body,
+img,
+input,
+ul,
+ol,
+dl,
+dt,
+dd,
+em,
+i,
+strong,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+span,
+p,
+table,
+li,
+tr,
+td,
+th {
   padding: 0;
   margin: 0;
 }
 
-ul li, ol li {
+ul li,
+ol li {
   list-style: none;
 }
 
@@ -76,7 +103,14 @@ i {
   font-style: normal;
 }
 
-em, strong, h1, h2, h3, h4, h5, h6 {
+em,
+strong,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: normal;
   font-style: normal;
 }
