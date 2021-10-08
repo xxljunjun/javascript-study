@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>js原型链</title>
+</head>
+
+<body>
+	<div>
+
+	</div>
+	<script>
+		/* 
+			像普通对象一样，形成自己的私有作用域( 形参赋值，变量提升 )
+			创建一个新对象，将 this 指向这个新对象( 构造函数的作用域赋给新对象 )
+			执行构造函数中的代码，为这个新对象添加属性、方法
+			返回这个新对象( 新对象为构造函数的实例 )
+			
+		*/
+		function myNew(fn, ...arg) {
+			// 创建一个对象，让它的原型链指向 fn.prototype
+
+			// 普通方法
+			// let obj = {};
+			// obj.__proto__ = fn.prototype;
+
+			// 使用 Object.create([A对象])：创建一个空对象 obj，并让 obj.__proto__ 等于 A对象
+			let obj = Object.create(fn.prototype);
+
+			fn.call(obj, ...arg);
+			return obj;
+		}
+	</script>
+</body>
+
+</html>
