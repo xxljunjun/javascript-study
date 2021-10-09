@@ -1,17 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>js原型链</title>
 </head>
+
 <body>
 	<div>
 
 	</div>
 	<script>
+		/*
+			+js原型链
+				==>每个实例对象（object）都有一个私有属性（称之为 __proto__ ）指向它的构造函数的原型对象（prototype）。
+				==>该原型对象也有一个自己的原型对象（__proto__），层层向上直到一个对象的原型对象为 null。
+				==>根据定义，null 没有原型，并作为这个原型链中的最后一个环节。
+
+		*/
+		//console.log(Object.prototype.toString.call('123'))
+		//构造函数创建
+		//字面量隐式创建
+		var obj = new Object()  //obj就是Object的实例对象
+		var arr = new Array(1, 2, 3, 4, 5)  //arr就是Array的实例对象
+		console.log(obj)
+		console.log(arr)
+
+
+		//这是一个构造函数
+		let f = function () {
+			this.a = 1
+			this.b = 2
+		}
+		let o = new f()
+		console.log(o)
+		f.prototype.c = 3
+		console.log(f.prototype)
+
+
+		//在 JavaScript 中，构造器其实就是一个普通的函数。当使用 new 操作符 来作用这个函数时，它就可以被称为构造方法（构造函数）。
+		//1、构造函数创建对象
+		let m = function () {
+			this.a = 1
+			this.b = 2
+		}
+		let n = new f()
+		console.log(n)
+		//2、使用 Object.create 创建的对象
+		var a = { a: 1 };
+		var b = Object.create(a);
+		console.log(b)
+		//3、字面量创建对象
+		var c = {
+			a: 1,
+			b: 2
+		}
+		//4、使用 class 关键字创建的对象
+		"use strict";
+		class Polygon {
+			constructor(height, width) {
+				this.height = height;
+				this.width = width;
+			}
+		}
+
+		class Square extends Polygon {
+			constructor(sideLength) {
+				super(sideLength, sideLength);
+			}
+			get area() {
+				return this.height * this.width;
+			}
+			set sideLength(newLength) {
+				this.height = newLength;
+				this.width = newLength;
+			}
+		}
+
+		var square = new Square(2);
+		console.log("class 关键字创建的对象", square)
+
+
+
+
+
+
+		/*
+			+查找原型链的方法
+				==>hasOwnProperty
+		*/
+		console.log(g.hasOwnProperty('vertices'));
+		// true
 
 	</script>
 </body>
+
 </html>
