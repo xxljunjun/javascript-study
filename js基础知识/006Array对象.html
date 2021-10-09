@@ -24,6 +24,8 @@
 		<p class="ppp2">我的小溪流</p>
 	</div>
 	<script>
+		//改变原数组的5中方法：push/pop/shift/unshift/splice
+		//其他方法：join/reverse/sort/indexOf/concat/toString/slice/includes/reduce
 		/* 
 		semibold
 			+Array对象数组的方法：
@@ -68,18 +70,34 @@
 
 		*/
 
-
-
-		let arr = [1, 2, 456, 45, 7, 678, 3]
-		var reducer = function add(sumSoFar, item, currentIndex, arr) {
-			console.log(sumSoFar)
-			console.log(item)
-			console.log(currentIndex)
-			console.log(arr)
-			return sumSoFar + item;
+		var numbers = [65, 44, 12, 4]
+		function getSum(total, num, currentIndex, arr) {
+			console.log('total', total) //初始值, 或者计算结束后的返回值(必需)
+			console.log('num', num)  //当前元素(必需)
+			console.log('currentIndex', currentIndex)  //当前元素的索引(非必需)
+			console.log('arr', arr)  //当前元素所属的数组对象。(非必需)
+			return total + num;
 		}
-		let total = arr.reduce(reducer, 0)
-		console.log(total)
+		console.log(numbers.reduce(getSum))
+
+
+
+		// let arr = [1, 2, 3, 4, 5, 6, 7]
+		// let arr1 = arr.splice(3, 4, 999, 1000)
+		// console.log(arr)
+		// console.log(arr1)
+		// console.log(arr.toString())
+
+		// let arr = [1, 2, 456, 45, 7, 678, 3]
+		// var reducer = function add(sumSoFar, item, currentIndex, arr) {
+		// 	console.log(sumSoFar)
+		// 	console.log(item)
+		// 	console.log(currentIndex)
+		// 	console.log(arr)
+		// 	return sumSoFar + item;
+		// }
+		// let total = arr.reduce(reducer, 0)
+		// console.log(total)
 				// let arr =[99,2,353,45,564,56]
 				// let arr1 = ["小溪流","我就像是一团火"]
 				// function sortNumber(a,b){

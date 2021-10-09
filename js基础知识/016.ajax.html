@@ -26,23 +26,35 @@
 		</div>
 	</div>
 	<script>
-		const getJSON = function (url) {
-			return new Promise((resolve, reject) => {
-				const xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Mscrosoft.XMLHttp');
-				xhr.open('GET', url, false);
-				xhr.setRequestHeader('Accept', 'application/json');
-				xhr.onreadystatechange = function () {
-					if (xhr.readyState !== 4) return;
-					if (xhr.status === 200 || xhr.status === 304) {
-						resolve(xhr.responseText);
-					} else {
-						reject(new Error(xhr.responseText));
-					}
+		// const getJSON = function (url) {
+		// 	return new Promise((resolve, reject) => {
+		// 		const xhr = XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Mscrosoft.XMLHttp');
+		// 		xhr.open('GET', url, false);
+		// 		xhr.setRequestHeader('Accept', 'application/json');
+		// 		xhr.onreadystatechange = function () {
+		// 			if (xhr.readyState !== 4) return;
+		// 			if (xhr.status === 200 || xhr.status === 304) {
+		// 				resolve(xhr.responseText);
+		// 			} else {
+		// 				reject(new Error(xhr.responseText));
+		// 			}
+		// 		}
+		// 		xhr.send();
+		// 	})
+		// }
+		// getJSON('hhtp://xxljunjun.com/jun')
+
+		function loadDoc() {
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function () {
+				if (this.readyState == 4 && this.status == 200) {
+					document.getElementById("demo").innerHTML = this.responseText;
 				}
-				xhr.send();
-			})
+			};
+			xhttp.open("GET", "ajax_info.txt", true);
+			xhttp.send();
 		}
-		getJSON('hhtp://xxljunjun.com/jun')
+		loadDoc()
 	</script>
 </body>
 

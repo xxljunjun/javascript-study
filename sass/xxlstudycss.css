@@ -3,7 +3,7 @@
   display: block;
   width: 200px;
   word-wrap: break-word;
-  word-break: break-all;
+  word-break: keep-all;
 }
 
 .xxl .ellipsis {

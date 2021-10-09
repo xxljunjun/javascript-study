@@ -2,8 +2,8 @@
   .title {
     display: block;
     width: 200px;
-    word-wrap: break-word;
-    word-break: break-all;
+    word-wrap: break-word; //	在长单词或 URL 地址内部进行换行。
+    word-break: keep-all; //只能在半角空格或连字符处换行。
   }
   .ellipsis {
     white-space: nowrap; //字体不换行
