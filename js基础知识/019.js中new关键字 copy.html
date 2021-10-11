@@ -20,6 +20,7 @@
 			返回这个新对象( 新对象为构造函数的实例 )
 			
 		*/
+		//Object.assign() 方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。
 		function myNew(fn, ...arg) {
 			// 创建一个对象，让它的原型链指向 fn.prototype
 
@@ -29,6 +30,7 @@
 
 			// 使用 Object.create([A对象])：创建一个空对象 obj，并让 obj.__proto__ 等于 A对象
 			let obj = Object.create(fn.prototype);
+
 
 			fn.call(obj, ...arg);
 			return obj;
