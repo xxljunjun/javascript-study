@@ -4,6 +4,7 @@
   width: 200px;
   word-wrap: break-word;
   word-break: keep-all;
+  white-space: pre-wrap;
 }
 
 .xxl .ellipsis {

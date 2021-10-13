@@ -20,19 +20,27 @@
 			返回这个新对象( 新对象为构造函数的实例 )
 			
 		*/
-		function myNew(fn, ...arg) {
-			// 创建一个对象，让它的原型链指向 fn.prototype
+		// function myNew(fn, ...arg) {
+		// 	// 创建一个对象，让它的原型链指向 fn.prototype
 
-			// 普通方法
-			// let obj = {};
-			// obj.__proto__ = fn.prototype;
+		// 	// 普通方法
+		// 	// let obj = {};
+		// 	// obj.__proto__ = fn.prototype;
 
-			// 使用 Object.create([A对象])：创建一个空对象 obj，并让 obj.__proto__ 等于 A对象
-			let obj = Object.create(fn.prototype);
+		// 	// 使用 Object.create([A对象])：创建一个空对象 obj，并让 obj.__proto__ 等于 A对象
+		// 	let obj = Object.create(fn.prototype);
 
-			fn.call(obj, ...arg);
-			return obj;
+		// 	fn.call(obj, ...arg);
+		// 	return obj;
+		// }
+		let a = {
+			a: 0,
+			valueOf() {
+				return this.a++
+			}
 		}
+		console.log(a == 1)
+		console.log(a == 1 || a == 1)
 	</script>
 </body>
 
