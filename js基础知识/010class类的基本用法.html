@@ -18,7 +18,8 @@
 		class使用的时候，也是直接对类使用new命令，跟构造函数的用法完全一致。
 		类的内部所有定义的方法，都是不可枚举的（non-enumerable）。
 		constructor()方法是类的默认方法，通过new命令生成对象实例时，自动调用该方法
-		类必须使用new调用，否则会报错。这是它跟普通构造函数的一个主要区别，后者不用new也可以执行
+		类必须使用new调用，否则会报错。
+		这是它跟普通构造函数的一个主要区别，后者不用new也可以执行
 	
 	 */
 
@@ -27,10 +28,11 @@
 	// 	this.y = y;
 	// }
 	// Point.prototype.toString = function () {
+	// 	console.log('(' + this.x + ', ' + this.y + ')')
 	// 	return '(' + this.x + ', ' + this.y + ')';
 	// };
 	// var p = new Point(1, 2);
-	// console.log("00000000", p)
+	// p.toString() //(1,2)
 
 	class Point {
 		constructor(x, y) {

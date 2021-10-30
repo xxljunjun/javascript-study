@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		//严格模式
+		'use strict'
+		/*
+			Object.defineProperty()
+				==>给对象添加一个属性并指定该属性的配置。
+		*/
+		const object1 = {};
+
+		Object.defineProperty(object1, 'property1', {
+			value: 42,
+			writable: false, //该属性被称为“不可写的”。它不能被重新赋值。
+			configurable: true, //特性表示对象的属性是否可以被删除
+			enumerable: false, //定义了对象的属性是否可以在 for...in 循环和 Object.keys() 中被枚举。
+		});
+
+		object1.property1 = 77;
+		// throws an error in strict mode
+
+		console.log(object1.property1);
+// expected output: 42
+	</script>
+</body>
+
+</html>
