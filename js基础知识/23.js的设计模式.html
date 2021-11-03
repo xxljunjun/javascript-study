@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=s, initial-scale=1.0">
+	<title>js的设计模式</title>
+	<!-- <link rel="stylesheet" href=""> -->
+</head>
+
+<body>
+	<script>
+		/*
+			js的设计模式
+				==>学习设计模式，有助于写出可复用和可维护性高的程序
+				==>设计模式的原则是“找出 程序中变化的地方，并将变化封装起来”，它的关键是意图，而不是结构。
+				一、单例模式
+
+				二、策略模式
+
+				三、代理模式
+
+				四、迭代器模式
+
+				五、发布—订阅模式
+
+				六、命令模式
+
+				七、组合模式
+
+				八、模板方法模式
+
+				九、享元模式
+
+				十、职责链模式
+
+				十一、中介者模式
+
+				十二、装饰者模式
+
+				十三、状态模式
+
+				十四、适配器模式
+
+				十五、外观模式
+		*/
+		//迭代器模式
+		// ==>迭代器模式是指提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。
+		//发布-订阅模式(观察者模式)
+		//==>定义了对象间的一种一对多的依赖关系，当一个对象的状态发 生改变时，所有依赖于它的对象都将得到通知
+		//==>JS中的事件就是经典的发布-订阅模式的实现
+		//装饰者模式
+		//以动态地给某个对象添加一些额外的职责，而不会影响从这个类中派生的其他对象。是一种“即用即付”的方式，能够在不改变对 象自身的基础上，在程序运行期间给对象动态地 添加职责
+
+
+		//单例模式
+		var Single = (function () {
+			var instance;
+			function init() {
+				// 定义私有方法和属性
+				// 操作逻辑
+				return {
+					// 定义公共方法和属性
+				};
+			}
+			return {
+				// 获取实例
+				getInstance: function () {
+					if (!instance) {
+						instance = init();
+					}
+					return instance;
+				}
+			}
+		})();
+
+		var obj1 = Single.getInstance();
+		var obj2 = Single.getInstance();
+		console.log(obj1 === obj2);
+
+	</script>
+</body>
+
+</html>
