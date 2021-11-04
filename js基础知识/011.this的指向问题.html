@@ -76,25 +76,56 @@
 		// var b = a.fn;
 		// b.call(a);
 
-		var xw = {
-			name : "小王",
-			gender : "男",
-			age : 24,
-			say : function(left,right) {
-					alert(this.name + " , " + this.gender + " ,今年" + this.age+',距离左边'+left+',距离右边'+right);                                
-			}
-        }
-		var xh = {
-			name : "小红",
-			gender : "女",
-			age : 18
-		}
+		// var xw = {
+		// 	name: "小王",
+		// 	gender: "男",
+		// 	age: 24,
+		// 	say: function (left, right) {
+		// 		alert(this.name + " , " + this.gender + " ,今年" + this.age + ',距离左边' + left + ',距离右边' + right);
+		// 	}
+		// }
+		// var xh = {
+		// 	name: "小红",
+		// 	gender: "女",
+		// 	age: 18
+		// }
 		// xw.say.call(xh,100,200);
 		// xw.say.apply(xh,[100,200]);  //其他入参必须是数组
 		// xw.say.bind(xh)(100,200);  //返回一个函数
 
-		
-		 
+		//匿名函数，可以是自执行函数  ==>具名函数
+		// (function (str) {
+		// 	console.log("我是真的" + str)
+		// 	console.log(this)
+		// })('好帅')
+
+		// var obj = {
+		// 	name: "xxl",
+		// 	myfun: function () {
+		// 		console.log(this.name)
+		// 	}
+		// }
+		// var db = {
+		// 	name: 'junjun'
+		// }
+		// // obj.myfun.call(db) //junjun
+		// // obj.myfun.apply(db) //junjun
+		// obj.myfun.bind(db)() //junjun  返回的是一个函数需要调用才会执行
+
+		var obj = {
+			name: "xxl",
+			myfun: function (f, m) {
+				console.log(this.name, f, m)
+			}
+		}
+		var db = {
+			name: 'junjun'
+		}
+		obj.myfun.call(db, '城都', '上海') //junjun
+		obj.myfun.apply(db, ['城都', '上海']) //junjun  //除了第一个是this指向，其他参数必须放在一个数组里面传进去
+		obj.myfun.bind(db, '城都', '上海')() //junjun  返回的是一个函数需要调用才会执行
+
+
 	</script>
 </body>
 
