@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		/*
+			在js中万物皆对象
+		*/
+		// var F = function (a, b) {
+		// 	this.name = a
+		// 	this.age = b
+		// }
+		// let mine = new F('xxl', 12)
+
+		// //mine是实例对象
+		// console.log(F.__proto__)//F是构造函数
+		// console.log(F.prototype)  //F构造函数的prototype就是原型对象  //声明一个函数时，就自动给该函数增加一个 propotype 属性，指向原型对象（初始化一个空对象），为了实现函数复用
+		// console.log(F.prototype.constructor)  //原型对象的 constructor 属性，默认指向声明的函数
+		// console.log(mine.__proto__)
+
+		// let new1 = function (func) {
+		// 	//创建一个空对象 o，并且继承构造函数的原型对象
+		// 	let o = Object.create(func.prototype);
+		// 	//执行构造函数，并且上下文 this 指向 o 对象
+		// 	let k = func.call(o);
+		// 	//如果构造函数返回的是对象就返回该对象，否则返回 o 对象
+		// 	if (typeof k === 'object') {
+		// 		return k
+		// 	} else {
+		// 		return o
+		// 	}
+		// }
+		// console.log(String)
+		// var strObj = new1(String);
+		// console.log(strObj)
+		// alert(strObj instanceof String); //true
+		// alert(strObj.__proto__.constructor === String); //true
+	</script>
+</body>
+
+</html>

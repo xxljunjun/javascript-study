@@ -23,6 +23,8 @@
 					对象(Object)
 					数组(Array)
 					函数(Function)
+					Date(日期)
+					Math()
 			+判断数据类型的4种方法
 				==>type of 检测数据---缺点：不能判断null和object
 				==>检测数据 instanceof 数据类型---缺点：不能判断基本数据类型(只能判断对象是否存在于目标对象的原型链上)
@@ -96,8 +98,8 @@
 		console.log(123 instanceof Number); //false   -->不能判断字面量的基本数据类型
 
 		function myInstance(L, R) {//L代表instanceof左边，R代表右边
-			var RP = R.prototype
-			var LP = L.__proto__
+			var RP = R.prototype //构造函数的prototype指向原型对象
+			var LP = L.__proto__ //实例对象的__proto__指向原型对象
 			while (true) {
 				if (LP == null) {
 					return false
