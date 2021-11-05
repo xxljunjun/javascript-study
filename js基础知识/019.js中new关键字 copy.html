@@ -13,6 +13,17 @@
 
 	</div>
 	<script>
+		function instanceOf(left, right) {
+			let proto = left.__proto__ || Object.getPrototypeOf(left)
+			while (true) {
+				if (proto == null) return false;
+				if (proto == right.prototype) {
+					return true
+				}
+				proto = proto.__proto__
+			}
+		}
+		console.log("11111111111", instanceOf(Number(1), Number))
 		/* 
 			像普通对象一样，形成自己的私有作用域( 形参赋值，变量提升 )
 			创建一个新对象，将 this 指向这个新对象( 构造函数的作用域赋给新对象 )
@@ -61,7 +72,10 @@
 		let p = objectFactory(person, '布兰', 12)
 		console.log(p)  // { name: '布兰', age: 12 }
 
+
+
 	</script>
+
 </body>
 
 </html>

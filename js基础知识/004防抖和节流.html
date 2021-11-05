@@ -28,8 +28,9 @@
 		</div>
 	</div>
 	<script>
-		function huaru() {
-			console.log("滑入box后触发，只触发最后一次滑入事件")
+		function huaru(key) {
+			console.log(this)
+			console.log("滑入box后触发，只触发最后一次滑入事件" + key)
 		}
 
 		/* 
@@ -46,6 +47,7 @@
 				//2、记录防抖函数的this
 				var context = this;
 				//2、记录防抖函数的参数
+				console.log('11111111111', arguments)
 				var args = arguments;  //arguments 是一个对应于传递给函数的参数的类数组对象。
 				//3、清除上一个定时器
 				clearTimeout(timeout)
@@ -56,7 +58,7 @@
 			}
 		}
 		var box = document.querySelector('.box')
-		box.onmousemove = debounce(huaru, 1000)
+		box.onmousemove = debounce(huaru('xxl'), 1000)
 
 		//复杂版防抖
 		// function debounce(func, wait, immediate) {

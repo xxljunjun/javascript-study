@@ -42,6 +42,18 @@
 		// console.log(strObj)
 		// alert(strObj instanceof String); //true
 		// alert(strObj.__proto__.constructor === String); //true
+		function debounce(func, wait) {
+			var timeout
+			return function () {
+				var context = this
+				var txt = arguments
+				clearTimeout(timeout)
+				timeout = setTimeout(function () {
+					func.apply(context, arguments)
+				}, wait)
+
+			}
+		}
 	</script>
 </body>
 
