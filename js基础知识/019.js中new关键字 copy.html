@@ -21,20 +21,46 @@
 			
 		*/
 		//Object.assign() 方法用于将所有可枚举属性的值从一个或多个源对象分配到目标对象。它将返回目标对象。
-		function myNew(fn, ...arg) {
-			// 创建一个对象，让它的原型链指向 fn.prototype
+		// function myNew(fn, ...arg) {
+		// 	// 创建一个对象，让它的原型链指向 fn.prototype
 
-			// 普通方法
-			// let obj = {};
-			// obj.__proto__ = fn.prototype;
+		// 	// 普通方法
+		// 	// let obj = {};
+		// 	// obj.__proto__ = fn.prototype;
 
-			// 使用 Object.create([A对象])：创建一个空对象 obj，并让 obj.__proto__ 等于 A对象
-			let obj = Object.create(fn.prototype);
+		// 	// 使用 Object.create([A对象])：创建一个空对象 obj，并让 obj.__proto__ 等于 A对象
+		// 	let obj = Object.create(fn.prototype);
 
 
-			fn.call(obj, ...arg);
-			return obj;
+		// 	fn.call(obj, ...arg);
+		// 	return obj;
+		// }
+
+		function objectFactory() {
+			//1、创建一个对象
+			var obj = new Object()
+
+			Constructor = [].shift.call(arguments); //传入的构造函数
+			// Constructor = Array.prototype.slice.call(arguments);
+			// Constructor = [].slice.call(arguments);
+
+			//2、指定对象的__proto__为构造函数的prototype
+			obj.__proto__ = Constructor.prototype;
+			//3、改变this指向
+			var ret = Constructor.apply(obj, arguments);
+
+			// ret || obj 这里这么写考虑了构造函数显示返回 null 的情况
+			//4、返回对象
+			return typeof ret === 'object' ? ret || obj : obj;
+		};
+
+		function person(name, age) {
+			this.name = name
+			this.age = age
 		}
+		let p = objectFactory(person, '布兰', 12)
+		console.log(p)  // { name: '布兰', age: 12 }
+
 	</script>
 </body>
 

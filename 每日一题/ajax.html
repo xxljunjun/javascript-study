@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>ajax</title>
+</head>
+
+<body>
+	<script>
+		/*
+			promise封装ajax
+		*/
+		var xhttp = new XMLHttpRequest();
+		console.log("11111111111", xhttp)
+		function http_ajax(url) {
+			return new Promise((resolve, reject) => {
+				//步骤一:创建异步对象
+				var xhttp = new XMLHttpRequest();
+				// xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+				// xhttp.setRequestHeader("Content-type", "multipart/form-data")
+				//步骤二:设置请求的url参数,参数一是请求的类型,参数二是请求的url,可以带参数,动态的传递参数starName到服务端
+				xhttp.open("get", url);
+				//步骤三:发送请求
+				xhttp.send(null);
+				//步骤四:注册事件 onreadystatechange 状态改变就会调用
+				xhttp.onreadystatechange = function () {
+					if (xhttp.readyState == 4 && xhttp.status == 200) {
+						//步骤五 如果能够进到这个判断 说明 数据 完美的回来了,并且请求的页面是存在的
+						console.log(xhttp.responseText);//输入相应的内容
+					}
+				}
+				// xhttp.setRequestHeader("Content-type", "application/json;charset=utf-8")
+				// xhttp.onload = function () {
+				// 	if (xhttp.status === 200) {
+				// 		resolve(xhttp.responseText);
+				// 	} else {
+				// 		reject(new Error(xhttp.statusText));
+				// 	}
+				// };
+				// // xhttp.setRequestHeader('Access-Control-Allow-Origin', "*")
+				// // xhttp.setRequestHeader('Origin', "http://way.jd.com")
+				// xhttp.onerror = function () {
+				// 	reject(new Error(xhttp.statusText));
+				// };
+
+
+			})
+		}
+		const city = '深圳'
+		const appkey = '7a85fc9df58cd155f764e033a257d879'
+		let url = `https://way.jd.com/he/freeweather?city=${city}&appkey=${appkey}`
+		http_ajax(url).then(res => {
+			console.log('请求成功', res)
+		}, error => {
+			console.log('请求失败', error)
+		})
+	</script>
+</body>
+
+</html>
