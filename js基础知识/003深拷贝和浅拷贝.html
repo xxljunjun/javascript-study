@@ -45,19 +45,19 @@
 			return newObj;
 		}
 
-		var obj1 = { a: 1, arr: [2, 3] };
-		let obj2 = shallowCopy(obj1)
-		console.log(obj1)
-		console.log(obj2)
-		//改变obj2中的arr，obj1也会改变
-		obj2.arr[1] = 5;
-		console.log(obj1)
-		console.log(obj2)
+		// var obj1 = { a: 1, arr: [2, 3] };
+		// let obj2 = shallowCopy(obj1)
+		// console.log(obj1)
+		// console.log(obj2)
+		// //改变obj2中的arr，obj1也会改变
+		// obj2.arr[1] = 5;
+		// console.log(obj1)
+		// console.log(obj2)
 
 		//复杂版深克隆：基于简单版的基础上，还考虑了内置对象比如 Date、RegExp 等对象和函数以及解决了循环引用的问题。
 		const isObject = (target) => (typeof target === "object" || typeof target === "function") && target !== null;
 
-		function deepClone(target, map = new WeakMap()) {
+		function deepClone_1(target, map = new WeakMap()) {
 			if (map.get(target)) {
 				return target;
 			}
