@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            原型继承
+            借用构造函数继承
+            组合继承
+        */
+        function Person(name){
+           this.name = name
+           this.sayHellow = function(){
+               alert('你好'+this.name)
+           }
+        }
+        Person.prototype.age = 12
+
+       //1、原型继承
+    //    function Web(){
+    //     this.name= 'son'
+    //    }
+    //    Web.prototype = new Person() //让新实例的原型prototype等于父类的实例。
+    //    var son = new Web()
+    //    alert(son.age)
+
+    //2、借用构造函数继承
+    // function Web(){
+    //     Person.call(this,'xxl') //用.call()和.apply()将父类构造函数引入子类函数（在子类函数中做了父类函数的自执行（复制））
+    // }
+    // var son_1 = new Web()
+    // console.log(son_1)
+    // alert(son_1)
+
+    // //3、组合继承
+    // function Web(name){
+    //     Person.call(this,name)
+    // }
+    // Web.prototype = new Person()
+    // var son_2 = new Web('xxl')
+    // console.log(son_2)
+    // alert(son_2.age)
+
+    //4、原型式继承
+    //object.create()就是这个原理。==>使用指定的原型对象和属性创建一个新对象。
+    //封装一个函数容器，用于输出对象和承载继承的原型
+    // function content(obj){
+    //     function F(){}
+    //     F.prototype = obj//继承传入的参数
+    //     return new F()//返回函数对象
+    // }
+    // var sup = new Person() //拿到父类的实例
+    // var sup1 = content(sup)
+
+    //5、寄生式继承
+    // function content(obj){
+    //     function F(){}
+    //     F.prototype = obj//继承传入的参数
+    //     return new F()//返回函数对象
+    // }
+    // var sup = new Person() 
+    // //以上是原型式继承，给原型式继承再套个壳子传递参数
+    // function subobject(obj){
+    //     var sub = content(obj)
+    //     sub.name = 'gar'
+    //     return sub
+    // }
+    // var sup2 = subobject(sup)
+    // //这个函数经过声明后就成了可添加属性的对象了
+    // console.log(typeof subobject) //function
+    // console.log(typeof sup2) //object
+    // console.log(sup2.name) //gar
+
+    //6、寄生组合式继承
+        //寄生
+        // function content(obj){
+        //     function F(){}
+        //     F.prototype = obj//继承传入的参数
+        //     return new F()//返回函数对象
+        // }
+        // //content是F实例的另一种表达方法
+        // var con = content(Person.prototype)
+        // //con实例(F实例)的原型继承了父类函数的原型，上述更像是原型链继承，只不过只继承了原型属性
+        // //组合
+        // function Sub(){
+        //     Person.call(this)//这个继承了父类构造函数的属性
+        // }//解决了两次调用构造函数的缺点
+        // Sub.prototype = con //继承了con实例
+        // con.constructor = Sub //一定要修复实例
+        // var sub1 = new Sub()
+        // //Sub的实例就继承了构造函数属性、父类实例，con的函数属性
+        // console.log(sub1.age)
+
+
+
+
+    </script>
+</body>
+</html>

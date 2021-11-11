@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防抖和节流</title>
+    <style>
+		.box {
+			height: 200px;
+			width: 200px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+    <div class="box">
+
+	</div>
+    <script>
+        /*
+            防抖：触发高频事件，使用定时器来实现， N 秒后只会执行一次，如果 N 秒内事件再次触发，则会重新计时。（执行最后一次的事件）。
+            节流：触发高频事件，使用时间戳来实现，立即执行一次，然后每 N 秒执行一次。
+        */
+        //简单版防抖
+		function debounce(func, wait) {
+            //1、定义一个定时器
+			var timeout;
+			return function () {
+                //2、记录防抖函数的this
+				var context = this
+                //3、记录防抖函数的参数
+				var args = arguments//arguments 是一个对应于传递给函数的参数的类数组对象。
+                //3、清除上一个定时器
+				clearTimeout(timeout)
+                //4、重新记时，执行wait秒内的最后一次
+				timeout = setTimeout(() => {
+					func.apply(context, args)
+				}, wait)
+			}
+		}
+		//简单版节流
+		function throttle(func, wait) {
+            //1、定义一个记录上一次时间戳的变量
+			var previous = 0;
+			return function () {
+                 //2、记录防抖函数的this
+                var context = this;
+                //3、记录防抖函数的参数
+				var args = arguments;
+                //4、记录当前时间戳
+				var now = +new Date();
+                //5、每n秒执行一次
+				if (now - previous > wait) {
+					func.apply(context, args);
+					//当前时间-上一次执行的时间
+					previous = now;
+				}
+			}
+		}
+        var count = 1
+		var node = document.querySelector('.box')
+		function getUserAction(e) {
+			console.log(this, e)  // 分别打印：node 这个节点 和 MouseEvent
+			node.innerHTML = count++;
+		};
+		// node.onmousemove = debounce(getUserAction, 1000) //执行防抖代码
+		node.onmousemove = throttle(getUserAction, 2000)  //执行节流代码
+
+    </script>
+</body>
+</html>
