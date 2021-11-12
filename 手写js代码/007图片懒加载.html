@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: red;
+        }
+        img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /*
+            代理模式：
+                代理模式的定义：为其他对象提供一种代理以控制对这个对象的访问。在某些情况下，一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户端和目标对象之间起到中介的作用。
+            虚拟代理
+                ==>是把一些开销很大的对象，延迟到真正需要它的时候才去创建执行
+        */
+        // 图片加载
+        let imageEle = (function () {
+            //创建一个img标签
+            let node = document.createElement('img');
+            //插入dom节点
+            document.body.appendChild(node);
+            return {
+                setSrc: function (src) {
+                    node.src = src;
+                }
+            }
+        })();
+
+        //代理对象
+        let proxy = (function () {
+            let img = new Image();
+            img.onload = function () {
+                imageEle.setSrc(this.src);
+            };
+            return {
+                setSrc: function (src) {
+                    img.src = src;
+                    imageEle.setSrc('./static/loading.png');
+                }
+            }
+        })();
+
+        proxy.setSrc('/static/example.png');
+    </script>
+</body>
+
+</html>

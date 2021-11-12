@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            js设计模式之策略模式
+                ==>策略模式就是将一系列算法封装起来，并使它们相互之间可以替换。被封装起来的算法具有独立性，外部不可改变其特性。
+                算法的实现和算法的调用分离开来
+        */
+        var performanceS = function (salary) {
+            return salary * 4;
+        };
+        var performanceA = function (salary) {
+            return salary * 3;
+        };
+        var performanceB = function (salary) {
+            return salary * 2;
+        };
+        var calculateBonus = function (performanceLevel, salary) {
+            if (performanceLevel === 'S') {
+                return performanceS(salary);
+            }
+            if (performanceLevel === 'A') {
+                return performanceA(salary);
+            }
+            if (performanceLevel === 'B') {
+                return performanceB(salary);
+            }
+        };
+        calculateBonus('A', 10000); // 输出：30000
+
+
+        //对比伤害，用策略模式
+        var strategies = {
+            "S": function (salary) {
+                return salary * 4;
+            },
+            "A": function (salary) {
+                return salary * 3;
+            },
+            "B": function (salary) {
+                return salary * 2;
+            }
+        };
+        var calculateBonus = function (level, salary) {
+            return strategies[level](salary);
+        };
+        console.log(calculateBonus('S', 20000)); // 输出：80000
+        console.log(calculateBonus('A', 10000)); // 输出：30000
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            装饰器模式
+        */
+        class Circle {
+
+            draw() {
+                console.log("画一个圆形");
+            }
+        }
+
+        class Decorator {
+            constructor(circle) {
+                this.circle = circle;
+            }
+
+            draw(circle) {
+                this.circle.draw();
+                this.setRedBorder(circle);
+            }
+
+            setRedBorder(circle) {
+                console.log("设置红色边框");
+            }
+        }
+
+        //测试代码
+        let circle = new Circle();
+        circle.draw(); //画了一个圆形
+
+        //装饰器的作用
+        let decorator = new Decorator();
+        decorator.draw(circle); //画了一个圆形，并设置了红色边框
+
+
+
+        //Es7的装饰器语法
+        function testDecorator(target) {
+            target.isDec = true;
+        }
+        @testDecorator
+        class Demo {
+
+        }
+
+        console.log(Demo.isDec);//控制台输出true
+    </script>
+</body>
+
+</html>

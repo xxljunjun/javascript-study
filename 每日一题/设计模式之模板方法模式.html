@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            模板方法模式：
+                    ==>一种只需使用继承就可以实现的非常简单的模式。
+                    ==>模板方法由两部分组成，一是抽象的父类，二是具体实现的子类。通常在抽象父类中封装了子类的算法框架，包括实现一些公共方法以及封装子类中所有方法的执行顺序。
+                    typescript中就有abstract中的抽象类和抽象方法就是使用的模板方法模式
+        */
+
+        //抽象父类的代码
+        var Beverage = function () { };
+        Beverage.prototype.boilWater = function () {
+            console.log('把水煮沸');
+        };
+
+        Beverage.prototype.brew = function () { }; // 空方法，应该由子类重写
+        Beverage.prototype.pourInCup = function () { }; // 空方法，应该由子类重写
+        Beverage.prototype.addCondiments = function () { }; // 空方法，应该由子类重写
+        Beverage.prototype.init = function () {//定义子类的函数执行顺序
+            this.boilWater();
+            this.brew();
+            this.pourInCup();
+            this.addCondiments();
+        };
+
+        //继承父类的模板
+        var Tea = function () { }; //定义煮茶子类
+        Tea.prototype = new Beverage(); //继承父类
+        Tea.prototype.brew = function () { //重写父类方法
+            console.log('用沸水浸泡茶叶');
+        };
+        Tea.prototype.pourInCup = function () {
+            //重写父类方法
+            console.log('把茶倒进杯子');
+        };
+        Tea.prototype.addCondiments = function () {
+            //重写父类方法
+            console.log('加柠檬');
+        };
+        var tea = new Tea(); //实例化子类
+        tea.init(); //依照父类的方法执行顺序来执行
+
+        //由于javascript的对象原型继承链的方式和java的继承是完全不同的，这里代码结构和java类似，但是里面的机制是不同的
+    </script>
+</body>
+
+</html>

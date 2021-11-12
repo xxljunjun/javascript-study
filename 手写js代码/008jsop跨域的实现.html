@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+            jsonp的跨域实现
+                ==>JSONP 核心原理：script 标签不受同源策略约束，所以可以用来进行跨域请求，优点是兼容性好，但是只能用于 GET 请求；
+                ==>Object.hasOwnProperty() :方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键）。
+                
+        */
+
+
+        const jsonp = ({ url, params, callbackName }) => {
+            const generateUrl = () => {
+                let dataSrc = ''
+                for (let key in params) {
+                    if (params.hasOwnProperty(key)) {
+                        // dataSrc += `${key}=${params[key]}&`
+                        dataSrc += `${key}=${params[key]}`
+                    }
+                }
+                // dataSrc += `callback=${callbackName}`
+                return `${url}?${dataSrc}`
+            }
+            return new Promise((resolve, reject) => {
+                const scriptEle = document.createElement('script')
+                scriptEle.src = generateUrl()
+                document.body.appendChild(scriptEle)
+                window[callbackName] = data => {
+                    console.log(data)
+                    resolve(data)
+                    document.removeChild(scriptEle)
+                }
+            })
+        }
+        let obj = {
+            // url:'http://a.itying.com/api/productlist',
+            url:'https://way.jd.com',
+            params:{
+                city:'深圳',
+                appkey:'7a85fc9df58cd155f764e033a257d879'
+            },
+            // func
+        }
+        jsonp(obj)
+    </script>
+
+</body>
+
+</html>
