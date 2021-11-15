@@ -23,6 +23,12 @@ export default {
       url: '',
     }
   },
+  props:{
+    url:{
+      type:String,
+      default:''
+    }
+  },
   methods: {
     close() {
       this.status = false

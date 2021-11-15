@@ -30,3 +30,30 @@
   background: linear-gradient(red, green);
   animation: Rota 3s linear infinite;
 }
+
+/* 
+	transition-property:规定设置过渡效果的 CSS 属性的名称。
+	transition-duration:规定完成过渡效果需要多少秒或毫秒。
+	transition-timing-functionL:规定速度效果的速度曲线。
+	transition-delay:定义过渡效果何时开始。
+
+	==>transform
+		rotate(angle)旋转
+		translate(x,y)移动
+		scale(x,y)缩放
+		skew()倾斜旋转
+ */
+.transiton-box {
+  width: 200px;
+  height: 200px;
+  background: red;
+  transition: height 2s linear 2s;
+}
+
+.transiton-box:hover {
+  height: 400px;
+}
+
+/*setInterval(()=>{
+	console.log('2222222')
+},100)*/

@@ -42,18 +42,22 @@
 		// console.log(strObj)
 		// alert(strObj instanceof String); //true
 		// alert(strObj.__proto__.constructor === String); //true
-		function debounce(func, wait) {
-			var timeout
-			return function () {
-				var context = this
-				var txt = arguments
-				clearTimeout(timeout)
-				timeout = setTimeout(function () {
-					func.apply(context, arguments)
-				}, wait)
+		// function debounce(func, wait) {
+		// 	var timeout
+		// 	return function () {
+		// 		var context = this
+		// 		var txt = arguments
+		// 		clearTimeout(timeout)
+		// 		timeout = setTimeout(function () {
+		// 			func.apply(context, arguments)
+		// 		}, wait)
 
-			}
-		}
+		// 	}
+		// }
+		var fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.splice(2, 0, "Lemon", "Kiwi");
+// fruits.splice(索引, 删除几个, "Lemon", "Kiwi");
+console.log(fruits)
 	</script>
 </body>
 

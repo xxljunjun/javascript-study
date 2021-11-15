@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Echarts</title>
+</head>
+
+<body>
+    <script>
+        /*
+            Echarts的使用：
+                ==>npm安装 Echarts，引入之后，初始化配置项
+                ==>提取公共的数据，有后端接口获取
+        */
+        function initEchart() {
+            // 基于准备好的dom，初始化echarts实例
+            var myChart = echarts.init(document.getElementById('main'))
+            // 绘制图表
+            myChart.setOption({
+                title: {
+                    text: 'ECharts 入门示例',
+                },
+                tooltip: {},
+                xAxis: {
+                    data: this.pingleiArr,
+                },
+                yAxis: {},
+                series: [
+                    {
+                        name: '销量',
+                        type: 'bar',
+                        data: [5, 20, 36, 10, 10, 20],
+                    },
+                ],
+            })
+        },
+    </script>
+</body>
+
+</html>
