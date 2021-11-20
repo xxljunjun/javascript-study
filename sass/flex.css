@@ -1,6 +1,20 @@
 @charset "UTF-8";
 /* 
 	flex 设置的是弹性项目的弹性长度。
+		flex-direction：
+		flex-wrap：
+		flex-flow：是flex-direction属性和flex-wrap属性的简写形式，默认值为row nowrap。
+		justify-content
+		align-items
+		align-content：属性定义了多根轴线的对齐方式
+
+
+		order：属性定义项目的排列顺序。数值越小，排列越靠前，默认为0
+		flex-grow：属性定义项目的放大比例，默认为0
+		flex-shrink：性定义了项目的缩小比例，默认为1
+		flex-basis：属性定义了在分配多余空间之前，项目占据的主轴空间
+		flex：flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto
+		align-self：属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto
 */
 @font-face {
   font-family: myFirstFont;
