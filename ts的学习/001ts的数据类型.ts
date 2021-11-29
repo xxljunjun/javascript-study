@@ -68,22 +68,19 @@ let aaa:number
 let bbb:unknown
 aaa = 111
 bbb =222
-//类型断言
+
+//as类型断言
 aaa=bbb as number
 aaa=<number>bbb 
-
-
 //|表示或
 let xxl:'man'|'women'
 let junjun:number|string
-
 //&表示同时
 let kkdf:{name:string}&{age:string}
 kkdf = {
     name:'xxx',
     age:'xxx1'
 }
-
 //type
 type num_xxl = 1|2|3
 let aaaas:num_xxl = 1

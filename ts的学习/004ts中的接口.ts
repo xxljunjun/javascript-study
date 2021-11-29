@@ -1,7 +1,7 @@
 /*
     ts中的接口
-        ==>
-*/
+        ==>interface:用于定义接口的关键字interface
+        ==>implements:对类的约束 和抽象类有点相似,创建的类必须实现接口中的属性和方法
 
 /*typescript中的接口*/
 interface Config{

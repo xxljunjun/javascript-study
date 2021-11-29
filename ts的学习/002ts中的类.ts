@@ -1,8 +1,15 @@
 /*
     class类和继承
-        ==>public:共有，在类里面、子类、类外面都可以访问
+        ==>public:公共类型，在类里面、子类、类外面都可以访问
         ==>protected:保护类型，在类里面、子类可以访问；
-        ==>private：私有，在类里面可以访问
+        ==>private:私有类型，在类里面可以访问
+        ==>extends:继承
+        ==>constructor:构造器
+    静态属性和静态方法
+        ==>static:静态类型
+    多态思想
+    抽象方法和抽象类
+        ==>abstract:抽象类
         
 */
 
@@ -26,7 +33,7 @@ class Person{
 
 /*多态 ==>父类定义一个方法不去实现，让继承它的子类去实现，每一个子类有不同的表现*/
 class drunk {
-    name:string
+    public name:string
     constructor(name:string){
         this.name= name
     }
