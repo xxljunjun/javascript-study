@@ -24,22 +24,22 @@ function buildName(firstName: string, lastName: string = 'Cat') {
 // function add(a:number,b:number,c:number):number{
 //     return a+b+c
 // }
-function add(...result:number[]):number{
-    return a+b+c
+function add(...result:number[]):void{
+    console.log('入参',result)
 }
 add(1,2,3)
 
 //函数重载
 //两个或两个以上相同名字的函数，但他们的入参不一样
-function getUser(name:string):string{}
-function getUser(age:number):number{}
-function getUser(str:any):any{
-    if(typeof str === 'string'){
-        console.log(str)
-    }else{
-        console.log(str)
-    }
-}
+// function getUser(name:string):string{}
+// function getUser(age:number):number{}
+// function getUser(str:any):any{
+//     if(typeof str === 'string'){
+//         console.log(str)
+//     }else{
+//         console.log(str)
+//     }
+// }
 
 
 

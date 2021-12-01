@@ -5,11 +5,11 @@
 
 /*typescript中的接口*/
 interface Config{
-    type:string; //注意：!!!分号结束
+    type:string; //注意:!!!分号结束
     url:string;
     data?:string; //接口可选
     dataType:string;
-})
+}
 function ajax(config:Config){
     var xhr = new XMLHttpRequest()
     xhr.open(config.type,config.url,true)
@@ -48,14 +48,14 @@ interface Uerarr{
     [index:number]:string
 }
 var arr:Uerarr = ['xxl','jun']
-var arr:Uerarr ={name:'xxl'}
+// var arr:Uerarr ={name:'xxl'}
 
 /*类类型接口*/
 interface leilei {/*implements对类的约束 和抽象类有点相似*/
     name:string;
     eat(str:string):void
 }
-class Dog implements leilei{
+class Dog1 implements leilei{
     name:string;
     constructor(name:string){
         this.name = name
@@ -65,7 +65,7 @@ class Dog implements leilei{
     }
 }
 
-/*接口扩展：接口可以继承接口*/
+/*接口扩展:接口可以继承接口*/
 interface leilei {
     name:string;
     eat(str:string):void
@@ -82,6 +82,7 @@ class Dog implements xxl{/*dog这个类必须实现xxl和leilei两个接口*/
     eat(){
 
     }
+    work(){}
 }
 
 

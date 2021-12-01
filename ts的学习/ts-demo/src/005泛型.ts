@@ -10,4 +10,4 @@ class Queue<T> {
 
 let queue = new Queue<number>()
 queue.push(0);
-queue.push('1'); //泛型指定的是数据类型是number
+// queue.push('1'); //泛型指定的是数据类型是number
