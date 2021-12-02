@@ -5,6 +5,7 @@
         ==>private:私有类型，在类里面可以访问
         ==>extends:继承
         ==>constructor:构造器
+        ==>
     静态属性和静态方法
         ==>static:静态类型
     多态思想
