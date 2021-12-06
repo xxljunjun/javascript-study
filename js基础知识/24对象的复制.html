@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 浅拷贝是拷贝一层，基本数据类型就是值的复制,对象级别的就拷贝引用；
+      // 深拷贝是拷贝多层，每一级别的数据都会拷贝出来；在引用数据类型嵌套引用数据类型
+      /*
+            复制对象有哪些方式
+            分为深复制和浅复制
+                + 深拷贝
+                    ==>JSON.parse(JSON.stringify())
+                        缺点：时间对象字符串的形式，RegExp空对象，丢弃对象的constructor
+                    ==>Object.assign()对象属性值为基本数据类型时
+                    ==>扩展运算符{...obj}obj的对象属性值为基本数据类型时
+                    ==>递归+for...in...的方式：hasOwnProperty(key):判断对象是否包含特定的自身（非继承）属性
+                    ==>数组的slice方法
+                    ==>数组的concat的方法
+                + 浅拷贝
+                    ==>Object.assign()对象属性值为复杂数据类型时
+                    ==>扩展运算符{...obj}obj的对象属性值为复制数据类型时
+                    ==>for...in...的方式：hasOwnProperty(key):判断对象是否包含特定的自身（非继承）属性+for...in...
+                    ==>用 = 号赋值引用地址
+                        let obj = {name: "xxl",age: 12}
+                        let newobj = obj
+        */
+      let obj = {
+        name: "xxl",
+        age: 12,
+      };
+      obj.xxl = 123;
+      console.log(obj.hasOwnProperty("xxl")); //obj.hasOwnProperty(key):判断对象是否包含特定的自身（非继承）属性
+      //其实就是判断它不是原型链上的属性！！！
+      //   let newobj = obj;
+      //   newobj.age = 1111;
+      //   console.log(obj);
+      //   console.log(newobj);
+    </script>
+  </body>
+</html>

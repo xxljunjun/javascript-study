@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+        hasOwnProperty
+            ==>判断对象是否包含特定的自身（非继承）属性
+    */
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      let obj = new Person("xxl", 12);
+      //   let obj = {
+      //     name: "xxl",
+      //     age: 12,
+      //   };
+      obj.some = {
+        a: 1,
+        b: 2,
+      };
+      console.log(obj);
+      console.log(obj.hasOwnProperty("a"));
+      console.log(obj.hasOwnProperty("age"));
+    </script>
+  </body>
+</html>

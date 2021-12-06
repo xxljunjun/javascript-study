@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-</head>
-
-<body>
-	<script>
-		/*
+  <body>
+    <script>
+      /*
 			Object.assign()
 				==>通过复制一个或多个对象来创建一个新的对象。
+				==>对象的属性值是简单数据类型时是深拷贝，是复杂数据类型时是浅拷贝
 		*/
-		const a_object = {
-			a: 1,
-			b: 2
-		}
-		const b_object = {
-			b: 1,
-			c: 2
-		}
-		const new_object = Object.assign(a_object, b_object)
-		console.log('旧object', a_object)
-		console.log('新object', new_object)
-	</script>
-</body>
 
+      //当拷贝的对象属性为基本数据类型  ==>深复制
+      //   const a_object = {
+      //     a: null,
+      //     b: undefined,
+      //   };
+      //   const new_object = Object.assign({}, a_object);
+      //   new_object.a = 1000;
+      //   console.log("旧object", a_object);
+      //   console.log("新object", new_object);
+
+      //当拷贝的对象属性为复杂数据类型   ==>浅复制
+      const xxl = {
+        name: "xxl",
+        age: 12,
+        some: {
+          a: 1,
+          b: 2,
+        },
+      };
+      let new_xxl = Object.assign({}, xxl);
+      new_xxl.some.a = 11111;
+      console.log("旧", xxl);
+      console.log("new_xxl", new_xxl);
+    </script>
+  </body>
 </html>
