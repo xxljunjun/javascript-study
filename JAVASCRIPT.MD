@@ -103,7 +103,7 @@ Object.create()：使用指定的原型对象和属性创建一个新对象。
 
 ```
 1、JSON.parse(JSON.stringify(obj)) 深复制
-2、object.assign() 浅复制
+2、object.assign() 
 3、for...in...
 4、{...}
 
