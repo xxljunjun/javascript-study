@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表无缝滚动</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    div {
+        width: 100px;
+        height: 50px;
+        overflow: hidden;
+        margin: 50px auto;
+        border: 1px solid #000;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div id="wrapper">
+        <ul id="content">
+            <li>11111</li>
+            <li>22222</li>
+            <li>33333</li>
+            <li>44444</li>
+            <li>55555</li>
+            <li>66666</li>
+        </ul>
+        <ul id="fakeContent"></ul>
+    </div>
+
+</body>
+<script>
+    var content = document.getElementById("content");
+    var fakeContent = document.getElementById("fakeContent");
+    var wrapper = document.getElementById("wrapper");
+
+    function roll(t) {
+        fakeContent.innerHTML = content.innerHTML;
+        // 开始无滚动时设为0
+        wrapper.scrollTop = 0;
+        // 设置定时器，参数t用在这为间隔时间（单位毫秒），参数t越小，滚动速度越快
+        var timer = setInterval(rollStart, t);
+
+        // 鼠标移入div时暂停滚动
+        wrapper.onmouseover = function() {
+            clearInterval(timer);
+            timer = null
+        };
+
+        // 鼠标移出div后继续滚动
+        wrapper.onmouseout = function() {
+            timer = setInterval(rollStart, t);
+        }
+    }
+    // 开始滚动函数
+    function rollStart() {
+        // 正常滚动不断给scrollTop的值+1,当滚动高度大于列表内容高度时恢复为0
+        if (wrapper.scrollTop >= content.scrollHeight) {
+            wrapper.scrollTop = 0;
+        } else {
+            wrapper.scrollTop++;
+        }
+    }
+
+    window.onload = roll(50);
+</script>
+
+</html>
