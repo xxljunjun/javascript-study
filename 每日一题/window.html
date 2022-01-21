@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>window对象</title>
+  </head>
+  <body>
+    <script>
+      /*
+            不包含border
+                ==>clientWidth
+                ==>clientHeight
+
+            包含border
+                ==>offsettWidth 
+                ==>offsetHeight
+                ==>offsetLeft
+                ==>offsetTop
+
+            滚动距离
+                ==>scrollWidth
+                ==>scrollHeight
+                ==>scrollLeft
+                ==>scrollTop
+
+
+                网页可见区域宽：document.body.clientWidth
+                网页可见区域高：document.body.clientHeight
+                网页可见区域宽：document.body.offsetWidth (包括边线的宽)
+                网页可见区域高：document.body.offsetHeight (包括边线的宽)
+                网页正文全文宽：document.body.scrollWidth
+                网页正文全文高：document.body.scrollHeight
+                网页被卷去的高：document.body.scrollTop
+                网页被卷去的左：document.body.scrollLeft
+                网页正文部分上：window.screenTop
+                网页正文部分左：window.screenLeft
+                屏幕分辨率的高：window.screen.height
+                屏幕分辨率的宽：window.screen.width
+                屏幕可用工作区高度：window.screen.availHeight
+                屏幕可用工作区宽度：window.screen.availWidth
+        */
+      // 自执行函数
+      (function () {
+        var a = 1;
+        console.log(a);
+        console.log(window);
+        console.log(document.body.clientWidth);
+        window.alert("11111111111");
+      })();
+    </script>
+  </body>
+</html>

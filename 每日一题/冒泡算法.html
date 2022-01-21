@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            冒泡算法
+                ==>
+        */
+      function bubbleSort(arr) {
+        var len = arr.length;
+        for (var i = 0; i < len - 1; i++) {
+          for (var j = 0; j < len - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+              // 相邻元素两两对比
+              var temp = arr[j + 1]; // 元素交换
+              arr[j + 1] = arr[j];
+              arr[j] = temp;
+            }
+          }
+        }
+        return arr;
+      }
+      //   console.log(numberArr);
+      //   console.log(bubbleSort(numberArr));
+
+      //   nmuberArr.sort();
+      var numberArr = [2, 4, 6, 1, 10, 44, 23];
+      numberArr.sort(function (a, b) {
+        return a - b;
+      });
+      console.log("通过sort方法", numberArr);
+
+      var fruits = ["Banana", "Orange", "Apple", "Mango"];
+      fruits.sort();
+      console.log("改变后的字符串数组", fruits);
+
+      var points1 = [40, 100, 1, 5, 25, 10];
+      points1.sort(function (a, b) {
+        return a - b;
+      });
+      console.log("改变后的字符串数组11", points1);
+    </script>
+  </body>
+</html>

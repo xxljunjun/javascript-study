@@ -1,64 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object内置对象</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Object内置对象</title>
-</head>
-
-<body>
-	<div>
-
-	</div>
-	<script>
-		'use strict'
-		/* 
+  <body>
+    <div></div>
+    <script>
+      "use strict";
+      /* 
 			Object.assign()
 				==>通过复制一个或多个对象来创建一个新的对象。
 			Object.create()
 				==>使用指定的原型对象和属性创建一个新对象。
 			Object.defineProperty()
 				==>给对象添加一个属性并指定该属性的配置。
+			Object.values()
+				==>返回给定对象自身可枚举属性值的数组。
+			Object.keys()
+				==>返回一个包含所有给定对象自身可枚举属性名称的数组。
+			Object.getOwnPropertyNames()
+				==>返回一个数组，它包含了指定对象所有的可枚举或不可枚举的属性名。
+			Object.hasOwnProperty() 
+				==>方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键）。
+			Object.freeze()
+				==>冻结对象：其他代码不能删除或更改任何属性。
+			Object.isFrozen()
+				==>判断对象是否已经冻结。
+			Object.getPrototypeOf(obj)
+				==>返回指定对象的原型对象。
+				==>等同于obj.__proto__
+
+
+
 			Object.defineProperties()
 				==>给对象添加多个属性并分别指定它们的配置。
 			Object.entries()
-				==>返回给定对象自身可枚举属性的 [key, value] 数组。
-			Object.freeze()
-				==>冻结对象：其他代码不能删除或更改任何属性。
+				==>返回给定对象自身可枚举属性的 [key, value] 数组。		
 			Object.getOwnPropertyDescriptor()
 				==>返回对象指定的属性配置。
-			Object.getOwnPropertyNames()
-				==>返回一个数组，它包含了指定对象所有的可枚举或不可枚举的属性名。
 			Object.getOwnPropertySymbols()
 				==>返回一个数组，它包含了指定对象自身所有的符号属性。
-			Object.getPrototypeOf()
-				==>返回指定对象的原型对象。
 			Object.is()
 				==>比较两个值是否相同。所有 NaN 值都相等（这与==和===不同）。
 			Object.isExtensible()
 				==>判断对象是否可扩展。
-			Object.isFrozen()
-				==>判断对象是否已经冻结。
 			Object.isSealed()
 				==>判断对象是否已经密封。
-			Object.keys()
-				==>返回一个包含所有给定对象自身可枚举属性名称的数组。
 			Object.preventExtensions()
 				==>防止对象的任何扩展。
 			Object.seal()
 				==>防止其他代码删除对象的属性。
 			Object.setPrototypeOf(child，parent)
 				==>设置对象的原型（即内部 [[Prototype]] 属性）。
-			Object.values()
-				==>返回给定对象自身可枚举值的数组。
-			Object.hasOwnProperty() 
-				==>方法会返回一个布尔值，指示对象自身属性中是否具有指定的属性（也就是，是否有指定的键）。
-			
 		*/
-		
-	</script>
-</body>
 
+      /*
+	### 深拷贝和浅拷贝（手写代码）
+		```
+		==>浅拷贝是拷贝一层，对象级别的就拷贝引用；
+		==>深拷贝是拷贝多层，每一级别的数据都会拷贝出来；
+			```
+	### 创建对象的方式
+
+		```
+		字面量隐式创建：var obj = new Object()
+		字面量创建对象：var c = {a: 1,b: 2}
+		Object.assign()：通过复制一个或多个对象来创建一个新的对象。
+		Object.create()：使用指定的原型对象和属性创建一个新对象。
+		使用 class 关键字创建的对象
+		```
+
+	### 复制对象的方式
+
+	```
+	1、JSON.parse(JSON.stringify(obj)) 深复制
+	2、object.assign() 
+	3、for...in...
+	4、{...}
+
+	```
+
+	### 深拷贝和浅拷贝
+
+	```
+	浅拷贝是拷贝一层，基本数据类型就是值的复制,对象级别的就拷贝引用；
+		==>用 = 号赋值引用地址
+		==>for...in...存在嵌套对象时
+		===>Object.assign()存在嵌套对象时
+		===>{...}一层时
+	深拷贝是拷贝多层，每一级别的数据都会拷贝出来；在引用数据类型嵌套引用数据类型
+		==>JSON.parse(JSON.stringify())
+			==>缺点：时间对象字符串的形式，RegExp空对象，丢弃对象的constructor
+		==>for…in不存在嵌套对象时
+		==>Object.assign()不存在嵌套对象时
+		==>递归的形式
+		===>{...}多层时
+		==>数组的slice方法
+		==>数组的concat的方法
+	```
+
+	### 判断对象为空的方法
+
+	```
+	1、Object.keys()
+		==>返回一个包含所有给定对象自身可枚举属性名称的数组。
+	2、Object.getOwnPropertySymbols()
+		==>返回一个数组，它包含了指定对象自身所有的符号属性。
+	3、将json对象转化为json字符串，再判断该字符串是否为"{}"
+	4、for in 循环判断
+	var obj = {};
+	var b = function() {
+	for(var key in obj) {
+		return false;
+	}
+		return true;
+	}
+
+	```
+*/
+    </script>
+  </body>
 </html>

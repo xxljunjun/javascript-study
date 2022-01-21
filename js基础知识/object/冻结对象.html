@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>冻结对象</title>
+  </head>
+  <body>
+    <script>
+      /*
+          冻结对象
+              Object.freeze()
+      ==>冻结对象：其他代码不能删除或更改任何属性。
+              Object.isFrozen()
+      ==>判断对象是否已经冻结。
+          */
+      let obj = {
+        name: "xxl",
+        age: 12,
+      };
+      //   Object.freeze(obj);
+      //   obj.school = "university";
+      //   console.log("11111", obj);
+      //   console.log(Object.isFrozen(obj));
+      function Person(name) {
+        this.name = name;
+      }
+
+      console.log(Object.getPrototypeOf(obj) == obj.__proto__);
+      //   console.log(obj.__proto__);
+      //   console.log(Person.prototype);
+    </script>
+  </body>
+</html>

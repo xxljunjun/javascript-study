@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * --- 题目描述 ---
+       *
+       * 实现一个函数，可以对 url 中的 query 部分做拆解，返回一个 key: value 形式的 object
+       *
+       * --- 实例 ---
+       *
+       * 输入：'http://sample.com/?a=1&e&b=2&c=xx&d#hash'
+       * 输出：{a: 1, b: 2, c: 'xx', d: ''}
+       */
+
+      function getQueryObj(url) {
+        // TODO
+        let arr = url.split("?")[1].split("#")[0].split("&");
+        const res = {};
+        arr.forEach((e) => {
+          const [key, value] = e.split("=");
+          if (!value) {
+            res[key] = "";
+          } else {
+            res[key] = value;
+          }
+        });
+        return res;
+      }
+    </script>
+  </body>
+</html>
