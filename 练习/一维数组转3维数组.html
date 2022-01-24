@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一维数组转3维数组</title>
+</head>
+
+<body>
+    <script>
+        /*
+            1维数组转3维数组
+        */
+        let orign = [
+            {
+                pree: "大成基金",
+                state: '专户',
+                fundcode: '1012372451',
+                name: '基础值001',
+                cCode: '000463'
+            },
+            {
+                pree: "大成基金",
+                state: '专户',
+                fundcode: '102990451',
+                name: '基础值002',
+                cCode: '000363'
+            },
+            {
+                pree: "大成基金",
+                state: '专户',
+                fundcode: '10247451',
+                name: '基础值003',
+                cCode: '0034263'
+            },
+            {
+                pree: "大成基金",
+                state: '医疗',
+                fundcode: '1024234551',
+                name: '基础值004',
+                cCode: '001'
+            },
+            {
+                pree: "大成基金",
+                state: '医疗',
+                fundcode: '1034522451',
+                name: '基础值005',
+                cCode: '002'
+            },
+            {
+                pree: "大成基金",
+                state: '私募',
+                fundcode: '5102451',
+                name: '基础值006',
+                cCode: '003'
+            }, {
+                pree: "大成基金",
+                state: '私募',
+                fundcode: '10241351',
+                name: '基础值007',
+                cCode: '004'
+            }, {
+                pree: "大成基金",
+                state: '科技',
+                fundcode: '1029451',
+                name: '基础值008',
+                cCode: '005'
+            }, {
+                pree: "大成基金",
+                state: '科技',
+                fundcode: '1032451',
+                name: '基础值009',
+                cCode: '006'
+            }, {
+                pree: "大成基金",
+                state: '科技',
+                fundcode: '10246451',
+                name: '基础值010',
+                cCode: '007'
+            }, {
+                pree: "南方基金",
+                state: '科技',
+                fundcode: '1022451',
+                name: '基础值012',
+                cCode: '008'
+            }, {
+                pree: "南方基金",
+                state: '科技',
+                fundcode: '1002451',
+                name: '基础值013',
+                cCode: '010'
+            }, {
+                pree: "南方基金",
+                state: '科技',
+                fundcode: '1012451',
+                name: '基础值014',
+                cCode: '011'
+            }, {
+                pree: "南方基金",
+                state: '私募',
+                fundcode: '1028451',
+                name: '基础值015',
+                cCode: '012'
+            }, {
+                pree: "南方基金",
+                state: '私募',
+                fundcode: '1025451',
+                name: '基础值016',
+                cCode: '013'
+            }, {
+                pree: "南方基金",
+                state: '医疗',
+                fundcode: '1022451',
+                name: '基础值017',
+                cCode: '015'
+            },
+        ]
+        function totree(orignArr) {
+            console.log('需要转换的数组', orign)
+            let newArr = []
+            let arr_1 = []
+            //一级数组
+            orignArr.forEach(item => {
+                if (arr_1.indexOf(item.pree) == -1) {
+                    newArr.push({
+                        title: item.pree,
+                        children: []
+                    })
+                    arr_1.push(item.pree)
+                }
+            })
+            //二级数组
+            orignArr.forEach(item => {
+                newArr.forEach(val => {
+                    if (val.title == item.pree) {
+                        val.children.push({
+                            title: item.state,
+                            children: []
+                        })
+                    }
+                })
+            })
+            // console.log(newArr)
+            //二级数组去重
+            newArr.forEach(item => {
+                item.arr1 = []
+                item.children.forEach(val => {
+                    if (item.arr1.indexOf(val.title) == -1) {
+                        item.arr1.push(val.title)
+                    }
+                })
+            })
+            // console.log(newArr)
+            newArr.forEach(item => {
+                item.arr2 = []
+                item.arr1.forEach(val => {
+                    item.arr2.push({
+                        title: val,
+                        children: []
+                    })
+                })
+            })
+            // console.log(newArr)
+            newArr.forEach(item => {
+                delete item.arr1
+                delete item.children
+            })
+            console.log(newArr)
+            //三级数组
+            orignArr.forEach(item => {
+                newArr.forEach(val => {
+                    val.arr2.forEach(son=>{
+                        if(son.title == item.state){
+                            son.children.push({
+                                cCode:item.cCode,
+                                fundcode:item.fundcode,
+                                name:item.name
+                            })
+                        }
+                    })
+                  
+                })
+            })
+            console.log(newArr)
+        }
+        totree(orign)
+    </script>
+</body>
+
+</html>
