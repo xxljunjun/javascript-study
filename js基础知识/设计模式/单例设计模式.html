@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>单例设计模式</title>
+  </head>
+  <body>
+    <div>11111</div>
+    <script>
+      /*
+            一、单例模式
+					==>确保只有一个实例，并且提供全局访问
+					==>var a = {},但是会造成全局污染
+        */
+
+        //借助类组件实现
+      class SingletonCar {
+        constructor() {
+          this.name = "benz";
+        }
+        static getInstance() {
+          console.log(SingletonCar.instance);
+          if (!SingletonCar.instance) {
+            SingletonCar.instance = new SingletonCar();
+          }
+          return SingletonCar.instance;
+        }
+      }
+
+      let car1 = SingletonCar.getInstance();
+      let car2 = SingletonCar.getInstance();
+
+      console.log(car1 === car2); // true
+
+      //借助闭包实现
+      var SingletonCar = (function () {
+        var instance;
+
+        var SingletonCarTemp = function () {
+          this.name = "benz";
+        };
+
+        return function () {
+          if (!instance) {
+            instance = new SingletonCarTemp();
+          }
+          return instance;
+        };
+      })();
+
+    //   //自执行函数
+    //   (function(){
+
+    //   })()
+
+      var car1 = new SingletonCar();
+      var car2 = new SingletonCar();
+
+      console.log(car1 === car2); // true
+    </script>
+  </body>
+</html>

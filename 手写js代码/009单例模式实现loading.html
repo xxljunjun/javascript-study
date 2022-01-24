@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>单例模式全局Loading</title>
+  <style>
+    .loading {
+      width: 100vw;
+      height: 100vh;
+      line-height: 100vh;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #000;
+      opacity: .7;
+      color: #fff;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <button id="startLoading">点击加载</button>
+
+  <script>
+    const Loading = (function () {
+      let instance
+
+      return function () {
+        if (!instance) {
+          instance = document.createElement('div')
+          instance.innerHTML = '加载中...'
+          instance.id = 'loading'
+          instance.className = 'loading'
+          document.body.appendChild(instance)
+        }
+        return instance
+      }
+    })()
+
+    document.getElementById('startLoading').addEventListener('click', () => {
+      const loading = new Loading()
+    })
+  </script>
+</body>
+</html>
