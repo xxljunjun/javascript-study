@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.setPrototypeOf</title>
+</head>
+<body>
+    <script>
+        /*
+            Object.defineProperties()
+				==>给对象添加多个属性并分别指定它们的配置。
+        */
+        var obj = {};
+        Object.defineProperties(obj, {
+        'property1': {
+            value: true,
+            writable: true
+        },
+        'property2': {
+            value: 'Hello',
+            writable: false
+        }
+        // etc. etc.
+        });
+        console.log(obj)  //{property1: true,property2: "Hello"}
+    </script>
+</body>
+</html>

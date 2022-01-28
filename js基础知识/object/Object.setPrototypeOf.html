@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.setPrototypeOf</title>
+</head>
+<body>
+    <script>
+        /*
+           Object.setPrototypeOf(child，parent)
+				==>设置对象的原型（即内部 [[Prototype]] 属性）。
+
+            Object.setPrototypeOf()是ECMAScript 6最新草案中的方法，相对于 Object.prototype.__proto__ (en-US) ，
+            它被认为是修改对象原型更合适的方法
+        */
+        var dict = Object.setPrototypeOf({}, null);
+        let obj = {}
+        console.log(dict) //No properties
+        console.log(obj)  //[[Prototype]]属性
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.getOwnPropertyDescriptor</title>
+</head>
+<body>
+    <script>
+        /*
+            Object.getOwnPropertyDescriptor()
+				==>返回对象指定的属性配置。
+        */
+        let obj = {
+            name:'xx',
+            age:12
+        }
+        const descriptor1 =Object.getOwnPropertyDescriptor(obj,'name')
+        console.log( descriptor1)  //{configurable: true,enumerable: true,value: "xx",writable: true}
+    </script>
+</body>
+</html>

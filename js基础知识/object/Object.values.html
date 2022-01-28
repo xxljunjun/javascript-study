@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.values</title>
+</head>
+<body>
+    <script>
+        /*
+            Object.values()
+				==>返回给定对象自身可枚举属性值的数组。
+        */
+        let obj = {
+            name:'xxl',
+            age:12
+        }
+        console.log( Object.values(obj)) //[xxl,12]
+
+        var obj_1 = {
+        name: "xxl",
+        age: 12,
+        some: {
+          a: 1,
+          b: 2,
+        },
+      };
+      console.log(Object.values(obj_1)); //['xxl',12, {a:1,b:2}]
+    </script>
+</body>
+</html>
