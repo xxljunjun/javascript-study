@@ -10,14 +10,29 @@
 		transform-origin:;
 */
 @keyframes Rota {
-	from{
-		// transform:rotate(0deg);
+	// from{
+	// 	// transform:rotate(0deg);
+	// 	transform:skewY(0);
+	// }
+	// to{
+	// 	// transform:rotate(360deg) scale(1.2,1.2) translate(20px,20px);
+	// 	transform:skewY(180deg);
+	// }
+	0% {
 		transform:skewY(0);
-	}
-	to{
-		// transform:rotate(360deg) scale(1.2,1.2) translate(20px,20px);
+	  }
+	  25% {
 		transform:skewY(60deg);
-	}
+	  }
+	  50% {
+		transform:skewY(120deg);
+	  }
+	  75% {
+		transform:skewY(240deg);
+	  }
+	  100% {
+		transform:skewY(360deg);
+	  }
 }
 .transForm{
 	margin-top: 100px;
@@ -27,7 +42,7 @@
 		width: 100px;
 		height: 100px;
 		background: linear-gradient(red,green);
-		animation: Rota 3s linear infinite;
+		// animation: Rota 10s linear infinite;
 	}
 }
 
