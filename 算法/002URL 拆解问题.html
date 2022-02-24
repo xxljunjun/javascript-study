@@ -18,13 +18,16 @@
        * 输入：'http://sample.com/?a=1&e&b=2&c=xx&d#hash'
        * 输出：{a: 1, b: 2, c: 'xx', d: ''}
        */
-
+      let url = 'http://sample.com/?a=1&e&b=2&c=xx&d#hash'
       function getQueryObj(url) {
         // TODO
-        let arr = url.split("?")[1].split("#")[0].split("&");
-        const res = {};
+        //先拿到这个字符串：a=1&e&b=2&c=xx&d
+        let arr = url.split("?")[1].split("#")[0].split("&");  //['a=1', 'e', 'b=2', 'c=xx', 'd']
+        // console.log(arr)
+        const res = {};  //定义出需要输出的对象
         arr.forEach((e) => {
           const [key, value] = e.split("=");
+          console.log(e.split("="))
           if (!value) {
             res[key] = "";
           } else {
@@ -33,6 +36,7 @@
         });
         return res;
       }
+      getQueryObj(url)
     </script>
   </body>
 </html>
