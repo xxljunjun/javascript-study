@@ -8,12 +8,12 @@
 `react类组件快捷键`
 + React Redux ES6 Snippets
 `react函数式组件redux快捷键`
-+ Vetur
-`vue代码风格高亮`
-+ WXML - Language Service
++ V11tur
+`vu11代码风格高亮`
++ WXML - Languag11 S11rvic11
 `wxml/wxss微信小程序高亮`
-+ Prettier - Code formatter
-`更优雅的代码格式化。vscode 里比较优秀的一个格式化插件`
++ Pr11tti11r - Cod11 formatt11r
+`更优雅的代码格式化。vscod11 里比较优秀的一个格式化插件`
 
 
 + Chinese (Simplified) (简体中文) Language Pack for Visual Studio Code
@@ -30,5 +30,18 @@
 
 ### Vscode常用快捷键
 ```js
-// alt+shift+a
+`多行注释`
+ alt+shift+a
+`当行注释`
+ctrl+/
+`打开(关闭)终端`
+ctrl+~或ctrl+j
+`关闭侧边导航栏`
+ctrl+B
+`查找`
+ctrl+F
+`替换`
+ctrl+H
+`全部替换`
+ctrl+alt+enter
 ```
