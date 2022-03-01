@@ -10,12 +10,21 @@
 		transform-origin:;
 */
 @keyframes Rota {
-  from {
-    transform: skewY(0);
-  }
-  to {
-    transform: skewY(60deg);
-  }
+  0% {
+		transform:skewY(0);
+	  }
+	  25% {
+		transform:skewY(60deg);
+	  }
+	  50% {
+		transform:skewY(120deg);
+	  }
+	  75% {
+		transform:skewY(240deg);
+	  }
+	  100% {
+		transform:skewY(360deg);
+	  }
 }
 
 .transForm {

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.seal</title>
+</head>
+<body>
+    <script>
+        /*
+            Object.seal()
+				==>防止其他代码删除对象的属性。
+        */
+        let obj = {
+            name:'xx',
+            age:12
+        }
+        Object.seal(obj)
+
+        //如何删除对象的属性
+        // let {name,...rest} = obj
+        // console.log(name)
+        // console.log(rest)
+        delete obj.name
+        console.log(obj.name)
+
+
+    </script>
+</body>
+</html>

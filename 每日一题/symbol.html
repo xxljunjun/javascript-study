@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol</title>
+</head>
+<body>
+    <script>
+        /*
+            Symbol
+                ==>不支持语法："new Symbol()";Symbol 包装器对象var symObj = Object(sym);可以代替new方法
+                ==>每个从Symbol()返回的symbol值都是唯一的
+                ==>一个symbol值能作为对象属性的标识符；这是该数据类型仅有的目的。
+                ==>description：可选的，字符串类型。对symbol的描述，可用于调试但不是访问symbol本身。
+                ==>全局共享的 Symbol.for()、Symbol.keyFor()
+                ==>Symbol值不能转换为Number类型
+                ==>一个 Symbol 包装器对象作为一个属性的键时，这个对象将被强制转换为它包装过的 symbol 值;[symbol3]访问
+                ==>不会被for...in迭代中不可枚举；Object.getOwnPropertyNames() Object.getOwnPropertySymbols()
+        */
+        const symbol3 = Symbol('foo');
+        let obj = {
+            [symbol3]:'1111111111',
+            a:'22222222222',
+            b:'33333333'
+        }
+        // for(var item in obj){
+        //     console.log(item)
+        // }
+        console.log(Object.getOwnPropertySymbols(obj))
+
+
+    </script>
+</body>
+</html>

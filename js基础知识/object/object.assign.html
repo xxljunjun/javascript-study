@@ -9,6 +9,18 @@
 
   <body>
     <script>
+
+      /*
+        ### 复制对象的方式
+
+        ```
+        1、JSON.parse(JSON.stringify(obj)) 深复制(具有局限性)
+        2、object.assign() 
+        3、for...in...
+        4、{...}
+
+        ```
+      */
       /*
 			Object.assign()
 				==>通过复制一个或多个对象来创建一个新的对象。
@@ -34,7 +46,14 @@
           b: 2,
         },
       };
-      let new_xxl = Object.assign({}, xxl);
+
+      // let new_xxl = Object.assign({}, xxl);  //对象嵌套对象时是浅复制
+      let new_xxl = JSON.parse(JSON.stringify(xxl))  //深复制
+      for(let val in xxl){
+        console.log("复制",val)
+      }
+
+
       new_xxl.some.a = 11111;
       console.log("旧", xxl);
       console.log("new_xxl", new_xxl);

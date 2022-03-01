@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object.preventExtensions</title>
+  </head>
+  <body>
+    <script>
+      /*
+          Object.preventExtensions()
+				==>防止对象的任何扩展。
+        */
+      // Object.preventExtensions将原对象变的不可扩展,并且返回原对象.
+      var obj = {};
+      var obj2 = Object.preventExtensions(obj);
+      obj === obj2; // true
+
+      // 字面量方式定义的对象默认是可扩展的.
+      var empty = {};
+      Object.isExtensible(empty); //=== true
+
+      // ...但可以改变.
+      Object.preventExtensions(empty);
+      Object.isExtensible(empty); //=== false
+
+      // 使用Object.defineProperty方法为一个不可扩展的对象添加新属性会抛出异常.
+      var nonExtensible = { removable: true };
+      Object.preventExtensions(nonExtensible);
+      Object.defineProperty(nonExtensible, "new", { value: 8675309 }); // 抛出TypeError异常
+
+      // 在严格模式中,为一个不可扩展对象的新属性赋值会抛出TypeError异常.
+      function fail() {
+        "use strict";
+        nonExtensible.newProperty = "FAIL"; // throws a TypeError
+      }
+      fail();
+    </script>
+  </body>
+</html>

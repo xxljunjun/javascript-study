@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object.isExtensible</title>
+</head>
+<body>
+    <script>
+        /*
+           Object.isExtensible()
+				==>判断对象是否可扩展。
+
+            ，如果参数不是一个对象类型，将抛出一个 TypeError 异常。
+        */
+
+        // 新对象默认是可扩展的.
+        var empty = {};
+        Object.isExtensible(empty); // === true
+
+        // ...可以变的不可扩展.
+        Object.preventExtensions(empty);
+        Object.isExtensible(empty); // === false
+
+        // 密封对象是不可扩展的.
+        var sealed = Object.seal({});
+        Object.isExtensible(sealed); // === false
+
+        // 冻结对象也是不可扩展.
+        var frozen = Object.freeze({});
+        Object.isExtensible(frozen); // === false
+    </script>
+</body>
+</html>

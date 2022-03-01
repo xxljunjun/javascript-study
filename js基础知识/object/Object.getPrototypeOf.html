@@ -9,11 +9,9 @@
   <body>
     <script>
       /*
-          冻结对象
-              Object.freeze()
-      ==>冻结对象：其他代码不能删除或更改任何属性。
-              Object.isFrozen()
-      ==>判断对象是否已经冻结。
+          Object.getPrototypeOf(obj)
+            ==>返回指定对象的原型对象。
+            ==>等同于obj.__proto__
           */
       let obj = {
         name: "xxl",
