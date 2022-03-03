@@ -9,27 +9,130 @@
 </head>
 
 <body>
+	<div id="root">
+		{{name}}
+		{{age}}
+	</div>
+	<script src="./vue.js"></script>
 	<script>
+		/*
+			vue数据代理：验证两条线
+				改变data中的name变量，vm中的name变量发生改变
+				改变vm中的name变量，data的name变量是否发生改变了(setter)
+					==>vm._data == options.data  //true
+					==>vm._data其实就是data
+
+
+			所以说数据代理就是：
+				vm._data和vm上面的属性之间的关系：当有人改变vm上面的属性时，数据代理到_data通过setter方法改变相应的属性;当有人读取vm上面的属性时,数据代理到_data通过getter方法读取相应的属性。
+
+
+			1、Vue中的数据代理：通过vm对象来代理data对象中属性的操作（读/写）
+			2、Vue中数据代理的好处：更加方便操作data中的数据
+			3、基本原理：通过Object。defindProperty()把data对象中所有的属性添加到vm上。为每一个添加到vm上的属性都指定一个getter/setter.在geeter和seeter内部去操作（读/写）data中对应的属性
+		*/
+		
+		console.log(Vue)
+		const vm = new Vue({
+			el:"#root",
+			data:{
+				name:"廖军军",
+				age:13
+			},
+		})
+
+		/*
+			Vue中的数据劫持
+				==>vue需要监测到data中的数据变化，页面发生变化；所以vm._data和options.data有区别
+				==>1、加工data
+					vm._data == data:为了实现响应式vm._data进行了小小的升级
+		*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		//踩坑：value和set，get方法不能一起写！！！
+
+		/*
+			vue中的数据代理
+			vue中的数据劫持
+			vue中的计算属性
+		*/
 		//严格模式
-		'use strict'
+		// 'use strict'
 		/*
 			Object.defineProperty()
 				==>给对象添加一个属性并指定该属性的配置。
 		*/
-		const object1 = {};
-
-		Object.defineProperty(object1, 'property1', {
-			value: 42,
-			writable: false, //该属性被称为“不可写的”。它不能被重新赋值。
-			configurable: true, //特性表示对象的属性是否可以被删除
-			enumerable: false, //定义了对象的属性是否可以在 for...in 循环和 Object.keys() 中被枚举。
+		let number = 18
+		let person = {
+			name: "小溪流",
+			sex: "男"
+		};
+		Object.defineProperty(person, 'age', {
+			// value: 18,
+			// writable: true, //该属性被称为“不可写的”。它不能被重新赋值。
+			// configurable: true, //特性表示对象的属性是否可以被删除
+			// enumerable: true, //可枚举：定义了对象的属性是否可以在 for...in 循环和 Object.keys() 中被枚举。
+			get() {
+				console.log("触发了get方法")
+				return number
+			},
+			set(value) {
+				console.log("触发了set方法")
+				number = value
+			}
 		});
 
-		object1.property1 = 77;
-		// throws an error in strict mode
 
-		console.log(object1.property1);
-		// expected output: 42
+		//vue中的数据代理
+			//==>通过一个对象代理对另一个对象中属性的操作（读/写）
+			let obj1 = {
+				x:100
+			}
+			let obj2 = {
+				y:200
+			}
+			Object.defineProperty(obj2,'x',{
+				get(){
+					return obj1.x
+				},
+				set(value){
+					obj1.x = value
+				}
+			})
+
 	</script>
 </body>
 

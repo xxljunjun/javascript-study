@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>vue3实现响应式</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        vue3实现响应式
+    */
+	let person = {
+		name:"张三",
+		age:18
+	}
+	// console.log(window.Proxy)代理
+	// console.log(window.Reflect)反射
+	const p = new Proxy(person,{
+		get(target,propName){
+			console.log("有人读取了属性")
+			// return target[propName]
+			return Reflect.get(target,propName)
+		},
+		set(target,propName,value){
+			console.log("有人修改或追加了属性")
+			// target[propName] = value
+			Reflect.set(target,propName,value)
+			
+		},
+		deleteProperty(target,propName){
+			console.log("有人删除了属性")
+			// return delete target[propName] 
+			return Reflect.deleteProperty(target,propName) 
+		}
+	})
+</script>
+
+</html>
