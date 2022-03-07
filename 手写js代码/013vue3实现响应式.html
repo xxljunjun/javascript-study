@@ -12,8 +12,16 @@
 
 </body>
 <script>
+	console.log("Reflect",Reflect)  //反射
     /*
         vue3实现响应式
+			==>解决vue2.0响应式存在的问题
+				新增对象属性、删除属性，界面不会更新
+					this.$set()
+					Vue.set()
+				直接通过下标修改数据，界面不会自动更新
+					this.$set()
+					push、pop、unshilft、shift
     */
 	let person = {
 		name:"张三",
@@ -23,20 +31,21 @@
 	// console.log(window.Reflect)反射
 	const p = new Proxy(person,{
 		get(target,propName){
-			console.log("有人读取了属性")
+			console.log("有人读取了属性去通知页面发生改变！！！实现响应式")
 			// return target[propName]
 			return Reflect.get(target,propName)
 		},
 		set(target,propName,value){
-			console.log("有人修改或追加了属性")
+			console.log("有人修改或追加了属性通知页面发生改变！！！实现响应式")
 			// target[propName] = value
 			Reflect.set(target,propName,value)
 			
 		},
 		deleteProperty(target,propName){
-			console.log("有人删除了属性")
+			console.log("有人删除了属性通知页面发生改变！！！实现响应式")
 			// return delete target[propName] 
 			return Reflect.deleteProperty(target,propName) 
+			//用delete删除对象属性时是有返回值的
 		}
 	})
 </script>
