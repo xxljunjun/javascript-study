@@ -15,50 +15,53 @@
 					==>var a = {},但是会造成全局污染
         */
 
-        //借助类组件实现
-      class SingletonCar {
-        constructor() {
-          this.name = "benz";
-        }
-        static getInstance() {
-          console.log(SingletonCar.instance);
-          if (!SingletonCar.instance) {
-            SingletonCar.instance = new SingletonCar();
-          }
-          return SingletonCar.instance;
-        }
-      }
+      //借助类组件实现  class是类   instance是实例
+      // class SingletonCar {
+      //   constructor() {
+      //     this.name = "benz";
+      //   }
+      //   static getInstance() {
+      //     console.log(SingletonCar.instance);
+      //     if (!SingletonCar.instance) {
+      //       SingletonCar.instance = new SingletonCar();
+      //     }
+      //     return SingletonCar.instance;
+      //   }
+      // }
 
-      let car1 = SingletonCar.getInstance();
-      let car2 = SingletonCar.getInstance();
+      // let car1 = SingletonCar.getInstance();
+      // let car2 = SingletonCar.getInstance();
 
-      console.log(car1 === car2); // true
+      // console.log(car1 === car2); // true
 
-      //借助闭包实现
-      var SingletonCar = (function () {
-        var instance;
+      //借助闭包实现单例设计模式
+        var SingletonCar = (function () {
+          //实例化对象
+          var instance;
+          //构造函数
+          var SingletonCarTemp = function () {
+            this.name = "benz";
+          };
 
-        var SingletonCarTemp = function () {
-          this.name = "benz";
-        };
+          return function () {
+            if (!instance) {
+              instance = new SingletonCarTemp();
+            }
+            return instance;
+          };
+        })();
 
-        return function () {
-          if (!instance) {
-            instance = new SingletonCarTemp();
-          }
-          return instance;
-        };
-      })();
+      //   //自执行函数
+      //   (function(){
 
-    //   //自执行函数
-    //   (function(){
+      //   })()
 
-    //   })()
+      console.log("1111111",new SingletonCar())
 
       var car1 = new SingletonCar();
       var car2 = new SingletonCar();
 
-      console.log(car1 === car2); // true
+        console.log(car1 === car2); // true
     </script>
   </body>
 </html>
