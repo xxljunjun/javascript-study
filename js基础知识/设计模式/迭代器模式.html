@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>迭代器模式</title>
+  </head>
+  <body>
+    <script>
+      /*
+            迭代器模式
+                ==>提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。
+                    for
+                    forEach
+                    map
+                    filter
+                    for...in...
+                    for...of...
+
+        */
+      let arr = [
+        { id: 1, name: "小溪流" },
+        { id: 2, name: "ljj" },
+        { id: 3, name: "xxl" },
+      ];
+      //for循环
+      for (let i = 0,j =arr.length ; i < j; i++) {
+        // console.log(arr[i]);
+      }
+      //forEach
+      let forEachArr = arr.forEach((val) => {
+        // console.log("val", val);
+      });
+      // console.log("forEachArr", forEachArr);
+      //map
+      let mapArr = arr.map((k) => {
+        // console.log("k", k);
+        return;
+      });
+      // console.log("mapArr", mapArr);
+      //filter
+      let filterArr = arr.filter((item) => {
+        // console.log("item", item);
+        //过滤出条件为true的某些项
+        return item.id == 1;
+      });
+      // console.log("filterArr", filterArr);
+      //for...of...只能用来遍历数组、类数组对象
+      for(item of arr){
+        // console.log(item)
+      }
+      //for...in...主要是为了遍历对象而生，也可以遍历数组
+      let obj = {
+        name:"小溪流",
+        age:12
+      }
+      obj.__proto__.sex = '男'
+      for(item in obj){
+        console.log(obj[item])
+      }
+      console.log(obj)
+      
+      
+      
+    </script>
+  </body>
+</html>

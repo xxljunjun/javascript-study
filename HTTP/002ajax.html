@@ -6,39 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ajax请求</title>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="http://way.jd.com/?city=深圳&appkey=7a85fc9df58cd155f764e033a257d879"></script>
+    <script src="http://way.jd.com/?city=深圳&appkey=7a85fc9df58cd155f764e033a257d879"></script>
   </head>
   <body>
     <script>
-      $.ajax({
-        url:"http://way.jd.com",
-        data:{
-          city:"深圳",
-          appkey:'7a85fc9df58cd155f764e033a257d879'
-        },
-        type:"GET",
-        jsonp:'callbacks',
-        timeout:7000,
-        contentType:'application/x-www-form-urlencoded',
-        success:function(data){
-          console.log("请求成功了",data)
-        },
-        error:function(error){
-          console.log("请求失败了",error)
-        }
-      })
-
-
-
-
-
-
-
-
+      // $.ajax({
+      //   url: "http://way.jd.com",
+      //   data: {
+      //     city: "深圳",
+      //     appkey: "7a85fc9df58cd155f764e033a257d879",
+      //   },
+      //   type: "GET",
+      //   jsonp: "callbacks",
+      //   timeout: 7000,
+      //   contentType: "application/x-www-form-urlencoded",
+      //   success: function (data) {
+      //     console.log("请求成功了", data);
+      //   },
+      //   error: function (error) {
+      //     console.log("请求失败了", error);
+      //   },
+      // });
 
       function ajax(config) {
         var xhr = new XMLHttpRequest();
-        console.log(xhr)
         xhr.open(config.type, config.url, true);
         xhr.send(config.data);
         xhr.onreadystatechange = function () {
@@ -51,16 +42,17 @@
             }
           }
         };
+
+        console.log(xhr)
       }
-      // ajax({
-      //   type: "get",
-      //   url:'http://way.jd.com',
-      //   // url: "http://a.itying.com/api/productlist",
-      //   data:`city=深圳&appkey=7a85fc9df58cd155f764e033a257d879`,
-      //   // data: "name=zhangsan",
-      //   dataType: "json",
-      // });
+      ajax({
+        type: "get",
+        url:'http://way.jd.com',
+        // url: "http://a.itying.com/api/productlist",
+        data:`city=深圳&appkey=7a85fc9df58cd155f764e033a257d879`,
+        // data: "name=zhangsan",
+        dataType: "json",
+      });
     </script>
   </body>
-
 </html>

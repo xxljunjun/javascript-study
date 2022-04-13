@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组的sort方法</title>
+</head>
+<body>
+    <script >
+        /*
+            1、对字母进行a-z的排序
+            2、对数字进行大小排序
+        */
+        // let arr = ['g','j','a','n','p']
+        // let retrunArr = arr.sort()
+        // console.log("原数组",arr)
+        // console.log("返回后的数组",retrunArr)
+
+        // let arr = [325,345,2,34,4,7,45523,56,56]
+        // let retrunArr = arr.sort()
+        // console.log("原数组",arr)
+        // console.log("返回后的数组",retrunArr)  //不是对数字进行比较大小，是根据字符串
+
+        let arr = [
+            {id:2,name:'小溪流'},
+            {id:1,name:'军军'},
+            {id:3,name:'xxl'},
+        ]
+        let retrunArr = arr.sort((a,b)=>{
+            console.log(a)
+            console.log(b)
+            return a.id>b.id
+        })
+        console.log("原数组",arr)
+        console.log("返回后的数组",retrunArr)  //不是对数字进行比较大小，是根据字符串
+
+    </script>
+</body>
+</html>

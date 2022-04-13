@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>promise</title>
+  </head>
+  <body>
+    <script>
+        //Promise.resolve()
+        //Promise.reject()
+        //Promise.then()
+        //Promise.catch()
+        //Promise.all()
+        //Promise.race()
+        //Promise.finally()
+      /*
+            Promise是一个高阶函数，接受一个函数作为参数
+                1、promise是一个构造函数，通过new方法可以用来创建一个Promise对象
+                2、Promise是ES6新增的解决传统的回调地狱的解决方案，promise用来将这种繁杂的做法简化，
+                可以将异步操作以同步的流程表达出来，避免了层层嵌套的回调函数，让程序更具备可读性，可维护性。
+                3、promise有三种状态，peddding reslove rejected，状态一旦改变，就无法再次改变状态，一个promise对象只能改变一次
+                4、promise.all()用于将多个 Promise 实例，包装成一个新的 Promise 实例
+                ==> promise1和promise2都成功才会调用success1
+                5、Promise.race()方法同样是将多个 Promise 实例，包装成一个新的 Promise 实例
+                ==>promise1和promise2只要有一个成功就会调用success1
+        */
+      console.log("javascript的内置对象Promise", Promise);
+      //实例化Promise对象
+      var promise_a = new Promise((resolve, reject) => {
+        resolve("成功");
+        // reject("失败");
+      })
+        .then(
+          (res) => {
+            console.log("唯一成功状态", res);
+          },
+          (error) => {
+            console.log("失败状态1", error);
+          }
+        )
+        .catch((error) => {
+          console.log("失败状态2", error);
+        }).finally(()=>{
+            console.log("最后执行的回调,无论是fulfilled状态还是rejected状态")
+        });
+      console.log("Promise的实例化对象", promise_a);
+
+
+      //Promise的all方法
+      //   const promise1 = Promise.resolve(3);
+      //   console.log(promise1)
+      //   const promise2 = 42;
+      //   const promise3 = new Promise((resolve, reject) => {
+      //     setTimeout(resolve, 100, "foo");
+      //   });
+
+      //   Promise.all([promise1, promise2, promise3]).then((values) => {
+      //     console.log(values);
+      //   });
+      //   expected output: Array [3, 42, "foo"]
+
+
+      //Promise的race方法
+      const promise1 = new Promise((resolve, reject) => {
+        setTimeout(resolve, 500, "one");
+      });
+
+      const promise2 = new Promise((resolve, reject) => {
+        setTimeout(reject, 100, "two");
+      });
+      Promise.race([promise1, promise2])
+        .then((value) => {
+          console.log("成功", value);
+          // Both resolve, but promise2 is faster
+        })
+        .catch((eror) => {
+          console.log("失败", eror);
+        });
+      // expected output: "two"
+    </script>
+  </body>
+</html>

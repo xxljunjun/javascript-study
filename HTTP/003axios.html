@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.26.1/axios.js"></script>
+  <body>
+    <script>
+      //实现UMD;node环境和浏览器环境
+      console.log("axios项目", window);
+      // //get请求1
+      // window.axios
+      //   .get("http://way.jd.com")
+      //   .then((res) => {
+      //     console.log("请求成功");
+      //   })
+      //   .catch((eror) => {
+      //     console.log("请求失败");
+      //   });
+      // //get请求2
+      // window.axios
+      //   .get("http://way.jd.com", {
+      //     params: {
+      //       id: 12345,
+      //     },
+      //   })
+      //   .then((res) => {
+      //     console.log("请求成功");
+      //   })
+      //   .catch((eror) => {
+      //     console.log("请求失败");
+      //   });
+      // //post请求
+      // window.axios
+      //   .post("http://way.jd.com")
+      //   .then((res) => {
+      //     console.log("请求成功");
+      //   })
+      //   .catch((eror) => {
+      //     console.log("请求失败");
+      //   });
+
+      //执行多个请求
+      function getUserAccount() {
+        return window.axios.get("/user/12345");
+      }
+      function getUserPermission() {
+        return window.axios.get("/user/12345/permissions");
+      }
+      window.axios.all([getUserAccount(), getUserPermission()]).then(
+        axios.spread(function (acct, perms) {
+          // 两个请求都执行完成
+          console.log(acct)
+          console.log(perms)
+        })
+      );
+    </script>
+  </body>
+</html>
