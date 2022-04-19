@@ -16,13 +16,13 @@ undefinde
 boolean
 string
 number
-symbol（ES6新增）
+symbol（ES6新增）:不能使用new;在 for...in 迭代中不可枚举;Symbols 与 JSON.stringify()以 symbol 值作为键的属性会被完全忽略
 引用数据类型(复杂数据类型)
 function
 Array
 Object
-Map（ES6新增）
-Set（ES6新增）
+Map（ES6新增）：它是“键控集合“
+Set（ES6新增）：据结构Set类似于数组，但是成员都是唯一的，没有重复的值;类数组对象
 
 ```
 

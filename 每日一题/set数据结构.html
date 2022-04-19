@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>set数据结构</title>
+</head>
+<body>
+    <script>
+        /*
+            ES6中的set数据结构
+                ==>据结构Set类似于数组，但是成员都是唯一的，没有重复的值;类数组对象
+                ==>Array.from(new Set(arr)) 数组去重
+                ==>mySet.add(需要添加的数据)
+                ==>mySet.has(需要判断的数据)
+        */
+        const mySet = new Set()
+        mySet.add('111111111')
+        mySet.add('222')
+        mySet.add('333')
+        mySet.add('444')
+        console.log(mySet)
+      
+        console.log(  mySet.entries())
+    </script>
+</body>
+</html>

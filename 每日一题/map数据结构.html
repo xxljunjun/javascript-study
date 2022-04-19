@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map数据结构</title>
+  </head>
+  <body>
+    <script>
+        // Map是一个类似于对象的数据类型
+        // 与常规对象和Array不同的是，它是“键控集合“
+        // 它的行为有稍许不同，并且在特定的上下文中使用，它可以提供相当大的性能优势
+      /*
+            const mapObj = new Map()
+            ==>mapObj.set(key,value)
+            ==>mapObj.has(key)：判断某个key是否存在
+            ==>mapObj.get(key)：获取某个value值
+            ==>mapObj.delete(key)：删除某个属性
+             ==>mapObj.clear()：
+            ==>Object.fromEntries(mapObj)：快速转化成对象
+            ==>Map.size长度
+        */
+      let text = "";
+      //   if (status == 1) {
+      //     text = "启用";
+      //   } else if ((status = 2)) {
+      //     text = "停用";
+      //   }
+      // 省略...
+
+      // 以上我们需要写一堆的 if else这样代码非常的繁琐冗余,ES6的Map数据结构
+
+      let operation = new Map([
+        [1, "启用"],
+        [2, "停用"],
+        [3, "注销"],
+      ]);
+      console.log("Map对象", operation);
+      text = operation.get(1); // 这样实现代码非常简洁
+      console.log(text);
+      console.log(operation.has(1));
+    </script>
+  </body>
+</html>

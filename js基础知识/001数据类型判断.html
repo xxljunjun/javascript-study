@@ -100,6 +100,7 @@
 		function myInstance(L, R) {//L代表instanceof左边，R代表右边
 			var RP = R.prototype //构造函数的prototype指向原型对象
 			var LP = L.__proto__ //实例对象的__proto__指向原型对象
+			//递归查找原型链
 			while (true) {
 				if (LP == null) {
 					return false
@@ -110,7 +111,7 @@
 				LP = LP.__proto__
 			}
 		}
-		console.log(myInstance({}, Object));
+		console.log(myInstance({}, Object));  //true
 
 
 		// -----------------------------------------constructor
