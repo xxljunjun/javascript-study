@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number} x
+       * @return {boolean}
+       */
+      /**
+       * @param {number} x
+       * @return {boolean}
+       */
+      var isPalindrome = function (x) {
+        let str = x.toString();
+        let strArr = [];
+        for (let i = 0; i < str.length; i++) {
+          strArr.push(str[i]);
+        }
+        let str_1 = strArr.reverse().join().replace(/,/g, "");
+        if (str === str_1) {
+          return true;
+        }
+        return false;
+      };
+      isPalindrome(121);
+    </script>
+  </body>
+</html>

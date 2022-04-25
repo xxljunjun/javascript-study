@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {string} s
+       * @return {number}
+       */
+      var romanToInt = function (s) {
+        //输入的是一位罗马数字的情况
+        let txtObj = {
+          I: 1,
+          V: 5,
+          X: 10,
+          L: 50,
+          C: 100,
+          D: 500,
+          M: 1000,
+        };
+        if (s.length == 1) {
+          return txtObj[s];
+        }
+        //六种特殊的情况
+        let obj = {
+          IV: 4,
+          IX: 9,
+          XL: 40,
+          XC: 90,
+          CD: 400,
+          CM: 900,
+        };
+        let obj_1 = {
+          a: 4,
+          b: 9,
+          c: 40,
+          d: 90,
+          e: 400,
+          f: 900,
+        };
+        for (val in obj) {
+          if (s == val) {
+            return obj[val];
+          }
+        }
+        //其他的普遍情况
+        let strArr = [];
+        let num = 0; //需要返回的数据
+        let str_1 = s.replace(/IV/g, "a");
+        let str_2 = str_1.replace(/IX/g, "b");
+        let str_3 = str_2.replace(/XL/g, "c");
+        let str_4 = str_3.replace(/XC/g, "d");
+        let str_5 = str_4.replace(/CD/g, "e");
+        let str_6 = str_5.replace(/CM/g, "f");
+        for (let i = 0; i < str_6.length; i++) {
+          strArr.push(str_6[i]);
+        }
+        strArr.forEach((val) => {
+          for (item in obj_1) {
+            if (val == item) {
+              num += obj_1[item];
+              return;
+            }
+          }
+          num += txtObj[val];
+        });
+        return num;
+      };
+    </script>
+  </body>
+</html>

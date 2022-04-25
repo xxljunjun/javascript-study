@@ -4,6 +4,7 @@
 vue组件是用来复用的，且 JS 里对象是引用关系，如果组件中 data 是一个对象，那么这样作用域没有隔离，子组件中的 data 属性值会相互影响，
 如果组件中 data 选项是一个函数，那么每个实例可以维护一份被返回对象的独立的拷贝，组件实例之间的 data 属性值不会互相影响；
 而 new Vue 的实例，是不会被复用的，因此不存在引用对象的问题。
+为了保证组件的独立性和可复用性
 ```
 
 ### vue 组件的通信
@@ -627,4 +628,35 @@ babel-loader：把 ES6 转换成 ES5
 css-loader：加载 CSS，支持模块化、压缩、文件导入等特性
 style-loader：把 CSS 代码注入到 JavaScript 中，通过 DOM 操作去加载 CSS。
 eslint-loader：通过 ESLint 检查 JavaScript 代码
+```
+
+### Vue 的初始化过程（new Vue(options)）都做了什么？
++ 调用了5个初始化方法
+```js
+initMixin(Vue); //vue实例上定义了_init()方法，$options
+stateMixin(Vue);
+eventsMixin(Vue);
+lifecycleMixin(Vue);
+renderMixin(Vue);
+```
++ 找到 vue 的入口文件:通过debbuge的方法找到/src/core/instance/index.js入口文件
+```js
+合并配置项
+初始化生命周期
+
+/*
+Vue 的初始化过程（new Vue(options)）都做了什么？
+  ==>处理组件配置项
+  ==>初始化根组件时进行了选项合并操作，将全局配置合并到根组件的局部配置上
+  ==>初始化每个子组件时做了一些性能优化，将组件配置对象上的一些深层次属性放到 vm.$options 选项中，以提高代码的执行效率
+  ==>初始化组件实例的关系属性，比如 $parent、$children、$root、$refs 等
+  ==>处理自定义事件
+  ==>调用 beforeCreate 钩子函数
+  ==>初始化组件的 inject 配置项，得到 ret[key] = val 形式的配置对象，然后对该配置对象进行响应式处理，并代理每个 key 到 vm 实例上
+  ==>数据响应式，处理 props、methods、data、computed、watch 等选项
+  ==>解析组件配置项上的 provide 对象，将其挂载到 vm._provided 属性上
+  ==>调用 created 钩子函数
+  ==>如果发现配置项上有 el 选项，则自动调用 $mount 方法，也就是说有了 el 选项，就不需要再手动调用 $mount 方法，反之，没提供 el 选项则必须调用 $mount
+  ==>接下来则进入挂载阶段
+*/
 ```
