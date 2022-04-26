@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            输入数字 n，按顺序打印出从 1 到最大的 n 位十进制数。比如输入 3，则打印出 1、2、3 一直到最大的 3 位数 999。
+        */
+      /**
+       * @param {number} n
+       * @return {number[]}
+       */
+      var printNumbers = function (n) {
+        //1   10
+        //2  100
+        //3   1000
+        //4   10000
+        //5
+        let str = "1";
+        let newArr = [];
+        for (let i = 0; i < n; i++) {
+          str += "0";
+        }
+        console.log(Number(str));
+        for (let i = 0; i < Number(str); i++) {
+          if (i > 0) {
+            newArr.push(i);
+          }
+        }
+        return newArr
+      };
+      console.log(printNumbers(3))
+    </script>
+  </body>
+</html>

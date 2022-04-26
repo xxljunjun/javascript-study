@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>存在重复元素</title>
+</head>
+<body>
+    <script>
+        /*
+            给你一个整数数组 nums 和一个整数 k ，判断数组中是否存在两个 不同的索引 i 和 j ，满足 nums[i] == nums[j] 且 abs(i - j) <= k 。如果存在，返回 true ；否则，返回 false 。
+
+        */
+       /**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {boolean}
+ */
+var containsNearbyDuplicate = function(nums, k) {
+    // for(let i=0;i<nums.length;i++){
+    //     for(let j = 0;j<nums.length;j++){
+    //         if(nums[i]==nums[j] &&  Math.abs(i-j)<=k && i !== j){
+    //             return true
+    //         }
+    //     }
+    // }
+    // return false
+
+    let map = new Map()
+    for(let i=0;i<nums.length;i++){
+        if(map.has(nums[i]) && i-map.get(nums[i])<=k){
+            return true
+        }
+        map.set(nums[i],i)
+    }
+    return false
+};
+console.log(containsNearbyDuplicate([1,2,3],3))
+    </script>
+</body>
+</html>
