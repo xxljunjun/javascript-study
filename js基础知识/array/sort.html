@@ -26,14 +26,35 @@
             {id:2,name:'小溪流'},
             {id:1,name:'军军'},
             {id:3,name:'xxl'},
+            {id:7,name:'333'},
+            {id:9,name:'222'},
+            {id:11,name:'xxx'},
         ]
-        let retrunArr = arr.sort((a,b)=>{
-            console.log(a)
-            console.log(b)
-            return a.id>b.id
+        let retrunArr = arr.sort(function(a,b){
+            console.log("aaaaaaaaaaa",a)
+            console.log("bbbbbb",b)
+            let aa = a.id
+            let bb = b.id
+            return aa>bb
         })
         console.log("原数组",arr)
         console.log("返回后的数组",retrunArr)  //不是对数字进行比较大小，是根据字符串
+
+
+        var arr = [
+    {name:'zopp',age:0},
+    {name:'gpp',age:18},
+    {name:'yjj',age:8}
+];
+
+function compare(用于判断的属性名){
+    return function(a,b){
+        var value1 = a[用于判断的属性名];
+        var value2 = b[用于判断的属性名];
+        return value1 - value2;
+    }
+}
+console.log(arr.sort(compare('age')))  //返回对象，age从小到大正向排序
 
     </script>
 </body>

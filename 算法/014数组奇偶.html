@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+var sortArrayByParity = function(nums) {
+    // let oneArr = []
+    // let twoArr = []
+    // oneArr = nums.filter(val=>{
+    //     return val%2 !==0
+    // })
+    // twoArr = nums.filter(val=>{
+    //     return oneArr.indexOf(val)  == -1
+    // })
+    // return [...twoArr,...oneArr]
+
+    return nums.sort((a,b)=>{
+        console.log(a)
+        console.log(b)
+        return a % 2 - b % 2;
+    });
+};
+console.log(sortArrayByParity([3,1,2,4]))
+    </script>
+</body>
+</html>
