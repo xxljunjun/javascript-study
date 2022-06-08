@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>主要元素</title>
+  </head>
+  <body>
+    <script>
+      /*
+            主要元素
+                数组中占比超过一半的元素称之为主要元素。给你一个 整数 数组，找出其中的主要元素。若没有，返回 -1 。请设计时间复杂度为 O(N) 、空间复杂度为 O(1) 的解决方案。
+
+        */
+      // 输入：[1,2,5,9,5,9,5,5,5]
+      // 输出：5
+      /**
+       * @param {number[]} nums
+       * @return {number}
+       */
+      var majorityElement = function (nums) {
+        //数组排序
+        // nums.sort((a,b)=>{
+        //     return a-b
+        // })
+        // //
+        // return nums[ parseInt( nums.length/2)]
+        //通过es6的Map结构
+        //用map统计每个元素出现次数 一旦当有一个出现次数大于数组一半则返回
+        const map = new Map();
+        nums.forEach((val) => {
+          map.set(val, (map.get(el) || 0) + 1);
+          if (map.get(val) > nums.length / 2) return val;
+        });
+        return -1;
+      };
+    </script>
+  </body>
+</html>

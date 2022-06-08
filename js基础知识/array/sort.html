@@ -1,61 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>数组的sort方法</title>
-</head>
-<body>
-    <script >
-        /*
+  </head>
+  <body>
+    <script>
+      /*
             1、对字母进行a-z的排序
             2、对数字进行大小排序
         */
-        // let arr = ['g','j','a','n','p']
-        // let retrunArr = arr.sort()
-        // console.log("原数组",arr)
-        // console.log("返回后的数组",retrunArr)
+      // let arr = ['g','j','a','n','p']
+      // let retrunArr = arr.sort()
+      // console.log("原数组",arr)
+      // console.log("返回后的数组",retrunArr)
 
-        // let arr = [325,345,2,34,4,7,45523,56,56]
-        // let retrunArr = arr.sort()
-        // console.log("原数组",arr)
-        // console.log("返回后的数组",retrunArr)  //不是对数字进行比较大小，是根据字符串
+      // let arr = [325,345,2,34,4,7,45523,56,56]
+      // let retrunArr = arr.sort()
+      // console.log("原数组",arr)
+      // console.log("返回后的数组",retrunArr)  //不是对数字进行比较大小，是根据字符串
 
-        let arr = [
-            {id:2,name:'小溪流'},
-            {id:1,name:'军军'},
-            {id:3,name:'xxl'},
-            {id:7,name:'333'},
-            {id:9,name:'222'},
-            {id:11,name:'xxx'},
-        ]
-        let retrunArr = arr.sort(function(a,b){
-            console.log("aaaaaaaaaaa",a)
-            console.log("bbbbbb",b)
-            let aa = a.id
-            let bb = b.id
-            return aa>bb
-        })
-        console.log("原数组",arr)
-        console.log("返回后的数组",retrunArr)  //不是对数字进行比较大小，是根据字符串
+      let arr = [
+        { id: 2, name: "小溪流" },
+        { id: 1, name: "军军" },
+        { id: 3, name: "xxl" },
+        { id: 7, name: "333" },
+        { id: 9, name: "222" },
+        { id: 11, name: "xxx" },
+      ];
+      let retrunArr = arr.sort(function (a, b) {
+        console.log("aaaaaaaaaaa", a);
+        console.log("bbbbbb", b);
+        let aa = a.id;
+        let bb = b.id;
+        return aa > bb;
+      });
+      console.log("原数组", arr);
+      console.log("返回后的数组", retrunArr); //不是对数字进行比较大小，是根据字符串
 
+      //接受一个函数作为参数，以对象中的某个值进行排序！！！
+      var objarr = [
+        { name: "zopp", age: 0 },
+        { name: "gpp", age: 18 },
+        { name: "yjj", age: 8 },
+      ];
 
-        var arr = [
-    {name:'zopp',age:0},
-    {name:'gpp',age:18},
-    {name:'yjj',age:8}
-];
+      function compare(用于判断的属性名) {
+        return function (a, b) {
+          var value1 = a[用于判断的属性名];
+          var value2 = b[用于判断的属性名];
+          return value1 - value2;
+        };
+      }
+      console.log(objarr.sort(compare("age"))); //返回对象，age从小到大正向排序
 
-function compare(用于判断的属性名){
-    return function(a,b){
-        var value1 = a[用于判断的属性名];
-        var value2 = b[用于判断的属性名];
-        return value1 - value2;
-    }
-}
-console.log(arr.sort(compare('age')))  //返回对象，age从小到大正向排序
-
+      //不传函数作为参数，则排序是按首数字的大小进行排序
+      let arr_1 = [1,56,46,87,94,5,34,2]
+     console.log("563474567",arr_1.sort((a,b)=>{return a-b}))
     </script>
-</body>
+  </body>
 </html>

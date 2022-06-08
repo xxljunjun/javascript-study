@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精度丢失问题</title>
+</head>
+<body>
+    <script>
+        /*
+            精度丢失问题
+                Number是js的内置对象
+                   valueOf() 方法返回指定对象的原始值。
+                   toString()方法返回一个表示该对象的字符串。
+                   toFixed()方法四舍五入保留小数
+                ###常用的转换方法
+                    + Number():强转数字
+                    + parseFloat():解析字符串并返回浮点数
+                    + parseInt()
+            
+                
+                在淘宝早期的订单系统中把订单号当作数字处理，后来随意订单号暴增，已经超过了9007199254740992，
+                最终的解法是把订单号改成字符串处理。要想解决大数的问题你可以引用第三方库 bignumber.js
+                原理是把所有数字当作字符串，重新实现了计算逻辑，缺点是性能比原生的差很多。
+                所以原生支持大数就很有必要了，现在 TC39 已经有一个 Stage 3 的提案 proposal bigint，大数问题有问彻底解决
+
+                //解决浮点数计算精度丢失问题的库
+                bignumber.js
+                number-precision
+                Math.js
+                BigDecimal.js
+
+        */
+        // console.log("内置对象",new Number())
+        // console.log(new Number(3456.7645678).toFixed(2).toString())
+        // let num = 214123.2365326
+        // console.log(Number('123.34252.1234'))
+
+        //ES7新增的求幂运算符
+        console.log(3 ** 2 ==Math.pow(3,2))
+        console.log(Math.PI)
+        //
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>斐波那契数列</title>
+</head>
+<body>
+    <script>
+        /*
+            斐波那契数 （通常用 F(n) 表示）形成的序列称为 斐波那契数列 。该数列由 0 和 1 开始，后面的每一项数字都是前面两项数字的和。也就是：
+            F(0) = 0，F(1) = 1
+            F(n) = F(n - 1) + F(n - 2)，其中 n > 1
+            给定 n ，请计算 F(n) 。
+
+            解题思路：
+                0  1  1  2  3  5  8  13  21  34  55  ...
+                0  1  2  3  4  5  6  7   8   9   10  ...
+        */
+        //计算数列
+        var caculate = function(n){
+                let arr = [0,1]
+                for(let i = 0;i<n;i++){
+                    if(i ==2){
+                        arr.push(arr[n-1]+arr[n-2])
+                    }
+                    if(i ==2){
+                        arr.push(arr[n-1]+arr[n-2])
+                    }
+                }
+                console.log(arr)
+        }
+        console.log(caculate(6))
+    </script>
+</body>
+</html>

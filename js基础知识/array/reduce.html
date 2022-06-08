@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reduce</title>
+</head>
+<body>
+    <script>
+        /*
+			array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
+			total	必需。初始值, 或者计算结束后的返回值。
+			currentValue	必需。当前元素
+			currentIndex	可选。当前元素的索引
+			arr	可选。当前元素所属的数组对象。
+
+			initialValue 	可选。传递给函数的初始值
+		*/
+
+        let keyPlusValue = function(arr){
+            const result = arr.reduce((obj,item,idx,arr)=>{
+                console.log('必需====初始值',obj)
+                console.log('必需====当前元素',item)
+                console.log('可选====当前元素的索引',idx)
+                console.log('可选====当前元素所属的数组对象',arr)
+                //先把数据变成这样的{a:1,b:2,c:1}
+                let key = Object.keys(item)[0]
+                let values =Object.values(item)[0]
+                if(!obj[key]){
+                    obj[key] = values
+                }else{
+                    obj[key] = obj[key]+values
+                }
+                return obj
+            },{})
+
+            return Object.keys(result).map(key=>{
+                let obj = {}
+                obj[key] = result[key]
+                return obj
+            })
+        }
+        console.log(keyPlusValue([{a:1},{b:1},{c:1},{b:1},{a:22}]))
+    </script>
+</body>
+</html>
