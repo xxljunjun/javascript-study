@@ -8,21 +8,35 @@
   </head>
   <body>
     <script>
+       /*
+         1、不传参数：使用sort方法直接对字母按a-z的顺序排序
+       */
+      let arr_1 = ['g','j','a','n','p']
+      let retrunArr_1 = arr_1.sort()
+      console.log("按a-z的顺序排序原数组",arr_1)
+      console.log("按a-z的顺序排序返回后的数组",retrunArr_1)
+
       /*
-            1、对字母进行a-z的排序
-            2、对数字进行大小排序
-        */
-      // let arr = ['g','j','a','n','p']
-      // let retrunArr = arr.sort()
-      // console.log("原数组",arr)
-      // console.log("返回后的数组",retrunArr)
+        2、不传参数：对数字的 话不是根据数字的大小，而是根据首个数字的大小进行排序
+      */
+      let arr_2 = [325,345,2,34,4,7,45523,56,56]
+      let retrunArr_2 = arr_2.sort()
+      console.log("对数字原数组",arr_2)
+      console.log("对数字返回后的数组",retrunArr_2)
 
-      // let arr = [325,345,2,34,4,7,45523,56,56]
-      // let retrunArr = arr.sort()
-      // console.log("原数组",arr)
-      // console.log("返回后的数组",retrunArr)  //不是对数字进行比较大小，是根据字符串
-
-      let arr = [
+      /*
+        3、传参数：
+      */
+      let ar_3 = [1,22,33,44,11,55,88,100]
+      let retrunArr_3 = ar_3.sort((a,b)=>{
+        return a-b
+      })
+      console.log("函数作为入参对数字原数组",ar_3)
+      console.log("函数作为入参对数字返回后的数组",retrunArr_3)
+      /*
+        3、数组嵌套进行排序；
+      */
+      let arr_4 = [
         { id: 2, name: "小溪流" },
         { id: 1, name: "军军" },
         { id: 3, name: "xxl" },
@@ -30,35 +44,16 @@
         { id: 9, name: "222" },
         { id: 11, name: "xxx" },
       ];
-      let retrunArr = arr.sort(function (a, b) {
-        console.log("aaaaaaaaaaa", a);
-        console.log("bbbbbb", b);
-        let aa = a.id;
-        let bb = b.id;
-        return aa > bb;
-      });
-      console.log("原数组", arr);
-      console.log("返回后的数组", retrunArr); //不是对数字进行比较大小，是根据字符串
-
-      //接受一个函数作为参数，以对象中的某个值进行排序！！！
-      var objarr = [
-        { name: "zopp", age: 0 },
-        { name: "gpp", age: 18 },
-        { name: "yjj", age: 8 },
-      ];
-
-      function compare(用于判断的属性名) {
+      let retrunArr_4 = arr_4.sort(compare("id"));
+      function compare(item) {
         return function (a, b) {
-          var value1 = a[用于判断的属性名];
-          var value2 = b[用于判断的属性名];
+          var value1 = a[item];
+          var value2 = b[item];
           return value1 - value2;
         };
       }
-      console.log(objarr.sort(compare("age"))); //返回对象，age从小到大正向排序
-
-      //不传函数作为参数，则排序是按首数字的大小进行排序
-      let arr_1 = [1,56,46,87,94,5,34,2]
-     console.log("563474567",arr_1.sort((a,b)=>{return a-b}))
+      console.log("数组嵌套对象的原数组", arr_4);
+      console.log("数组嵌套对象的返回后的数组", retrunArr_4); //不是对数字进行比较大小，是根据字符串
     </script>
   </body>
 </html>

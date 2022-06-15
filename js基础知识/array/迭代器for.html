@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>迭代器模式for</title>
+  </head>
+  <body>
+    <script>
+      /*
+            迭代器模式:9种循环
+                ==> for循环
+                ==> while()
+                ==> do...while...
+                ==> forEach
+                ==> map
+                ==> filter
+                ==> for...in...
+                ==> for...of...
+                ==> reduce
+        */
+
+      /*
+            for循环
+       */
+      let arr_1 = [1, 2, 3, 4, 5, 6];
+      for (let i = 0; i < arr_1.length; i++) {
+        console.log("for循环",arr_1[i]);
+      }
+
+      /*
+            while
+       */
+      let n = 0;
+      while (n < 3) {
+        console.log("while",n);
+        n++;
+      }
+
+      /*
+            do...while...
+       */
+      let m = 0;
+      do {
+        console.log("do...while",m);
+        m++;
+      } while (m < 3);
+
+
+      /*
+            for...of...
+       */
+      let arr_2 = ['xxl','jun','liao','da','cheng']
+      for(let item of arr_2){
+        //item代表的是每个项
+        console.log("for...of...",item)
+      }
+
+      /*
+            for...in...
+       */
+       let arr_3 = ['xxl','jun','liao','da','cheng']
+       let obj_3 = {
+        name:"xxl",
+        age:12,
+        sex:"男"
+       }
+      for(let idx in obj_3){
+        //idx是索引
+        console.log("for...of...",idx)
+      }
+    </script>
+  </body>
+</html>

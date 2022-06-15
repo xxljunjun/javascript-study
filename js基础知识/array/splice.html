@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>splice方法</title>
+</head>
+<body>
+    <script>
+        /*
+            splice方法
+            array.splice(索引，删几个，添加1个，添加2个):通过索引删除某几个元素
+	            返回值是被删除的数组
+        */
+       /*
+        一个参数时：就是从idx开始删除索引以后的所有数据（包括当前索引的值）
+       */
+        let arr_1 = ['a',"b","c","d","e","f","g"]
+        let returnArr_1 = arr_1.splice(1)
+        console.log("删除了索引为1之后的的数据",arr_1)
+        console.log("删除了索引为1的返回值",returnArr_1)
+
+        /*
+        两个参数时：就是从idx开始删除索引以后的n个数据（包括当前索引的值）
+       */
+       let arr_2 = ['a',"b","c","d","e","f","g"]
+        let returnArr_2 = arr_2.splice(1,2)
+        console.log("删除了索引为1的数据，删除2个",arr_2)
+        console.log("删除了索引为1，删除2个的返回值",returnArr_2)
+
+         /*
+        三个参数及以上时：就是从idx开始删除索引以后的n个数据（包括当前索引的值）;再插入m个数据
+       */
+       let arr_3 = ['a',"b","c","d","e","f","g"]
+        let returnArr_3 = arr_3.splice(1,2,"xxl","junjun")
+        console.log("删除了索引为1的数据",arr_3)
+        console.log("删除了索引为1的返回值",returnArr_3)
+
+    </script>
+</body>
+</html>

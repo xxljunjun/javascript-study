@@ -8,6 +8,7 @@
 </head>
 <body>
     <script>
+        //和遍历数组的方法差不多其实：map,forEach,filter，for,while()
         /*
 			array.reduce(function(total, currentValue, currentIndex, arr), initialValue)
 			total	必需。初始值, 或者计算结束后的返回值。
@@ -18,6 +19,10 @@
 			initialValue 	可选。传递给函数的初始值
 		*/
 
+        
+        /*
+            累加之后返回一个对象
+        */
         let keyPlusValue = function(arr){
             const result = arr.reduce((obj,item,idx,arr)=>{
                 console.log('必需====初始值',obj)
@@ -42,6 +47,24 @@
             })
         }
         console.log(keyPlusValue([{a:1},{b:1},{c:1},{b:1},{a:22}]))
+
+    
+        /*
+            累加之后返回一个数组
+        */
+        let arr_1 = [1,1,1,2,2,2,3,3,4,5,5,6]
+        const res = arr_1.reduce((newArr,item,idx)=>{
+            if(idx == 0){
+                newArr.push(item)
+            }else{
+               if(newArr.indexOf(item)==-1){
+                    newArr.push(item)
+               }
+            }
+            return newArr
+        },[])
+        console.log("经过了reduce之后",res)
+
     </script>
 </body>
 </html>
