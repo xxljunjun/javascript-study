@@ -11,52 +11,109 @@
     <script>
 
       /*
-        ### 复制对象的方式
+        ### 复制对象的方式:针对于引用数据类型嵌套引用数据类型
 
         ```
         1、JSON.parse(JSON.stringify(obj)) 深复制(具有局限性)
         2、object.assign() 
         3、for...in...更多时候是用来对对象进行遍历
         4、{...}
+        5、=;引用对象地址的赋值
 
         ```
       */
+
+
+
       /*
-			Object.assign()
-				==>通过复制一个或多个对象来创建一个新的对象。
-				==>对象的属性值是简单数据类型时是深拷贝，是复杂数据类型时是浅拷贝
-		*/
-
-      //当拷贝的对象属性为基本数据类型  ==>深复制
-      //   const a_object = {
-      //     a: null,
-      //     b: undefined,
-      //   };
-      //   const new_object = Object.assign({}, a_object);
-      //   new_object.a = 1000;
-      //   console.log("旧object", a_object);
-      //   console.log("新object", new_object);
-
-      //当拷贝的对象属性为复杂数据类型   ==>浅复制
-      const xxl = {
-        name: "xxl",
-        age: 12,
-        some: {
-          a: 1,
-          b: 2,
-        },
-      };
-
-      // let new_xxl = Object.assign({}, xxl);  //对象嵌套对象时是浅复制
-      let new_xxl = JSON.parse(JSON.stringify(xxl))  //深复制
-      for(let val in xxl){
-        console.log("复制",val)
+        一、通过Object.assign()复制对象
+          ==>通过复制一个或多个对象来创建一个新的对象。
+          ==>对象的属性值是简单数据类型时是深拷贝，是复杂数据类型时是浅拷贝
+      */
+      let obj_1 = {
+        name:"xxl",
       }
+      let obj_2 = {
+        age:21,
+      }
+      let obj_3 = {
+        sex:"男"
+      }
+      let obj_copy = Object.assign({},obj_1,obj_2,obj_3)
+      console.log("通过Object.assign复制的对象",obj_copy)
 
 
-      new_xxl.some.a = 11111;
-      console.log("旧", xxl);
-      console.log("new_xxl", new_xxl);
+      /*
+        二、通过运算符=复制对象
+      */
+     let obj_4 = {
+      name:"小王",
+      age:33
+     }
+     let obj_copy_1 = obj_4  //对象的引用地址的赋值
+     obj_4.name = "小黑"
+     console.log("=旧",obj_4)
+     console.log("=新",obj_copy_1)
+
+
+     /*
+        三、{...}运算符进行对象的复制
+        ==>对象的属性值是简单数据类型时是深拷贝，是复杂数据类型时是浅拷贝
+     */
+    let obj_5 = {
+      name:"小溪流",
+      age:88
+    }
+    let obj_5_copy = {...obj_5}
+    obj_5.name="xxxx"
+    console.log("{...}旧",obj_5)
+    console.log("{...}新",obj_5_copy)
+
+
+    /*
+      四、for...in...
+    */
+    let obj_6 = {
+      name:"小廖",
+      age:83
+    }
+    let obj_6_copy={}
+    for(let item in obj_6){
+      obj_6_copy[item] = obj_6[item]
+    }
+    obj_6.name="xx"
+    console.log("for...in...旧",obj_6)
+    console.log("for...in...新",obj_6_copy)
+
+
+    /*
+      五、深复制的常用方式：JSON.parse(JSON.stringify())
+          但是有弊端
+            ==>时间对象：new date(23453456467)
+            ==>new RegExp(),Error对象
+            ==>函数、undefined
+            ==>NaN
+            ==>只能序列化对象的可枚举的自有属性;由构造函数生成的对象会丢失constructor
+            ==>如果对象中存在循环引用的情况也无法正确实现深拷贝
+    */
+    let obj_7 = {
+      name:"小张",
+      age:98,
+      sum:{
+        a:1,
+        b:2
+      }
+    } 
+    let obj_7_copy = JSON.parse(JSON.stringify(obj_7))
+    obj_7.name = "xxx"
+    obj_7.sum.a = 111
+    console.log("JSON.parse(JSON.stringify())旧",obj_7)
+    console.log("JSON.parse(JSON.stringify())新",obj_7_copy)
+
+    //为了弥补这个不足可以手写深复制代码
+    
+
+
     </script>
   </body>
 </html>

@@ -10,41 +10,36 @@
   <body>
     <script>
       /*
-      	Object.create()
-      		==>使用指定的原型对象和属性创建一个新对象。
+          创建对象的方式有
+              ==>{}显示创建
+              ==>new Object()
+              ==>构造函数
+              ==>Object.create():使用指定的原型对象和属性创建一个新对象。
+      */
+
+      /*
+          一、Object.create()的基本用法
       */
       function Person(name, age) {
         this.name = name;
         this.age = age;
       }
-
       let obj = new Person("xxl", 15);
-      let a1 = Person.prototype;
-      let a2 = obj.__proto__;
+      let newobj_1 = Object.create(obj);
+      newobj_1.a = 1
+      newobj_1.b = 2
+      console.log("旧",obj)
+      console.log("新",newobj_1)
 
-      //   console.log(Person.prototype);
-      //   console.log(obj.prototype);
-      console.log(a1 == a2);
 
-      let newobj = Object.create(obj);
-      //   console.log(newobj.age);
-
-      // 创建一个以另一个空对象为原型,且拥有一个属性p的对象
-      o = Object.create({}, { p: { value: 42 } });
-
-      // 省略了的属性特性默认为false,所以属性p是================不可写,不可枚举,不可配置的:
-      o.p = 24;
-      o.p;
-      //42
-
-      o.q = 12;
-      for (var prop in o) {
-        console.log(prop);
-      }
-      //"q"
-
-      delete o.p;
-      //false
+      /*
+        二、省略了的属性特性默认为false,所以属性p是================不可写,不可枚举,不可配置的:
+              写==>writable:false,  //该属性被称为“不可写的”。它不能被重新赋值。
+              枚举==>enumerable:false,  //定义了对象的属性是否可以在 for...in 循环和 Object.keys() 中被枚举。
+              配置==>configurable:true,  //特性表示对象的属性是否可以被删除
+      */
+     let newObj = Object.create({}, { p: { value: 42 } })
+     console.log("Object",newObj)
     </script>
   </body>
 </html>
