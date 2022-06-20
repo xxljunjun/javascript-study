@@ -8,10 +8,10 @@
   </head>
   <body>
     <script>
-        // Map是一个类似于对象的数据类型
-        // 与常规对象和Array不同的是，它是“键控集合“
-        // 它的行为有稍许不同，并且在特定的上下文中使用，它可以提供相当大的性能优势
       /*
+        + Map是一个类似于对象的数据类型；
+        + 与常规对象和Array不同的是，它是“键控集合“；
+        + 它的行为有稍许不同，并且在特定的上下文中使用，它可以提供相当大的性能优势
             const mapObj = new Map()
             ==>mapObj.set(key,value)
             ==>mapObj.has(key)：判断某个key是否存在
@@ -20,7 +20,23 @@
              ==>mapObj.clear()：
             ==>Object.fromEntries(mapObj)：快速转化成对象
             ==>Map.size长度
-        */
+      */
+      /*
+        1、Map结构
+      */
+      const mapObj = new Map()
+      mapObj.set('a',1)
+      mapObj.set('b',1)
+      mapObj.set('c',1)
+      // mapObj.a =1
+      // mapObj.b =2
+      // mapObj.c =3
+      console.log(mapObj)
+
+
+
+
+
       let text = "";
       //   if (status == 1) {
       //     text = "启用";
@@ -40,6 +56,8 @@
       text = operation.get(1); // 这样实现代码非常简洁
       console.log(text);
       console.log(operation.has(1));
+
+
     </script>
   </body>
 </html>
