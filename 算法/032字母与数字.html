@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            给定一个放有字母和数字的数组，找到最长的子数组，且包含的字母和数字的个数相同。
+
+返回该子数组，若存在多个最长子数组，返回左端点下标值最小的子数组。若不存在这样的数组，返回一个空数组。
+
+示例 1:
+
+输入: ["A","1","B","C","D","2","3","4","E","5","F","G","6","7","H","I","J","K","L","M"]
+
+输出: ["A","1","B","C","D","2","3","4","E","5","F","G","6","7"]
+示例 2:
+
+输入: ["A","A"]
+
+输出: []
+        */
+       /**
+ * @param {string[]} array
+ * @return {string[]}
+ */
+var findLongestSubarray = function(array) {
+    //isNaN(parseInt("xxx"))   为true则表示字母   为false则表示数字
+    //找出原数组字母个数、数字个数
+    // 将字母视为 -1, 数字视为 1.
+    // 就将原问题转换为, 寻找和值为 0 的最长的连续子数组.
+    const map = new Map();
+    let start = 0;
+    let end = 0;
+    map.set(0, -1)
+    let num = 0;
+    array.forEach((item, i) => {
+        isNaN(parseInt(item)) ? num-- : num++;
+        const pre = map.get(num);
+        if (pre != undefined) {
+            if (i - pre > end - start) {
+                start = pre;
+                end = i;
+            }
+        } else {
+            map.set(num, i);
+        }
+    })
+    return array.slice(start + 1 , end + 1);
+    
+};
+findLongestSubarray(["A","1","B","C","D","2","3","4","E","5","F","G","6","7","H","I","J","K","L","M"])
+
+
+    </script>
+</body>
+</html>

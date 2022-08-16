@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            给你一个字符串 s 和一个字符串列表 wordDict 作为字典。请你判断是否可以利用字典中出现的单词拼接出 s 。
+            注意：不要求字典中出现的单词全部都使用，并且字典中的单词可以重复使用。
+
+            输入: s = "leetcode", wordDict = ["leet", "code"]
+            输出: true
+            解释: 返回 true 因为 "leetcode" 可以由 "leet" 和 "code" 拼接成
+        */
+      /**
+       * @param {string} s
+       * @param {string[]} wordDict
+       * @return {boolean}
+       */
+      var wordBreak = function (s, wordDict) {
+        //创建一个长度为s.length + 1，且值都是false的固定数组
+        //动态规划、背包问题
+        let dp = Array(s.length + 1).fill(false);
+        console.log(">>>",dp)
+        dp[0] = true;
+
+        for (let i = 0; i <= s.length; i++) {
+          for (let j = 0; j < wordDict.length; j++) {
+            if (i >= wordDict[j].length) {
+              if (
+                s.slice(i - wordDict[j].length, i) === wordDict[j] &&
+                dp[i - wordDict[j].length]
+              ) {
+                dp[i] = true;
+              }
+            }
+          }
+        }
+
+        return dp[s.length];
+      };
+      wordBreak("leetcode",["leet", "code"])
+    </script>
+  </body>
+</html>

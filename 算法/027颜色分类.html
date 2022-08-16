@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            给定一个包含红色、白色和蓝色、共 n 个元素的数组 nums ，原地对它们进行排序，使得相同颜色的元素相邻，并按照红色、白色、蓝色顺序排列。
+
+我们使用整数 0、 1 和 2 分别表示红色、白色和蓝色。
+
+必须在不使用库的sort函数的情况下解决这个问题。
+
+输入：nums = [2,0,2,1,1,0]
+输出：[0,0,1,1,2,2]
+
+输入：nums = [2,0,1]
+输出：[0,1,2]
+        */
+      /**
+       * @param {number[]} nums
+       * @return {void} Do not return anything, modify nums in-place instead.
+       */
+      var sortColors = function (nums) {
+        /*
+            红色 0
+            白色 1
+            蓝色 2
+        */
+        //    for(let i = 0;i<nums.length-1;i++){
+        //     for(let j = 0;j<nums.length-1-i;j++){
+        //         if(nums[j]>nums[j+1]){
+        //             let temp = nums[j]
+        //             nums[j] = nums[j+1]
+        //             nums[j+1] = temp
+        //         }
+        //     }
+        //    }
+        //    return nums
+
+
+        // if (nums.length <= 1) return nums;
+        // var left = [];
+        // var right = [];
+        // var point = Math.floor(nums.length / 2);
+        // var base = nums.splice(point, 1)[0];
+        // for (let i = 0; i < nums.length; i++) {
+        //   if (nums[i] < base) {
+        //     left.push(nums[i]);
+        //   } else {
+        //     right.push(nums[i]);
+        //   }
+        // }
+        // return sortColors(left).concat([base], sortColors(right));
+
+
+        // var idx
+        // for(let i = 0;i<nums.length-1;i++){
+        //     idx = i
+        //     for(let j = i+1;j<nums.length;j++){
+        //         if(nums[j]<nums[idx]){
+        //             idx = j
+        //         }
+        //     }
+        //     if(nums[i]>nums[idx]){
+        //         let temp  = nums[idx]
+        //         nums[idx] = nums[i] 
+        //         nums[i] = temp
+        //     }
+        // }
+        // return nums
+
+        //插入排序
+        var preIdex,current;
+        for(var i = 1;i<nums.length;i++){
+            preIdex = i-1
+            current = nums[i]
+            while(preIdex>=0 && nums[preIdex]>current){
+                nums[preIdex+1] = nums[preIdex] 
+                preIdex--
+            }
+            nums[preIdex+1]  = current
+        }
+        return nums
+      };
+      console.log(sortColors([2,0,2,1,1,0]));
+    </script>
+  </body>
+</html>

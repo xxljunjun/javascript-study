@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            插入排序
+                
+       */
+      function insertionSort(arr) {
+        var preIndex, current; //
+        for (var i = 1; i < arr.length; i++) {
+        //获取前一个值得索引值
+          preIndex = i - 1; 
+          //拿到当前循环的值
+          current = arr[i];  
+            //有两种情况会停下比前一个值大的时候，或者全部比较完了，直接赋值arr[0]
+          while (preIndex >= 0 && arr[preIndex] > current) {
+            arr[preIndex + 1] = arr[preIndex];
+            preIndex--;
+          }
+          //不需要调换位置，preIndex+1不就是当前i吗
+          arr[preIndex + 1] = current;
+        }
+        return arr;
+      }
+      console.log('>>>>>>',insertionSort([32,45,1,5,78,23,7,10]))
+    </script>
+  </body>
+</html>

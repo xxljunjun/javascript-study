@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。
+            示例 1：
+
+输入：n = 3
+输出：["((()))","(()())","(())()","()(())","()()()"]
+
+输入：n = 1
+输出：["()"]
+        */
+      /**
+       * @param {number} n
+       * @return {string[]}
+       *  *  1. 左括号没用完之前都可以随便用
+    *  2. 右括号数量必须小于左括号的时候才能用 
+    *  3. 右括号用完，代码结束 
+       */
+      var generateParenthesis = function (n) {
+        const list = [];
+        backtracking(n, list, 0, 0, "");
+        function backtracking(n, result, left, right, str) {
+          // 右边括号数量大于左边，表示无效括号组合
+          if (right > left) {
+            return;
+          }
+          // 左右两边括号数量相等
+          if (left == n && right == n) {
+            result.push(str);
+            return;
+          }
+          // 左边少了，则左边 + 1
+          if (left < n) {
+            backtracking(n, result, left + 1, right, str + "(");
+          }
+        //   // 右边少了，则右边 + 1
+          if (right < left) {
+            backtracking(n, result, left, right + 1, str + ")");
+          }
+        }
+        return list;
+      };
+
+      console.log(generateParenthesis(4));
+    </script>
+  </body>
+</html>

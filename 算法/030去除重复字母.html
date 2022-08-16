@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            给你一个字符串 s ，请你去除字符串中重复的字母，使得每个字母只出现一次。需保证 返回结果的字典序最小（要求不能打乱其他字符的相对位置）。
+
+ 
+
+示例 1：
+
+输入：s = "bcabc"
+输出："abc"
+示例 2：
+
+输入：s = "cbacdcbc"
+输出："acdb"
+        */
+
+      /**
+       * @param {string} s
+       * @return {string}
+       */
+      var removeDuplicateLetters = function (s) {
+        const map = new Map();
+        for (let i = 0; i < s.length; i++) {
+          // 最后出现的位置
+          map.set(s[i], i);
+        }
+
+        const st = []; // 栈
+        const visited = new Set(); // 访问过的
+        for (let i = 0; i < s.length; i++) {
+          if (visited.has(s[i])) continue; // 已经在栈里了，跳过
+          // 单调递增：遇到比自己小的，并且后面还有自己，则弹出并从访问过的移除
+          while (
+            st.length > 0 &&
+            st[st.length - 1] > s[i] &&
+            map.get(st[st.length - 1]) > i
+          ) {
+            visited.delete(st.pop()); // 出栈，移除访问
+          }
+          st.push(s[i]); // 入栈
+          visited.add(s[i]); // 标记访问
+        }
+
+        let ans = ""; // 拼接结果
+        while (st.length > 0) {
+          ans += st.shift();
+        }
+        return ans;
+      };
+      console.log(removeDuplicateLetters("cbacdcbc"))
+    </script>
+  </body>
+</html>
