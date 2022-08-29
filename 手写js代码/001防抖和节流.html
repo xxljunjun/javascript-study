@@ -31,6 +31,8 @@
 				var context = this
                 //3、记录防抖函数的参数
 				var args = arguments//arguments 是一个对应于传递给函数的参数的类数组对象。
+				console.log(">>>args",args)
+				console.log(">>>this",this)
                 //3、清除上一个定时器
 				clearTimeout(timeout)
                 //4、重新记时，执行wait秒内的最后一次
@@ -64,8 +66,8 @@
 			console.log(this, e)  // 分别打印：node 这个节点 和 MouseEvent
 			node.innerHTML = count++;
 		};
-		// node.onmousemove = debounce(getUserAction, 1000) //执行防抖代码
-		node.onmousemove = throttle(getUserAction, 2000)  //执行节流代码
+		node.onmousemove = debounce(getUserAction('11111','22222'), 2000) //执行防抖代码
+		// node.onmousemove = throttle(getUserAction, 500)  //执行节流代码
 
     </script>
 </body>
