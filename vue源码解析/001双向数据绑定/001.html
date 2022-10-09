@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双向数据绑定</title>
+</head>
+<body>
+    <script>
+        //就像是vue组件中的data数据
+        let data = {
+            name:"小溪流",
+            age:12
+        }
+        //准备一个vm实例对象
+        let vm = {}
+        //调用构造函数（生成obs对象）
+        let obs = new ObserVer(data)
+        console.log("数据代理之后的数据",obs)
+        // vm._data = data = obs
+
+        function ObserVer(obj){
+            console.log('该函数的this',this)
+            console.log(obj) //{ name:"小溪流",age:12}
+            let keys = Object.keys(obj)
+            console.log(keys)  //[name,age]
+            //亮点：通过一个新对象
+            keys.forEach(k=>{
+                Object.defineProperty(this,k,{
+                    // value:'男',
+                    // writable:true,  //是否可更改
+                    // enumerable:false, //是否可被枚举
+                    // configurable:true,  //可以被配置
+                    get(){
+                        console.log('有人读取了sex')
+                        return obj[k]  //返回值就是sex的值
+                    },
+                    set(val){
+                        console.log('有人想设置sex',val)
+                        obj[k] = val
+                    }
+                })
+            })
+        }
+
+
+
+        
+    </script>
+</body>
+</html>

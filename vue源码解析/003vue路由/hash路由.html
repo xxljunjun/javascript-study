@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        <p>前端三大框架</p>
+        <ul>
+            <li><a href="#/angular">angular</a></li>
+            <li><a href="#/vue">vue</a></li>
+            <li><a href="#/react">react</a></li>
+        </ul>
+    </div>
+    <script>
+        /*
+        Hash路由实现原理：onhashchange方法
+            HTML页面中通过锚点定位原理可进行无刷新跳转，触发后url地址中会多出# + 'XXX'的部分，
+            同时在全局的window对象上触发hashChange事件，这样在页面锚点哈希改变为某个预设值的时候，
+            通过代码触发对应的页面DOM改变，就可以实现基本的路由了,基于锚点哈希的路由比较直观，也是一般前端路由插件中最常用的方式。
+        */
+        console.log("window对象",window)
+        // window.onload：在网页加载完毕后立刻执行的操作
+        window.onload=function(){
+            window.onhashchange = function(opt){
+                console.log("opt",opt)
+                console.log("hash已被改变了",location.hash)
+            }
+        }
+    </script>
+</body>
+</html>

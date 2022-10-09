@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        <p>前端三大框架</p>
+        <ul id="list">
+            <li>angular</li>
+            <li>vue</li>
+            <li>react</li>
+        </ul>
+    </div>
+    <script>
+        /*
+            history.forward(); //在历史记录中前进一步
+            history.back(); //在历史记录中后退一步
+            history.go(n): //在历史记录中跳转n步骤，n=0为刷新本页,n=-1为后退一页。
+
+            history.pushState(data[,title][,url]);//向历史记录中追加一条记录
+            history.replaceState(data[,title][,url]);//替换当前页在历史记录中的信息。
+            history.state;//是一个属性，可以得到当前页的state信息。
+            window.onpopstate;//是一个事件，在点击浏览器后退按钮或js调用forward()、back()、go()时触发。监听函数中可传入一个event对象，event.state即为通过pushState()或replaceState()方法传入的data参数。
+        */
+
+        console.log("history",window.history)
+        window.onload = function(){
+            //全局监听pushState事件
+            window.onpopState = function(event){
+                console.log("event",event)
+            }
+            //全局监听hashChange事件
+            window.onhashchange = function(opt){
+                console.log("opt",opt)
+                console.log("hash已被改变了",location.hash)
+            }
+
+            document.querySelector("#list").addEventListener("click",function(event){
+                if(event.target.nodeName == "LI"){
+                    var content = event.target.innerHTML
+                    var _newState
+                    _newState = {
+                        // url:location.origin+'/'+content,
+                        url:'https://www.baidu.com/'+'/'+content,
+                        title:document.title,
+                        state:content
+                    }
+                    console.log('_newState',_newState)
+                    window.history.pushState(_newState,'','/'+content)
+                    console.log("history路由已经改变了",content)
+                }
+            })
+        }
+    </script>
+</body>
+</html>
