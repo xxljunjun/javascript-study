@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+    height:200px;width: 200px;
+    background-color:black;
+}
+.draw-enter-active, .draw-leave-active {
+    transition: all 1s ease;
+}
+.draw-enter, .draw-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    height: 0;
+}
+    </style>
+</head>
+<body>
+    
+<!--css-->
+
+ 
+<div id="app">
+    <button @click="boxshow = !boxshow">点击展开/关闭</button>
+    <transition name="draw">   <!--这里的name 和 css 类名第一个字段要一样-->
+        <div class="box"  v-show="boxshow"></div>
+    </transition>
+</div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            boxshow:false
+        },
+    });
+</script>
+</body>
+</html>

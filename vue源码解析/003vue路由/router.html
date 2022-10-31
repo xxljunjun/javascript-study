@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .redBox{
+            width: 100px;
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="btn">点我跳转路由</button>
+        <div class="redBox">1111111111111</div>
+    </div>
+    <script>
+        /*
+            前端路由原理
+                ### Vue-router 跳转和 location.href 有什么区别
+                ```
+                ①vue-router使用pushState进行路由更新，静态跳转，页面不会重新加载；location.href会触发浏览器，页面重新加载一次
+                ②vue-router使用diff算法，实现按需加载，减少dom操作
+                ③vue-router是路由跳转或同一个页面跳转；location.href是不同页面间跳转；
+                ④vue-router是异步加载this.$nextTick(()=>{获取url})；location.href是同步加载
+
+                ```
+
+                Location.replace()
+                    ==>
+                Location.reload()
+                    ==>
+                Location.assign()
+                    ==>
+                Location.toString()
+                    ==>
+        */
+        let btn = document.getElementById("btn")
+        btn.onclick=function clickMe(){
+            console.log("浏览器对象",location)
+            // location.reload()
+            // location.replace("/xxl")
+            location.href ='/router'
+            // location.toString()
+            // 跳转到 Location.reload() 这篇文章
+	        location.assign('http://www.baidu.com');
+        }
+
+    </script>
+</body>
+</html>

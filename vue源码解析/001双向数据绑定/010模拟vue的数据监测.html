@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟vue的数据监测</title>
+</head>
+<body>
+    <script>
+        /*
+            1、data中的属性值没有考虑对象嵌套对象,以及数组中的对象
+            2、vue中实现了数据代理
+        */
+        let data = {
+            name:"小溪流",
+            sex:"男"
+        }
+
+        //创建一个监视的实例对象，用于监视data中属性的变化
+        const obs = new Oberver(data)
+        console.log(obs) //
+
+        //准备一个vm实例对象
+        let vm= {}
+        vm._data = data = obs
+
+        function Observer(obj){
+            //汇总对象中所有的属性形成一个数组
+            const keys = Object.keys(obj)
+            keys.forEach(k=>{
+                Object.defineProperties(this,k,{
+                    get(){
+                        return obj[k]
+                    },
+                    set(val){
+                        console.log("改变了去解析模板,响应式数据")
+                        obj[k] = val
+                    }
+                })
+            })
+        }
+    </script>
+</body>
+</html>
