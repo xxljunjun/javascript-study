@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>js正则</title>
+</head>
+
+<body>
+	<script>
+        /*
+            js正则表达式
+                test 方法检查字符串是否与给出的正则表达式模式相匹配，如果是则返回 true，否则就返回 false。
+                replace() 方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。 
+                search() 方法 用于检索字符串中指定的子字符串，或检索与正则表达式相匹配的子字符串，并返回子字符串的起始位置。
+                compile() 方法用于改变 RegExp。
+                exec() 方法用于检索字符串中的正则表达式的匹配。
+
+                g  执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）
+                i  执行对大小写不敏感的匹配。
+                m  执行多行匹配。
+
+                \s  查找空白字符
+                \d  查找数字
+
+        */
+        let reg = /^[\d]{2}$/g;
+        let str = "12";
+        console.log(reg.test(str));     //返回true
+        let = "123";
+        console.log(reg.test(str));     //从数字3开始匹配，只有一个数字，故返回false
+
+        //var str = "   123AD  asadf   asadfasf  adf ";
+        var str = "   123AD  asadf   asadfasf  adf ";
+        var str=str.replace(/\s/g,"");
+        console.log(str);
+
+        var str = "Visit w3cschool";
+        var n = str.search(/w3cschool/i);
+
+
+        var reg = /\s/g
+        let reg_1 = new RegExp(/\s/,'g')
+	</script>
+</body>
+
+</html>
