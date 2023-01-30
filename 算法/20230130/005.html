@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            给定一个字符串 s ，根据字符出现的 频率 对其进行 降序排序 。一个字符出现的 频率 是它出现在字符串中的次数。
+            返回 已排序的字符串 。如果有多个答案，返回其中任何一个。
+
+            示例 1:
+
+            输入: s = "tree"
+            输出: "eert"
+            解释: 'e'出现两次，'r'和't'都只出现一次。
+            因此'e'必须出现在'r'和't'之前。此外，"eetr"也是一个有效的答案。
+            示例 2:
+
+            输入: s = "cccaaa"
+            输出: "cccaaa"
+            解释: 'c'和'a'都出现三次。此外，"aaaccc"也是有效的答案。
+            注意"cacaca"是不正确的，因为相同的字母必须放在一起。
+            示例 3:
+
+            输入: s = "Aabb"
+            输出: "bbAa"
+            解释: 此外，"bbaA"也是一个有效的答案，但"Aabb"是不正确的。
+            注意'A'和'a'被认为是两种不同的字符。
+        */
+      /**
+       * @param {string} s
+       * @return {string}
+       */
+      var frequencySort = function (s) {
+        let strArr = s.split("");
+        //记录字母出现的数字
+        // let obj = {};
+        // let arr = [];
+        // strArr.forEach((val, idx) => {
+        //   if (idx == 0) {
+        //     arr.push(val);
+        //     obj[val] = 1;
+        //   } else {
+        //     if (arr.indexOf(val) > -1) {
+        //       obj[val] = obj[val] + 1;
+        //     } else {
+        //       obj[val] = 1;
+        //       arr.push(val);
+        //     }
+        //   }
+        // });
+        // console.log("obj", obj);
+        // console.log("arr", arr);
+        // console.log(Object.entries(obj));
+        // //对其进行排序
+        // let sortArr = Object.entries(obj).sort((a, b) => {
+        //   return b[1] - a[1];
+        // });
+        // console.log(sortArr);
+        // let needStrArr = [];
+        // sortArr.forEach((val) => {
+        //   for (let i = 0; i < val[1]; i++) {
+        //     needStrArr.push(val[0]);
+        //   }
+        // });
+        // return needStrArr.join("");
+        
+        //耗时超过了100%的用户
+        let obj = {};
+        s.split("").forEach((n) => (obj[n] = (obj[n] || 0) + 1));
+        console.log('obj',obj)
+        return Object.keys(obj)
+          .map((k) => k.repeat(obj[k]))
+          .sort((a, b) => b.length - a.length)
+          .join("");
+      };
+
+      console.log(frequencySort("AAAAabbDE"));
+    </script>
+  </body>
+</html>
