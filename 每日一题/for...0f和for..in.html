@@ -17,18 +17,18 @@
        }
        //for...in是是遍历数组、对象的key:不仅遍历数字键名，还会遍历手动添加的其它键，甚至包括原型链上的键
        //for...in 循环主要是为了遍历对象而生，不适用于遍历数组
-       for(key in arr){
-           console.log(key)
-       }
+
        for(key in obj){
-           console.log(key)
+           console.log(key)  //name  age
        }
+
+       
        //for...of 循环可以用来遍历数组、类数组对象，字符串、Set、Map 以及 Generator 对象
        for(key of arr){
-           console.log(key)
+           console.log(key)  //xxl  junjun
            key = 1
        }
-       console.log(arr)
+       console.log(arr)  //['xxl','junjun']
     </script>
 </body>
 
