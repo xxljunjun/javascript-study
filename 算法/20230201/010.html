@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            给定两个字符串 s 和 p，找到 s 中所有 p 的 变位词 的子串，返回这些子串的起始索引。不考虑答案输出的顺序。
+
+            变位词 指字母相同，但排列不同的字符串。
+
+             
+
+            示例 1：
+
+            输入: s = "cbaebabacd", p = "abc"
+            输出: [0,6]
+            解释:
+            起始索引等于 0 的子串是 "cba", 它是 "abc" 的变位词。
+            起始索引等于 6 的子串是 "bac", 它是 "abc" 的变位词。
+             示例 2：
+
+            输入: s = "abab", p = "ab"
+            输出: [0,1,2]
+            解释:
+            起始索引等于 0 的子串是 "ab", 它是 "ab" 的变位词。
+            起始索引等于 1 的子串是 "ba", 它是 "ab" 的变位词。
+            起始索引等于 2 的子串是 "ab", 它是 "ab" 的变位词。
+        */
+      /**
+       * @param {string} s
+       * @param {string} p
+       * @return {number[]}
+       */
+      var findAnagrams = function (s, p) {
+        // let strArr = []
+        // //思路一：先计算出所有的变位词。。。再去找到变位次的下标用数组存起来
+        // //n个字母有几种排列方式？   3x2x1  
+        // //如何计算出变位词的具体
+        // // Array.from(new Set())
+        // // let sArr = p.split('')
+        // sArr.forEach((val,idx,arr)=>{
+            
+        // })
+
+        //思路2：对s下手，罗列处所有的情况
+        let myMap = new Map()
+        s.split('').forEach((val,idx,arr)=>{
+            // if(idx<=s.length-p.length){
+                let sum = ''
+                for(let i = 0;i<p.length;i++){
+                    sum+=arr[idx+i]
+                }
+                myMap.set(idx,sum)
+            // }
+        })
+        console.log('myMap',myMap)
+        let needArr = []
+        myMap.forEach((val,idx)=>{
+            console.log('val----',val.split('').sort().join(''))
+            if(val && val.split('').sort().join('') == p.split('').sort().join('')){
+                needArr.push(idx)
+            }
+        })
+        console.log('needArr',needArr)
+        return needArr
+        
+      };
+
+      findAnagrams("cbaebabacd","abc")
+    </script>
+  </body>
+</html>

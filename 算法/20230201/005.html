@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            给定一个非空字符串 s，请判断如果 最多 从字符串中删除一个字符能否得到一个回文字符串。
+            示例 1:
+
+            输入: s = "aba"
+            输出: true
+            示例 2:
+
+            输入: s = "abca"
+            输出: true
+            解释: 可以删除 "c" 字符 或者 "b" 字符
+            示例 3:
+
+            输入: s = "abc"
+            输出: false
+
+        */
+      /**
+       * @param {string} s
+       * @return {boolean}
+       */
+      var validPalindrome = function (s) {
+        //可以删除1个或者0个就能等到
+        if (s == s.split("").reverse().join("")) return true;
+        //遍历删除一个字符的时候进行比较看是否是回文字符
+        let sArr = s.split("");
+        let has = false;
+        for (let i = 0; i < sArr.length; i++) {
+          sArr.splice(i, 1);
+          if (sArr.join("") == sArr.reverse().join("")) {
+            has = true;
+            break;
+          }
+          sArr = s.split("");
+        }
+        return has;
+
+        //思路2：中间两个数是否相等   =====   双指针法
+        let slow = 0,
+          fast = s.length - 1;
+        const isPalindrome = (slow, fast) => {
+          for (let i = slow, j = fast; i < j; i++, j--) {
+            if (s[i] != s[j]) return false;
+          }
+          return true;
+        };
+        while (slow < fast) {
+          if (s[slow] == s[fast]) {
+            slow++;
+            fast--;
+          } else {
+            return isPalindrome(slow + 1, fast) || isPalindrome(slow, fast - 1);
+          }
+        }
+        return true;
+      };
+
+      console.log("最后", validPalindrome("eccer"));
+    </script>
+  </body>
+</html>

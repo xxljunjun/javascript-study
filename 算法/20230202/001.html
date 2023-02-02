@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            输入一个字符串，打印出该字符串中字符的所有排列。
+            你可以以任意顺序返回这个字符串数组，但里面不能有重复元素。
+            示例:
+            输入：s = "abc"
+            输出：["abc","acb","bac","bca","cab","cba"]
+            4x3x2x1
+        */
+
+      /**
+       * @param {string} s
+       * @return {string[]}
+       */
+      var permutation = function (s) {
+       console.log(' [].toString()', [].toString())
+       let arr1 = []
+       arr1.push([].toString())
+       console.log('arr',arr1)
+        // let arr = Array.from(s)
+        // console.log('arr',arr)
+        // //思路一：有n个字符长度
+        // /*
+        //     0  n
+        //     1  n-1
+        //     2  n-2
+        //     3  n-3
+        //     4  n-4
+        //     ...
+        //     i  s-i
+        // */
+        // // Array.from(new Set())
+        // // let res = arr.filter((val,idx,array)=>{
+        // //     return array.indexOf(val) == idx
+        // // })
+        // //先计算出一共有多少种情况
+        // let len = 1
+        // for(let i = 1;i<=s.length;i++){
+        //     len*=i
+        // }
+        // console.log('总共的数组长度',len)
+        // let newArr =new Array (len)
+        // for(let i = 0;i<s.length;i++){
+        //     // s.length-i  的选择
+        //     // s[i]就是第一个字母
+        //     // let s =
+        //     for(let j = 0;j<s.length-i;j++){
+        //         //s[j]就是
+        //         s[j]
+        //     }
+
+        // }
+        // for(let i = 1;i<=s.length;i++){
+
+        // }
+        // let length = s.length
+        // while (length ==1) {
+
+        // }
+
+        const rec = [],
+          vis = [];
+        const n = s.length;
+        const arr = Array.from(s).sort();
+        console.log('将字符串转成数组',arr)
+        const perm = [];
+        const backtrack = (arr, i, n, perm) => {
+          if (i === n) {
+            rec.push(perm.toString());
+            return;
+          }
+          for (let j = 0; j < n; j++) {
+            if (vis[j] || (j > 0 && !vis[j - 1] && arr[j - 1] === arr[j])) {
+              continue;
+            }
+            vis[j] = true;
+            perm.push(arr[j]);
+            backtrack(arr, i + 1, n, perm);
+            perm.pop();
+            vis[j] = false;
+          }
+        };
+
+        backtrack(arr, 0, n, perm);
+        const size = rec.length;
+        const recArr = new Array(size).fill(0);
+        for (let i = 0; i < size; i++) {
+          recArr[i] = rec[i].split(",").join("");
+        }
+        return recArr;
+      };
+      permutation("abcd"); //4x3x2x1
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var moveZeroes = function(nums) {
+    //思路一：计算0的个数，然后往数组后面添加个数的0
+    let newArr = nums.filter(val=>val== 0)
+    let anotherArr = nums.filter(val=>val != 0)
+    console.log('newArr',newArr)
+    console.log('anotherArr',anotherArr)
+    return anotherArr.concat(newArr)
+};
+console.log(moveZeroes([0,1,0,3,12]))
+    </script>
+</body>
+</html>

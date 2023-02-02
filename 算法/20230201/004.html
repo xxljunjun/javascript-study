@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+
+        */
+      var firstUniqChar = function (s) {
+        let myMap = new Map();
+        s.split("").forEach((val) => {
+          if (myMap.has(val)) {
+            myMap.set(val,myMap.get(val) + 1);
+          } else {
+            myMap.set(val, 1);
+          }
+        });
+        console.log("myMap", myMap);
+        let lastS = "";
+        let isfirst = true
+        myMap.forEach((value, key) => {
+            console.log('>>>',value)
+            
+          if (value == 1 && isfirst) {
+            lastS = key;
+            isfirst =false 
+          }
+        });
+        console.log("lastS", lastS);
+        return lastS;
+      };
+      firstUniqChar("leetcode");
+    </script>
+  </body>
+</html>
