@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            给你一个仅包含小写英文字母和 '?' 字符的字符串 s，请你将所有的 '?' 转换为若干小写字母，使最终的字符串不包含任何 连续重复 的字符。
+
+注意：你 不能 修改非 '?' 字符。
+
+题目测试用例保证 除 '?' 字符 之外，不存在连续重复的字符。
+
+在完成所有转换（可能无需转换）后返回最终的字符串。如果有多个解决方案，请返回其中任何一个。可以证明，在给定的约束条件下，答案总是存在的。
+
+        */
+
+      /**
+       * @param {string} s
+       * @return {string}
+       */
+      var modifyString = function (s) {
+        //输出a-z 26个小写字母
+        if (s.length == 1) return s == "?" ? "a" : s;
+        let zimuArr = [];
+        for (var i = 0; i < 26; i++) {
+          zimuArr.push(String.fromCharCode(97 + i));
+        }
+        console.log("zimuArr", zimuArr);
+        while (s.indexOf("?") > -1) {
+          if (s.indexOf("?") == 0) {
+            s= s.replace(
+              "?",
+              zimuArr.filter((val) => {
+                return val != s[1];
+              })[0]
+            );
+          } else if (s.indexOf("?") == s.length - 1) {
+           s= s.replace(
+              "?",
+              zimuArr.filter((val) => {
+                return val != s[s.length - 2];
+              })[0]
+            );
+          } else {
+            //其他情况
+            s=s.replace(
+              "?",
+              zimuArr.filter((val) => {
+                return val != s[s.indexOf("?")-1] && val != s[s.indexOf("?")+1]
+              })[0]
+            );
+          }
+        }
+        return s
+      };
+      console.log(modifyString("?bv?a"));
+    </script>
+  </body>
+</html>

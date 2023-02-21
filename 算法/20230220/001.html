@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {string} word
+       * @return {boolean}
+       */
+      var detectCapitalUse = function (word) {
+        // //大于等于2时   第一个字母是大写时候
+        // if (word.length == 1) return true;
+        // //利用正则
+        // let regA = /^[A-Z]+$/;
+        // let rega = /^[a-z]+$/;
+        // let len = word.length;
+        // let dealStr = word.slice(1, len);
+        // console.log("dealStr", dealStr);
+        // console.log(" regA.test(dealStr)", regA.test(dealStr));
+        // console.log(" rega.test(dealStr)", rega.test(dealStr));
+        // if (rega.test(word[0])) {
+        //   return rega.test(dealStr);
+        // } else {
+        //   //全部大写或者全部小写都是true
+        //   return regA.test(dealStr) || rega.test(dealStr);
+        // }
+
+
+        //全部都是大写  全部都是小写
+        return /^[A-Z]+$|^[a-z]+$|^[A-Z][a-z]+$/.test(word)
+      };
+
+      detectCapitalUse("FlaG");
+    </script>
+  </body>
+</html>

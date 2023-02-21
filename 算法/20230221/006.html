@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number[]} nums
+       * @return {number[]}
+       */
+      var runningSum = function (nums) {
+        let arr1 = [];
+        nums.reduce((total, val, indx, arr) => {
+            console.log(total,val)
+            arr1.push(total+val)
+          return  total+=val
+        }, 0);
+        return arr1
+      };
+      console.log(runningSum([1,2,3,4]))
+    </script>
+  </body>
+</html>

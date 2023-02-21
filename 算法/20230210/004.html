@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var findSpecialInteger = function (arr) {
+        let obj = {};
+        arr.forEach((val) => {
+          if (obj[val]) {
+            obj[val] += 1;
+          } else {
+            obj[val] = 1;
+          }
+        });
+
+        let numsArr = Object.entries(obj).filter((k) => {
+          console.log("k[1]", k[1]);
+          console.log("arr.length/4", arr.length / 4);
+          return k[1] > arr.length / 4;
+        });
+        console.log("numsArr", numsArr);
+        return numsArr[0][0];
+      };
+      console.log(findSpecialInteger([1, 2, 2, 6, 6, 6, 6, 7, 10]));
+    </script>
+  </body>
+</html>

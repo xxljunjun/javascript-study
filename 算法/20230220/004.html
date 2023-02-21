@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+ * @param {string[]} words
+ * @return {string[]}
+ */
+var commonChars = function(words) {
+    //找出数组最短的哪个
+    //遍历
+    let len = words[0].length
+    let idx = 0
+    words.forEach((val,index)=>{
+        if(len>val.length){
+            len = val.length
+            idx = index
+        }
+    })
+    let keyWords =JSON.parse(JSON.stringify( words[idx]))
+    console.log('keyWords',keyWords)
+    let k = 0
+    let arr = []
+    while(k<len){
+        let flag = true
+        for(let i = 0;i<words.length;i++){
+            let kindex = words[i].indexOf(keyWords[k])
+           if( kindex == -1){
+               flag = false
+           }{
+            console.log('words[i][kindex]',words[i][kindex])
+            words[i] =  words[i].replace(new RegExp(`${keyWords[k]}`),'')
+            console.log('words[i]',words[i])
+           }
+        }
+        if(flag){
+            arr.push(keyWords[k])
+        }
+        k++
+    }
+    console.log(words)
+    return arr
+};
+console.log(commonChars(["cool","lock","cook"]))
+    </script>
+</body>
+</html>

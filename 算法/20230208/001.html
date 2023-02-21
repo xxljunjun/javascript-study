@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            输入一个非负整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
+
+            示例 1:
+            输入: [10,2]
+            输出: "102"
+
+            示例 2:
+            输入: [3,30,34,5,9]     22  210
+            输出: "3033459"
+        */
+      /**
+       * @param {number[]} nums
+       * @return {string}
+       */
+      var minNumber = function (nums) {
+        //思路一：排序规则。
+        //只有一位的就直接排在最前面
+        // 有两位或者两位以上的先比较第一位的数字，再比较第二位数字。一直比较下去
+        for(let i = 0;i<nums.length;i++){
+            for(let j = i+1;j<nums.length;j++){
+                console.log(i,j)
+                //冒泡排序比较两个数交换位置muns[i]   nums[j]
+                // if(nums[i].toString().length == nums[j].toString().length){
+                    if(nums[i]>nums[j]){
+                        let n = nums[j]
+                        nums[j] = nums[i] 
+                        nums[i] = n
+                    }
+                // }else{
+                //     let len = nums[i].toString().length>nums[j].toString().length?nums[j].toString().length:nums[i].toString().length
+                //     for(let k = 0;k<len;k++){
+                //         if(nums[i].toString()[k]<nums[j].toString()[k]){
+                //             let n = nums[j]
+                //         nums[j] = nums[i] 
+                //         nums[i] = n
+                //         }
+                //     }
+                // }
+            }
+        }
+        console.log('经过排序的数组',nums)
+      };
+      console.log(minNumber([3,30,34,5,9]))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+ * @param {number[]} arr
+ * @return {boolean}
+ */
+var canMakeArithmeticProgression = function(arr) {
+    if(arr.length<=2)return true
+    let flag = true
+    arr.sort((a,b)=>{
+        return a-b
+    })
+    console.log(arr)
+    let num = arr[1]-arr[0]
+    for(let i = 0;i<arr.length;i++){
+        if(arr[i+1] != undefined && arr[i+1] -arr[i] != num){
+                flag = false
+        }
+         if(arr[i-1] != undefined  && arr[i] -arr[i-1] != num){
+             flag = false
+        }
+    }
+    return flag
+};
+console.log(canMakeArithmeticProgression([-68,-96,-12,-40,16]))
+    </script>
+</body>
+</html>
