@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var findSubarrays = function (nums) {
+        const n = nums.length;
+        let sumArr = new Array(n - 1).fill(0);
+        // return sumArr
+        for (let i = 0; i < n - 1; i++) {
+          sumArr[i] = nums[i] + nums[i + 1];
+        }
+        return new Set(sumArr).size !== n - 1; //长度相等的话，证明去重没有效果
+      };
+      console.log(findSubarrays([1,2,3,4,5]))
+    </script>
+  </body>
+</html>
