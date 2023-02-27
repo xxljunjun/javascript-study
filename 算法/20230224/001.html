@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+                  找到小镇法官
+              */
+      /**
+       * @param {number} n
+       * @param {number[][]} trust
+       * @return {number}
+       */
+      var findJudge = function (n, trust) {
+        // let arr1 = [];
+        // let arr2 = [];
+        // let xx = -1
+        // let trustStr = trust.map(val=>{
+        //     return `[${val}]`
+        // })
+        // console.log('trustStr',trustStr)
+        // trust.forEach((val, idx) => {
+        //   arr1.push(val[0]);
+        //   arr2.push(val[1]);
+        // });
+        // Array.from(new Set(arr1));
+        // Array.from(new Set(arr2));
+        // console.log(arr1, arr2);
+        // for (let i = 1; i < n + 1; i++) {
+        //   if (arr1.indexOf(i) == -1) {
+        //     console.log('iiii',i)
+        //     let duboArr = [];
+        //     for (let j = 1; j < n + 1; j++) {
+        //         if(i !=j){
+        //             duboArr.push(`[${j},${i}]`);
+
+        //         }
+        //     }
+        //     console.log('duboArr',duboArr)
+        //     //在
+        //     let flag =true
+        //     duboArr.forEach(val=>{
+        //         if(trustStr.indexOf(val) == -1){
+        //             flag= false
+        //         }
+        //     })
+        //     console.log('flag',flag)
+        //     if(flag){
+        //         xx =  i
+        //     }
+        //   }
+        // }
+        // return xx;
+
+
+        // 没有信任关系，只有1个人则他就是法官，有多个人则不存在法官
+    if (!trust.length) return n === 1 ? 1 : -1
+
+// 直接用数组来记录；被人信任视为+1，信任别人视为-1；法官的值只可能是n-1
+let arr = Array(n + 1).fill(0)
+trust.map(item => {
+    arr[item[0]]--
+    arr[item[1]]++
+})
+// console.log('arr=', arr)
+for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === n - 1) {
+        return i
+    }
+}
+return -1 // 没找到，返回-1
+
+
+      };
+      console.log(
+        findJudge(2, [
+          [1, 2],
+        ])
+      );
+    </script>
+  </body>
+</html>

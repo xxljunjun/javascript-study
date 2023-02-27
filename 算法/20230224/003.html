@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。
+
+            请注意 ，必须在不复制数组的情况下原地对数组进行操作。
+
+             
+
+            示例 1:
+
+            输入: nums = [0,1,0,3,12]
+            输出: [1,3,12,0,0]
+            示例 2:
+
+            输入: nums = [0]
+            输出: [0]
+        */
+
+        /**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var moveZeroes = function(nums) {
+    // let arr = []
+    //     nums.forEach((val,idx)=>{
+    //         if(val == 0){
+    //             arr.push(idx)
+    //         }
+    //     })
+    // console.log('>>',arr)  //[3,4,6,9]
+    // for(let i = 0;i<arr.length;i++){
+    //     if(i == 0){
+    //         nums.splice(arr[i],1)
+    //     }else{
+    //         nums.splice(arr[i]-i,1)
+    //     }
+    //     nums.push(0)
+    // }  
+    // console.log(nums)
+    // return nums
+
+
+     //双指针解决
+     let left = right = 0;
+        let len = nums.length
+        while (right < len) {
+            if (nums[right] == 0) {
+                right++;
+            } else {
+                let temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+                left++;
+                right++
+            }
+        }
+        return nums;
+    
+};
+console.log(moveZeroes([4,2,4,0,0,3,0,5,1,0]))
+    </script>
+  </body>
+</html>

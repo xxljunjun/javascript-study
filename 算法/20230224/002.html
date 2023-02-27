@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            给你一份旅游线路图，该线路图中的旅行线路用数组 paths 表示，其中 paths[i] = [cityAi, cityBi] 表示该线路将会从 cityAi 直接前往 cityBi 。请你找出这次旅行的终点站，即没有任何可以通往其他城市的线路的城市。
+
+            题目数据保证线路图会形成一条不存在循环的线路，因此恰有一个旅行终点站。
+
+             
+
+            示例 1：
+
+            输入：paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
+            输出："Sao Paulo" 
+            解释：从 "London" 出发，最后抵达终点站 "Sao Paulo" 。本次旅行的路线是 "London" -> "New York" -> "Lima" -> "Sao Paulo" 。
+            示例 2：
+
+            输入：paths = [["B","C"],["D","B"],["C","A"]]
+            输出："A"
+            解释：所有可能的线路是：
+            "D" -> "B" -> "C" -> "A". 
+            "B" -> "C" -> "A". 
+            "C" -> "A". 
+            "A". 
+            显然，旅行终点站是 "A" 。
+            示例 3：
+
+            输入：paths = [["A","Z"]]
+            输出："Z"
+        */
+
+      /**
+       * @param {string[][]} paths
+       * @return {string}
+       */
+      var destCity = function (paths) {
+        //     //对数组进行排序
+        //    for(let i = 0;i<paths.length-1;i++){
+        //     for(let j = i+1;j<paths.length;j++){
+        //         if(paths[i][0] == paths[j][1]){
+        //             //交换位置
+        //             let temp = paths[i]
+        //             paths[i] =  paths[j]
+        //             paths[j] = temp
+        //         }
+        //     }
+        //    }
+        //    console.log('paths',paths)
+        //     return paths[paths.length-1][1]
+
+        let arr = [];
+        for (let i = 0; i < paths.length; i++) {
+          paths[[i]].forEach((val, idx) => {
+            arr.push(val);
+          });
+        }
+        let myMap = new Map();
+        arr.forEach((val) => {
+          if (myMap.has(val)) {
+            myMap.set(val, myMap.get(val) + 1);
+          } else {
+            myMap.set(val, 1);
+          }
+        });
+        let returnStr = "";
+        myMap.forEach((val, idx) => {
+          console.log("idx", idx);
+          console.log("val", val);
+          console.log("i----");
+          if (val == 1) {
+            paths.forEach((item) => {
+              if (item.indexOf(idx) > -1 && item[1] == idx) {
+                console.log(">>>>");
+                returnStr = idx;
+              }
+            });
+          }
+        });
+        return returnStr;
+      };
+      console.log(
+        destCity([
+          ["jMgaf WaWA", "iinynVdmBz"],
+          [" QCrEFBcAw", "wRPRHznLWS"],
+          ["iinynVdmBz", "OoLjlLFzjz"],
+          ["OoLjlLFzjz", " QCrEFBcAw"],
+          ["IhxjNbDeXk", "jMgaf WaWA"],
+          ["jmuAYy vgz", "IhxjNbDeXk"],
+        ])
+      );
+    </script>
+  </body>
+</html>
