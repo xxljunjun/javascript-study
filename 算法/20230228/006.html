@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            j>i && prices[j] <= prices[i] 的 最小下标
+        */
+        /**
+ * @param {number[]} prices
+ * @return {number[]}
+ */
+var finalPrices = function(prices) {
+    let arr = []
+    for(let i = 0;i<prices.length;i++){
+        let num = prices[i]
+        for(let j = i+1;j<prices.length;j++){
+            if(prices[j] <= prices[i]){
+                num = prices[i]-prices[j]
+                break
+            }
+        }
+        arr.push(num)
+    }
+    return arr
+};
+console.log(finalPrices([8,4,6,2,3]))
+    </script>
+</body>
+</html>

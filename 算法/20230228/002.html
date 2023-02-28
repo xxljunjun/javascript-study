@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            给你一个由若干 0 和 1 组成的数组 nums 以及整数 k。如果所有 1 都至少相隔 k 个元素，则返回 True ；否则，返回 False 。
+
+
+        */
+       /**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {boolean}
+ */
+var kLengthApart = function(nums, k) {
+   let arr = nums.join('').split('1')
+   console.log(arr)
+    arr.pop()
+    arr.shift()
+    for(let i = 0;i<arr.length;i++){
+        if(arr[i].length<k){
+            return false
+        }
+    }
+    return true
+};
+console.log(kLengthApart([1,0,0,0,1,0,0,0,1,0]
+,5))
+    </script>
+</body>
+</html>

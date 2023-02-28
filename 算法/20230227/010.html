@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var isPrefixOfWord = function (sentence, searchWord) {
+        let idx = -1;
+        console.log( sentence.split(" "))
+        let arr = sentence.split(" ")
+        for(let i = 0;i<arr.length;i++){
+            if(arr[i].indexOf(searchWord)>-1 && arr[i].slice(0,searchWord.length) == searchWord){
+                idx = i + 1;
+                return idx
+            }
+        }
+        return idx
+        // sentence.split(" ").forEach((val, index) => {
+        //   if (val.indexOf(searchWord) > -1) {
+        //     console.log('>>>',index)
+        //     idx = index + 1;
+        //     bre idx;
+        //   }
+        // });
+        // return idx
+      };
+      console.log(isPrefixOfWord( "this problem is an easy problem","pro"));
+    </script>
+  </body>
+</html>
