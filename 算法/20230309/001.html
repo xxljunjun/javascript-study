@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+ * @param {number[]} arr
+ * @return {boolean}
+ */
+var uniqueOccurrences = function(arr) {
+
+    // let myMap = new Map()
+    // for(let i = 0;i<arr.length;i++){
+    //     if(myMap.has(arr[i])){
+    //         myMap.set(arr[i],myMap.get(arr[i])+1)
+    //     }else{
+    //         myMap.set(arr[i],1)
+    //     }
+    // }
+    // let newArr = []
+    // let Aarr = Array.from(myMap.values())
+    // console.log('Aarr',Aarr)
+    // for(let i = 0;i<Aarr.length;i++){
+    //    if(newArr.indexOf(Aarr[i])> -1){
+    //        return false
+    //    }
+    //    newArr.push(Aarr[i])
+    // }
+    // return true
+
+    let map = new Map()
+    for(let v of arr){
+        if(map.has(v)){
+            map.set(v,map.get(v)+1)
+        }else{
+            map.set(v,1)
+        }
+    }
+    let set = new Set()
+    for(let [key,val] of map){
+        set.add(val)
+    }
+    return map.size==set.size
+};
+console.log(uniqueOccurrences([1,2,2,1,1,3]))
+    </script>
+</body>
+</html>
