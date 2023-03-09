@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            给你一个字符串 s ，仅反转字符串中的所有元音字母，并返回结果字符串。
+
+            元音字母包括 'a'、'e'、'i'、'o'、'u'，且可能以大小写两种形式出现不止一次。
+
+             
+
+            示例 1：
+
+            输入：s = "hello"   olleh   o e
+            输出："holle"  
+            示例 2：
+
+            输入：s = "leetcode"
+            输出："leotcede"
+        */      
+      /**
+       * @param {string} s
+       * @return {string}
+       */
+      var reverseVowels = function (s) {
+        let yuanArr = ['a','e','i','o','u','A','E','I','O','U']
+        //思路：先反转  再提取出反转后的元音  最后再替换
+        let arr = s.split('').reverse()
+
+        let yArr = []
+        for(let i = 0;i<arr.length;i++){
+            if(yuanArr.indexOf(arr[i]) > -1){
+                yArr.push(arr[i])
+            }
+        }
+        return s.split('').map(val=>{
+            if(yuanArr.indexOf(val)> -1){
+                return yArr.shift()
+            }else{
+                return val
+            }
+        }).join('')
+
+        
+
+      };
+      console.log(reverseVowels('leetcode'))
+    </script>
+  </body>
+</html>

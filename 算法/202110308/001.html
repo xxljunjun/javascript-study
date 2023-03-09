@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+        /*
+            给你一个字符串 text，你需要使用 text 中的字母来拼凑尽可能多的单词 "balloon"（气球）。
+
+字符串 text 中的每个字母最多只能被使用一次。请你返回最多可以拼凑出多少个单词 "balloon"。
+
+        */
+      /**
+       * @param {string} text
+       * @return {number}
+       */
+      var maxNumberOfBalloons = function (text) {
+        if(text.length<7) return 0
+        let str = 'balloon'
+        let obj = {
+            a:1,
+            b:1,
+            l:2,
+            o:2,
+            n:1
+        }
+        // 0: {"n" => 1}
+        // 1: {"l" => 2}
+        // 2: {"a" => 1}
+        // 3: {"b" => 1}
+        // 4: {"o" => 2}
+        let myMap = new Map()
+        for(let i = 0;i<text.length;i++){
+            if(str.indexOf(text[i])>-1){
+                if(myMap.has(text[i])){
+                myMap.set(text[i],myMap.get(text[i])+1)
+            }else{
+                myMap.set(text[i],1)
+            }
+            }
+            
+        }
+        console.log('myMap',myMap)
+        
+        //思路：取n,a,b的最小值    取l,o的最小值
+        let arr1 = []
+        let arr2 = []
+        myMap.forEach((val,idx)=>{
+            if(idx == 'n' || idx == 'a' || idx == 'b'){
+                arr1.push(val)
+            }else{
+                arr2.push(val/2)
+            }
+        })
+        let min = Math.min(...arr1)>Math.min(...arr2)?Math.min(...arr2):Math.min(...arr1)
+        return min>=1?Math.floor(min):0
+      };
+      console.log(maxNumberOfBalloons("nlaebolko"))
+    </script>
+  </body>
+</html>
