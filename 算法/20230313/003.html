@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            给你一个整数数组 nums ，返回数组中最大数和最小数的 最大公约数 。
+
+            两个数的 最大公约数 是能够被两个数整除的最大正整数。
+
+             
+
+            示例 1：
+
+            输入：nums = [2,5,6,9,10]
+            输出：2
+            解释：
+            nums 中最小的数是 2
+            nums 中最大的数是 10
+            2 和 10 的最大公约数是 2
+            示例 2：
+
+            输入：nums = [7,5,6,8,3]
+            输出：1
+            解释：
+            nums 中最小的数是 3
+            nums 中最大的数是 8
+            3 和 8 的最大公约数是 1
+            示例 3：
+
+            输入：nums = [3,3]
+            输出：3
+            解释：
+            nums 中最小的数是 3
+            nums 中最大的数是 3
+            3 和 3 的最大公约数是 3
+
+            来源：力扣（LeetCode）
+            链接：https://leetcode.cn/problems/find-greatest-common-divisor-of-array
+            著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+        */
+        /**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var findGCD = function(nums) {
+    let min = Math.min(...nums)
+    let max = Math.max(...nums)
+    let arr1 = []
+    let arr2 = []
+    for(let i = 1;i<=min;i++){
+        if(min%i == 0){
+            arr1.push(i)
+        }
+    }
+    for(let i = 1;i<=max;i++){
+        if(max%i == 0){
+                arr2.push(i)
+        }
+    }
+    let newArr = arr2.filter(val=>{
+        return arr1.indexOf(val)>-1
+    })
+    return Math.max(...newArr)
+};
+console.log(findGCD([3,3]))
+    </script>
+</body>
+</html>

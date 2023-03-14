@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+ * @param {string} word
+ * @return {number}
+ */
+var numDifferentIntegers = function(word) {
+    let arr = word.replace(/[a-z]/g,' ').split(' ')
+    console.log('arr',arr)
+    let meSet = new Set()
+    for(let i = 0;i<arr.length;i++){
+        if(arr[i]){
+            while (arr[i][0] == 0) {
+                arr[i] = arr[i].slice(1,arr[i].length)
+            }
+            meSet.add(arr[i])
+        }
+    }
+    console.log('meSet',meSet)
+    return meSet.size
+};
+console.log(numDifferentIntegers("a1b01c001"))
+    </script>
+</body>
+</html>
