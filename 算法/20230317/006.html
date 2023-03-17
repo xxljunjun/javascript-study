@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number} num
+       * @return {number}
+       */
+      var minimumSum = function (num) {
+        let str = num + "";
+        let arr = str.split("").sort((a,b)=>a-b);
+        console.log('arr',arr)
+        for(let i = 0;i<arr.length;i++){
+            arr[i] = Number(arr[i])
+        }
+        return arr[0]*10+arr[2]+arr[1]*10+arr[3]
+        
+        // 分析4个数字可以发现，选择num中最小的2个数字当新数字的十位，剩余2个数字无所谓，相加即是最小和
+      };
+      console.log(minimumSum(4009));
+    </script>
+  </body>
+</html>

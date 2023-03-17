@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            给你一个下标从 0 开始的整数数组 nums 。如果两侧距 i 最近的不相等邻居的值均小于 nums[i] ，则下标 i 是 nums 中，某个峰的一部分。类似地，如果两侧距 i 最近的不相等邻居的值均大于 nums[i] ，则下标 i 是 nums 中某个谷的一部分。对于相邻下标 i 和 j ，如果 nums[i] == nums[j] ， 则认为这两下标属于 同一个 峰或谷。
+
+注意，要使某个下标所做峰或谷的一部分，那么它左右两侧必须 都 存在不相等邻居。
+
+返回 nums 中峰和谷的数量。
+        */
+
+        /**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var countHillValley = function(nums) {
+    //判断去重后的峰和谷
+    //找到重复的元素，有几个
+    if(nums.length<3)return 0
+    let idx = 0
+    let arr = Array.from(new Set(nums))
+    for(let i =0;i<arr.length;i++){
+        if(i != 0 && i !=arr.length-1){
+            if((arr[i-1] <arr[i] && arr[i]> arr[i+1]) || (arr[i-1] >arr[i] && arr[i]< arr[i+1])){
+                idx+=1
+            }   
+        }
+    }
+    return idx
+};
+
+console.log(countHillValley([5,7,7,1,7]))
+    </script>
+</body>
+</html>

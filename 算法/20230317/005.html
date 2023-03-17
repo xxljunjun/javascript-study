@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /**
+       * @param {number[]} nums
+       * @return {number[]}
+       */
+      var sortEvenOdd = function (nums) {
+        //     let newArr = new Array(nums.length)
+        //     let arrJ = []
+        //     let arrJIndex = []
+        //     let arrO = []
+        //     let arrOIndex = []
+
+        //     for(let i = 0;i<nums.length;i++){
+        //         if(i%2 ==0 ){
+        //             //递增
+        //             arrO.push(nums[i])
+        //             arrOIndex.push(i)
+        //         }else{
+        //             arrJ.push(nums[i])
+        //             arrJIndex.push(i)
+        //         }
+        //     }
+        //     arrJ.sort((a,b)=>{
+        //         return b-a
+        //     })
+        //     arrO.sort((a,b)=>{
+        //         return a-b
+        //     })
+        //     console.log('arrO',arrO)
+        //     console.log('arrJ',arrJ)
+        //     console.log('arrOIndex',arrOIndex)
+        //     console.log('arrJIndex',arrJIndex)
+        //    for(let i = 0;i<arrJIndex.length;i++){
+        //     newArr[arrJIndex[i]] = arrJ[i]
+        //    }
+        //    for(let i = 0;i<arrOIndex.length;i++){
+        //     newArr[arrOIndex[i]] = arrO[i]
+        //     }
+        //     return newArr
+
+        let newArr =[]
+        let arrJ = [];
+        let arrO = [];
+        for (let i = 0; i < nums.length; i++) {
+          if (i % 2 == 0) {
+            //递增
+            arrO.push(nums[i]);
+          } else {
+            arrJ.push(nums[i]);
+          }
+        }
+        arrJ.sort((a, b) => {
+          return b - a;
+        });
+        arrO.sort((a, b) => {
+          return a - b;
+        });
+        console.log('nums',nums)
+        for (let i = 0; i < nums.length; i++) {
+          if (i % 2 == 0) {
+            //递增
+            newArr.push(arrO.shift());
+          } else {
+            newArr.push(arrJ.shift());
+          }
+        }
+        return newArr;
+      };
+      console.log(
+        sortEvenOdd([
+          36, 45, 32, 31, 15, 41, 9, 46, 36, 6, 15, 16, 33, 26, 27, 31, 44, 34,
+        ])
+      );
+    </script>
+  </body>
+</html>

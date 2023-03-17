@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            给你两个字符串 current 和 correct ，表示两个 24 小时制时间 。
+
+            24 小时制时间 按 "HH:MM" 进行格式化，其中 HH 在 00 和 23 之间，而 MM 在 00 和 59 之间。最早的 24 小时制时间为 00:00 ，最晚的是 23:59 。
+
+            在一步操作中，你可以将 current 这个时间增加 1、5、15 或 60 分钟。你可以执行这一操作 任意 次数。
+
+            返回将 current 转化为 correct 需要的 最少操作数 。
+
+             
+
+            示例 1：
+
+            输入：current = "02:30", correct = "04:35"
+            输出：3
+            解释：
+            可以按下述 3 步操作将 current 转换为 correct ：
+            - 为 current 加 60 分钟，current 变为 "03:30" 。
+            - 为 current 加 60 分钟，current 变为 "04:30" 。 
+            - 为 current 加 5 分钟，current 变为 "04:35" 。
+            可以证明，无法用少于 3 步操作将 current 转化为 correct 。
+            示例 2：
+
+            输入：current = "11:00", correct = "11:01"
+            输出：1
+            解释：只需要为 current 加一分钟，所以最小操作数是 1 。
+        */
+      /**
+       * @param {string} current
+       * @param {string} correct
+       * @return {number}
+       */
+      var convertTime = function (current, correct) {
+        if(current === correct) return 0
+        let h = Number(correct.split(':')[0])-Number(current.split(':')[0])
+        let m =  Number(correct.split(':')[1])-Number(current.split(':')[1])
+        console.log('hhhh',h)
+        console.log('mmmm',m)
+        let lastTime = h*60+m  //125
+        let idx = 0
+        console.log('lastTime',lastTime)
+        while (lastTime >0) {
+
+            if(1<=lastTime && lastTime<5){
+                lastTime-=1
+            }else if(5<=lastTime && lastTime<15){
+                lastTime-=5
+            }else if(15<=lastTime && lastTime<60){
+                lastTime-=15
+            }else{
+                lastTime-=60
+            }
+            idx+=1
+        }
+        return idx  //2
+      };
+      console.log(convertTime("00:00", "23:59"));   //23+3+2+4
+    </script>
+  </body>
+</html>
