@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+            句子仅由小写字母（'a' 到 'z'）、数字（'0' 到 '9'）、连字符（'-'）、标点符号（'!'、'.' 和 ','）以及空格（' '）组成。
+            每个句子可以根据空格分解成 一个或者多个 token ，这些 token 之间由一个或者多个空格 ' ' 分隔。
+
+            如果一个 token 同时满足下述条件，则认为这个 token 是一个有效单词：
+
+            仅由小写字母、连字符和/或标点（不含数字）组成。
+            至多一个 连字符 '-' 。如果存在，连字符两侧应当都存在小写字母（"a-b" 是一个有效单词，但 "-ab" 和 "ab-" 不是有效单词）。
+            至多一个 标点符号。如果存在，标点符号应当位于 token 的 末尾 。
+            这里给出几个有效单词的例子："a-b."、"afad"、"ba-c"、"a!" 和 "!" 。
+
+            给你一个字符串 sentence ，请你找出并返回 sentence 中 有效单词的数目 。
+        /**
+ * @param {string} sentence
+ * @return {number}
+ */
+      var countValidWords = function (sentence) {
+        //['!',"、",",",'.']只能出现一次，且是在最后
+        //-只能出现一次且不能在开头和尾巴
+        //不能有数字
+        //一定要有字母
+
+        // let reg = /[0-9]+/
+        // let reg1 = /[!、,.]+/
+        // let reg2 = /[a-z]+/
+        // let arr1 = ['!',"、",",",'.']
+        // let arr = sentence.split(' ')
+        // let count = 0
+        // //遍历得到结果
+        // for(let i = 0;i<arr.length;i++){
+        //     if(arr[i] == '!' || arr[i] == '.' || arr[i] == "、" || arr[i] == ","){
+        //         count++
+        //         continue
+        //     }
+        //     if(arr[i] == ''){
+        //         continue
+        //     }
+        //     let num1 = arr[i].indexOf('-')
+        //     let num2 = arr[i].lastIndexOf('-')
+        //     let Gcan = false
+        //     if(num1>-1 ){
+        //        if(num1 == num2 && arr[i].split('-').length>0 && reg2.test(arr[i].split('-')[0])&& reg2.test(arr[i].split('-')[1])){
+
+        //         Gcan = true
+        //        }
+        //     } else{
+        //         Gcan = true
+        //     }
+
+        //     if( reg2.test(arr[i]) && !reg.test(arr[i]) && Gcan){
+        //         // q-,
+        //         if(reg1.test(arr[i])){
+        //             let flag = true
+
+        //             for(let j = 0;j<arr1.length;j++){
+        //                 let times = arr[i].indexOf(arr1[j])
+        //                 if(times != arr[i].length-1 && times != -1){
+        //                     flag = false
+        //                     break
+        //                 }
+        //             }
+        //             if(flag){
+        //                 console.log('++++',arr[i])
+        //                 count+=1
+        //                 continue
+        //             }
+        //         }else{
+        //             console.log('----',arr[i])
+        //             count+=1
+        //         }
+
+        //     }
+        // }
+        // return count
+
+        let pass = 0;
+        const reg = /^([,.!]|[a-z]+(-[a-z]+)?[,.!]?)$/;
+        sentence.split(" ").forEach((word) => {
+          if (reg.test(word)) pass++;
+        });
+        return pass;
+      };
+      console.log(
+        countValidWords(
+          " 62   nvtk0wr4f  8 qt3r! w1ph 1l ,e0d 0n 2v 7c.  n06huu2n9 s9   ui4 nsr!d7olr  q-, vqdo!btpmtmui.bb83lf g .!v9-lg 2fyoykex uy5a 8v whvu8 .y sc5 -0n4 zo pfgju 5u 4 3x,3!wl  fv4   s  aig cf j1 a i  8m5o1  !u n!.1tz87d3 .9    n a3  .xb1p9f  b1i a j8s2 cugf l494cx1! hisceovf3 8d93 sg 4r.f1z9w   4- cb r97jo hln3s h2 o .  8dx08as7l!mcmc isa49afk i1 fk,s e !1 ln rt2vhu 4ks4zq c w  o- 6  5!.n8ten0 6mk 2k2y3e335,yj  h p3 5 -0  5g1c  tr49, ,qp9 -v p  7p4v110926wwr h x wklq u zo 16. !8  u63n0c l3 yckifu 1cgz t.i   lh w xa l,jt   hpi ng-gvtk8 9 j u9qfcd!2  kyu42v dmv.cst6i5fo rxhw4wvp2 1 okc8!  z aribcam0  cp-zp,!e x  agj-gb3 !om3934 k vnuo056h g7 t-6j! 8w8fncebuj-lq    inzqhw v39,  f e 9. 50 , ru3r  mbuab  6  wz dw79.av2xp . gbmy gc s6pi pra4fo9fwq k   j-ppy -3vpf   o k4hy3 -!..5s ,2 k5 j p38dtd   !i   b!fgj,nx qgif "
+        )
+      );
+    </script>
+  </body>
+</html>

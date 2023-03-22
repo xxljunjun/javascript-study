@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+ * @param {string} word
+ * @return {number}
+ */
+var countVowelSubstrings = function(word) {
+    // //截取5个，
+    // if(word.length<5)return 0
+    // let arr = []
+    // let len = word.length
+    // for(let i = 0;i<word.length;i++){
+    //     let num = i+5
+    //     while(num<=len){
+    //         arr.push(word.slice(i,num))
+    //         num++
+            
+    //     }
+    // }
+    // console.log('arr',arr)
+    // let oArr = ['a','e','i','o' , 'u']
+    // let zimuArr = []
+    // for(let i = 0;i<26;i++){
+    //     zimuArr.push( String.fromCharCode(97+i))
+    // }
+    // zimuArr = zimuArr.filter(val=>{
+    //     return oArr.indexOf(val) == -1
+    // })
+    // console.log('zimuArr',zimuArr)
+    // let idx = 0
+    //  for(let i = 0;i<arr.length;i++){
+    //      //
+    //      let flag = true
+    //      let flag1 = true
+    //     for(let j = 0;j<arr[i].length;j++){
+    //        if(zimuArr.indexOf(arr[i][j]) > -1){
+    //            flag = false
+    //        }
+    //     }
+    //     for(let j = 0;j<oArr.length;j++){
+    //        if(arr[i].indexOf(oArr[j]) == -1){
+    //            flag1 = false
+    //        }
+    //     }
+    //     if(flag && flag1){
+    //         console.log('----',arr[i])
+    //         idx+=1
+    //     }
+    // }
+    // return idx
+
+    console.log('aeiou'.includes('aeiuo'))
+
+    let result = 0
+      let len = word.length
+      for(let i = 0; i < len; i++) {
+        let set = new Set()
+        for(let j = i; j < len; j++) {
+          if(!'aeiou'.includes(word[j])) break;
+          set.add(word[j])
+          if(set.size == 5) result++
+        }
+      }
+      return result
+
+};
+console.log(countVowelSubstrings("uieaouieaouieaouieaouieaouieaouieaouieaouieaouieaouieaouieaouieaouieaouieaouieaouieaouieaouieaouieao"))
+    </script>
+</body>
+</html>

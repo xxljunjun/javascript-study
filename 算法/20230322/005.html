@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+ * @param {string[]} words
+ * @param {string} s
+ * @return {number}
+ */
+var countPrefixes = function(words, s) {
+    let idx = 0
+    for(let i = 0;i<=words.length;i++){
+        console.log(s.indexOf(words[i]))
+        if(s.indexOf(words[i]) == 0){
+            idx+=1
+        }
+    }
+    return idx
+};
+console.log(countPrefixes(["a","b","c","ab","bc","abc"],'abc'))
+    </script>
+</body>
+</html>

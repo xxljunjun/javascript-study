@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var mostFrequentEven = function(nums) {
+    let myMap = new Map()
+    for(let i = 0;i<nums.length;i++){
+        if(nums[i]%2 == 0){
+            if(myMap.has(nums[i])){
+                myMap.set(nums[i],1+myMap.get(nums[i]))
+            }else{
+                myMap.set(nums[i],1)
+            }
+        }
+    }
+    if(myMap.size == 0)return -1
+    let idx = -1
+    for (const [key, value] of myMap) {
+        // console.log(`${key} = ${value}`);
+        if(value>=idx){
+            idx = value
+        }
+    }
+    let needBack = []
+    for (const [key, value] of myMap) {
+        // console.log(`${key} = ${value}`);
+        if(value ==idx){
+            idx = value
+            needBack.push(key) 
+        }
+    }
+    console.log('needBack',needBack)
+    needBack.sort((a,b)=>{
+        return a-b
+    })
+    return needBack[0]
+};
+console.log(mostFrequentEven([0,1,2,2,4,4,1]))
+    </script>
+</body>
+</html>

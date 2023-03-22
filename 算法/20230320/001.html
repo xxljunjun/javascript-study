@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+ * @param {string} word1
+ * @param {string} word2
+ * @return {boolean}
+ */
+var checkAlmostEquivalent = function(word1, word2) {
+    // let aObj = new Map()
+    // let bObj = new Map()
+    // for(let i = 0;i<word1.length;i++){
+    //     if(aObj.has(word1[i])){
+    //         aObj.set(word1[i],1+aObj.get(word1[i]))
+    //     }else{
+    //         aObj.set(word1[i],1)
+    //     }
+    // }
+    // for(let i = 0;i<word2.length;i++){
+    //     if(bObj.has(word2[i])){
+    //         bObj.set(word2[i],1+bObj.get(word2[i]))
+    //     }else{
+    //         bObj.set(word2[i],1)
+    //     }
+    // }
+    // console.log('aObj',aObj)
+    // console.log('bObj',bObj)
+
+    // let arr2 =Array.from( bObj.entries())
+    //     let needdArr2 = []
+    //     aObj.forEach((val,idx)=>{
+    //        let cout =0
+    //         arr2.forEach(item=>{
+    //             if(item[0] == idx){
+    //                 cout = item[1]
+    //             }
+    //         })
+    //         needdArr2.push(Math.abs(val-cout)) 
+    //     })
+    //     console.log('needdArr',needdArr2)
+
+    //     let arr1 =Array.from( aObj.entries())
+    //     let needdArr1 = []
+    //     bObj.forEach((val,idx)=>{
+    //        let cout =0
+    //         arr1.forEach(item=>{
+    //             if(item[0] == idx){
+    //                 cout = item[1]
+    //             }
+    //         })
+    //         needdArr1.push(Math.abs(val-cout)) 
+    //     })
+    //     console.log('needdArr',needdArr1)
+
+
+
+
+    //     return Math.max(...needdArr1,...needdArr2)<=3
+
+
+        let a1 = getCnt(word1),
+        a2 = getCnt(word2);
+        console.log('a1',a1)
+        console.log('a2',a2)
+        
+    return a1.every((v,i)=>Math.abs(v-a2[i])<=3);
+    
+    function getCnt(str){
+        let res = new Array(26).fill(0);
+        
+        for(let v of str){
+            res
+            [v.charCodeAt()-97]++;
+        }
+        
+        return res;
+    }
+    
+};
+console.log(checkAlmostEquivalent("zzzyyy","iiiiii"))
+    </script>
+</body>
+</html>

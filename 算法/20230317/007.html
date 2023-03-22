@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+ * @param {string} s
+ * @param {number} k
+ * @param {character} fill
+ * @return {string[]}
+ */
+var divideString = function(s, k, fill) {
+    let arr = s.split('')
+    let needArr = []
+    while(arr.length>=k){
+        needArr.push(arr.splice(0,k).join(''))
+    }
+    console.log('arr',arr)
+    if(arr.length == 0)return needArr
+    needArr.push(arr.join('')+fill.repeat(k-arr.length))
+    return needArr
+};
+console.log(divideString('abcdefghij',3,'x'))
+    </script>
+</body>
+</html>

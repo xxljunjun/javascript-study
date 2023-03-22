@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+ * @param {number} num
+ * @return {number}
+ */
+var largestInteger = function(num) {
+    //思路找到偶数的位置，，，奇数的位置
+    let str = num+''
+    let arr = str.split('')
+    let jArr = []
+    let oArr = []
+    for(let i = 0;i<arr.length;i++){
+        if(arr[i]%2 == 0){
+            oArr.push(arr[i])
+        }else{
+            jArr.push(arr[i])
+        }
+    }
+    jArr.sort((a,b)=>{
+        return a-b
+    })
+    console.log('jArr',jArr)
+    oArr.sort((a,b)=>{
+        return a-b
+    })
+    let needArr = []
+    for(let i = 0;i<arr.length;i++){
+        if(arr[i]%2 == 0){
+            needArr.push(oArr.pop())
+        }else{
+            needArr.push(jArr.pop())
+        }
+    }
+    return needArr.join('')
+};
+console.log(largestInteger(65875))
+    </script>
+</body>
+</html>

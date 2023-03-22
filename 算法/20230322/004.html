@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+ * @param {string} s
+ * @param {number} k
+ * @return {string}
+ */
+var digitSum = function(s, k) {
+    while (s.length>k) {
+        let arr =[]
+        for(let i = 0;i<s.length;i+=k){
+            arr.push(s.slice(i,i+k))
+        }
+        console.log('arr',arr)
+        arr = arr.map(val=>{
+            return val.split('').reduce((total,val,idx)=>{
+                return total+=Number(val)
+            },0)
+        })
+        console.log('arr',arr.join(''))
+        s=arr.join('')
+       
+    }
+    return s
+
+};
+console.log(digitSum("00000000",3))
+    </script>
+</body>
+</html>
